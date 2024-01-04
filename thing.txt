@@ -1,0 +1,4 @@
+things needed first:
+- How are we gonna do it (nodejs? ejs? reactjs?)
+- Login system (sql database?)
+- 
