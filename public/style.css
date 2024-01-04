@@ -1,0 +1,52 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, footer {
+    background-color: #52647c;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+main {
+    flex: 1; /* Grow to fill the available vertical space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+#user-profiles, #skill-listings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user-profile, .skill-listing {
+    border: 1.5px solid #bebebe;
+    border-radius: 5%;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+#messaging {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+}

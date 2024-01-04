@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Skill Swap Network</title>
+</head>
+<body>
+    <header>
+        <h1>Skill Swap Network</h1>
+    </header>
+    <main>
+        <h2>User Profiles</h2>
+        <section id="user-profiles">
+            <% users.forEach(user => { %>
+                <div class="user-profile">
+                    <h3><%= user.name %></h3>
+                    <p>Skills: <%= user.skills.join(', ') %></p>
+                    <p>Seeking: <%= user.seeking.join(', ') %></p>
+                </div>
+            <% }); %>
+        </section>
+        <h2>Skills</h2>
+        <section id="skill-listings">
+            <% skillListings.forEach(skillListing => { %>
+                <div class="skill-listing">
+                    <h3><%= skillListing.skill %></h3>
+                    <p><%= skillListing.description %></p>
+                </div>
+            <% }); %>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; Skill Swap Network</p>
+    </footer>
+</body>
+</html>
