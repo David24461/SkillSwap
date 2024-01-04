@@ -45,7 +45,8 @@ app.get('/newAccount', (req, res) => {
 app.post('/signup', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-
+    const skills = req.body.skills;
+    users.push({ id: users.length + 1, name: username, skills: [], seeking: [] });
     res.redirect('/index');
 });
 
