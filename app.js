@@ -47,7 +47,7 @@ app.post('/signup', (req, res) => {
     const password = req.body.password;
     const skills = req.body.skills;
     const seeking = req.body.seeking;
-    users.push({ id: users.length + 1, name: username, skills: "", seeking: "" });
+    users.push({ id: users.length + 1, name: username, skills: [], seeking: []});
     skillListings.push({ id: skillListings.length + 1, userId: users.length, skill: skills, description: seeking });
     res.redirect('/index');
 });
