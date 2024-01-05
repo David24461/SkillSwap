@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Account</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
     <h1>Create a new Account</h1>
     <form action="/signup" method="post">
@@ -18,7 +20,7 @@
         <input type="text" id="skills" name="skills">
         <br><br>
         <label for="seeking">What are you seeking:</label>
-        <input type="text" id="seeking" name="seeking">
+        <textarea name="seeking" id="seeking" cols="30" rows="1"></textarea>
         <br><br>
         <button type="submit">Sign Up</button>
         <p>Have an account already? Sign in -> <a href="/">Sign in</a></p>
