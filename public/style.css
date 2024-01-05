@@ -5,10 +5,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #d8c7ff;
 }
 
 header, footer {
-    background-color: #52647c;
+    background-color: #3d387e;
     color: #fff;
     text-align: center;
     padding: 1em 0;
@@ -33,7 +34,7 @@ section {
 }
 
 .user-profile, .skill-listing {
-    border: 1.5px solid #bebebe;
+    border: 1.5px solid #2b1849;
     border-radius: 5%;
     padding: 10px;
     width: 200px;

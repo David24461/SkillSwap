@@ -1,4 +1,13 @@
-things needed first:
-- How are we gonna do it (nodejs? ejs? reactjs?)
-- Login system (sql database?)
-- 
+Things needed for project in no specific order:
+
+- how are user profiles gonna look
+    - will everyone's profile have a unique link or will everyone's profile be displayed together?
+    - how are skill listings gonna look
+
+- searching system/filtering system to find specific people/skills
+- direct/private messaging integration (teams could be used for this tho)
+- Reviews for people / recommendations
+- calendar to track events and meetings
+- mobile optimization
+
+- making it available to "the public" (everyone else in the class)
