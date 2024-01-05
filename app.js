@@ -30,7 +30,7 @@ app.post('/login', (req, res) => {
     // Authenticate user here
     // This is just a dummy check for demonstration purposes
     const user = users.find(user => user.name === username);
-    if (user && password === 'password') {
+    if (user == user && password === 'password') {
         res.redirect('/index');
     } else {
         res.send('Invalid username or password.');
