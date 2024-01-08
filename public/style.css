@@ -30,7 +30,7 @@ section {
 #user-profiles, #skill-listings {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 45px;
 }
 
 .user-profile, .skill-listing {

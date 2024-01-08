@@ -33,7 +33,8 @@ app.post('/login', (req, res) => {
     if (user == user && password === 'password') {
         res.redirect('/index');
     } else {
-        res.send('Invalid username or password.');
+        // make an alert pop up telling the user the username or passowrd is invalid
+        res.send('<script>alert("Invalid username or password."); window.location.href = "/";</script>');
     }
 });
 
