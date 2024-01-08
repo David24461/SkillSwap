@@ -38,8 +38,8 @@ app.post('/login', (req, res) => {
 });
 
 // link newAccount to app.js
-app.get('/newAccount', (req, res) => {
-    res.render('newAccount.ejs');
+app.get('/create', (req, res) => {
+    res.render('create.ejs');
 });
 
 app.post('/signup', (req, res) => {
