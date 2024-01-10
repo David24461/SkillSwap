@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express();
+const mysql = require("mysql")
+const dotenv = require('dotenv')
+dotenv.config({ path: './.env' })
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 const port = 5500;
@@ -10,8 +13,8 @@ const users = [
 ];
 
 const skillListings = [
-    { id: 101, userId: 1, skill: 'Python', description: 'Offering Python Tutoring.' },
-    { id: 102, userId: 2, skill: 'JavaScript', description: 'Offering JavaScript tutoring.' },
+    { id: 101, userId: 1, skill: ['Python'], description: 'Offering Python Tutoring.' },
+    { id: 102, userId: 2, skill: ['JavaScript'], description: 'Offering JavaScript tutoring.' },
 ];
 
 app.set('view engine', 'ejs');
@@ -44,18 +47,22 @@ app.get('/create', (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
-    const username = req.body.username;
     const password = req.body.password;
+    const username = req.body.username;
     const skills = req.body.skills;
     const seeking = req.body.seeking;
+    const description = req.body.description;
     users.push({ id: users.length + 1, name: username, skills: [], seeking: []});
-    skillListings.push({ id: skillListings.length + 1, userId: users.length, skill: skills, description: seeking });
+    users[users.length - 1].skills.push(skills);
+    users[users.length - 1].seeking.push(seeking);
+    skillListings.push({ id: skillListings.length + 1, userId: users.length, skill: skills, description: description });
     res.redirect('/index');
 });
 
 app.get('/index', (req, res) => {
     res.render('index.ejs', { users, skillListings });
 });
+
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
