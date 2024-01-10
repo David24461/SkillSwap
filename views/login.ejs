@@ -15,10 +15,10 @@
     <p>For now, just put "user1" for user and "password" for the password since this project is a rough draft</p>
     <form action="/login" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" >
+        <input type="text" id="username" name="username" required>
         <br><br>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" >
+        <input type="password" id="password" name="password" required>
         <button type="submit">Log in</button>
         <p>Don't have an account? Make one -><a href="/create">Create account</a></p>
     </form>

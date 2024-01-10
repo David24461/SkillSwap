@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express();
+const mysql = require("mysql")
+const dotenv = require('dotenv')
+dotenv.config({ path: './.env' })
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 const port = 5500;
@@ -59,6 +62,7 @@ app.post('/signup', (req, res) => {
 app.get('/index', (req, res) => {
     res.render('index.ejs', { users, skillListings });
 });
+
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
