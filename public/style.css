@@ -14,6 +14,8 @@ header, footer {
     color: #fff;
     text-align: center;
     padding: 1em 0;
+    letter-spacing: 0.1em;
+    font-size: 115%;
 }
 
 main {
@@ -34,9 +36,20 @@ footer {
     padding: 1em 0;
 }
 
+button {
+    width: 10%;
+    padding: 1em;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+    background-color: #a97fbb;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 /* LOGIN PAGE */
 
-.login {
+#login {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,6 +63,7 @@ footer {
     margin: 0 auto;
 }
 
+/* make the t-box class have a width of 20% and padding of 2% */
 .t-box {
     width: 100%;
     padding: 2%;
@@ -59,24 +73,13 @@ footer {
     border-radius: 10px;
 }
 
-button {
-    width: 10%;
-    padding: 1em;
-    border: 1px solid #43135a;
-    border-radius: 10px;
-    background-color: #a97fbb;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-}
-
 /* CREATE ACCOUNT PAGE */
-.signup {
+#signup {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1%;
+    padding: 2%;
     border: 2px solid #71587c;
     border-radius: 10px;
     background-color: #e0c5ff;
@@ -95,6 +98,18 @@ button {
 }
 
 /* MAIN PAGE: USER PROFILES */
+
+#logout {
+    width: 10%;
+    padding: 1em;
+    border: 1px solid #5a3497;
+    border-radius: 10px;
+    background-color: rgb(238, 221, 255);
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
 #user-profiles, #skill-listings {
     display: flex;
     flex-wrap: wrap;
