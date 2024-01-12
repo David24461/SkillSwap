@@ -1,10 +1,18 @@
+// Constants
 const express = require('express');
 const app = express();
 const mysql = require("mysql")
+const bodyParser = require('body-parser');
 const dotenv = require('dotenv')
 dotenv.config({ path: './.env' })
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = mysql.createConnection({
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE
+})
+
 const port = 5500;
 
 const users = [
@@ -18,7 +26,9 @@ const skillListings = [
 ];
 
 app.set('view engine', 'ejs');
+
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Login route
 app.get('/', (req, res) => {
@@ -56,6 +66,7 @@ app.post('/signup', (req, res) => {
     users[users.length - 1].skills.push(skills);
     users[users.length - 1].seeking.push(seeking);
     skillListings.push({ id: skillListings.length + 1, userId: users.length, skill: skills, description: description });
+    console.log(users);
     res.redirect('/index');
 });
 

@@ -1,9 +1,7 @@
 packages needed:
 ejs
 express
-bcryptjs
 dotenv
-hbs
 mysql
 nodemon (used to automatically restart the server when file changes are detected)
 
