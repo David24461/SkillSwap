@@ -1,2 +1,2 @@
 # SkillSwap
-Be able to list your skill for hire or be able to hire people for work.
+Be able to list your skills for hire or be able to hire people for work in class.

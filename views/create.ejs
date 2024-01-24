@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
+<body id="create">
     <header>
         <h1>Skill Swap Network</h1>
     </header>
     <h1 style="text-align: center;">Create a new Account</h1>
-    <form class="signup" action="/signup" method="post">
+    <form id="signup" action="/signup" method="post">
         <label for="username">Username:</label>
-        <input class="t-box" type="text" id="username" name="username" >
+        <input class="t-box" type="text" id="username" name="username" autocomplete="username">
         <br><br>
         <label for="password">Password:</label>
-        <input class="t-box" type="password" id="password" name="password" >
+        <input class="t-box" type="password" id="password" name="password" autocomplete="new-password">
         <br><br>
         <label for="skills">Skills:</label> (one word)
         <input class="t-box" type="text" id="skills" name="skills">
