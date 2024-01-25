@@ -8,31 +8,29 @@
 </head>
 <body>
     <header>
-        <h1>Skill Swap Network</h1>
+        <h1>Skill Swap Network Home</h1>
     </header>
     <main>
-        <button id="logout"><a href="/">Log Out</a></button>
+        <button id="logout" onclick="window.location.href = '/login'">Logout</button>
         <h2>User Profiles</h2>
         <section id="user-profiles">
             <% users.forEach(user => { %>
                 <div class="user-profile">
-                    <h3><%= user.name %></h3>
-                    <p>Skills: <%= user.skills.join(', ') %></p>
-                    <p>Seeking Job in: <%= user.seeking.join(', ') %></p>
+                    <h3><%= user.Name %></h3>
+                    <p>Skills: <%= user.Skills %></p>
+                    <p>Seeking Job in: <%= user.Seeking %></p>
                 </div>
             <% }); %>
         </section>
 
-        <h2>Skills</h2>
-        <section id="skill-listings">
-            <% skillListings.forEach(skillListing => { %>
-                <div class="skill-listing">
-                    <h3><%= skillListing.skill %></h3>
-                    <p><%= skillListing.description %></p>
-                </div>
-            <% }); %>
-        </section>
-
+        <h2>About Me</h2>
+        <section id="user-profiles">
+        <% users.forEach(user => { %>
+            <div class="user-profile">
+                <p><%= user.Description %></p>
+            </div>
+        <% }); %>
+        
     </main>
     <footer>
         <p>&copy; Skill Swap Network</p>
