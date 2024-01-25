@@ -1,19 +1,18 @@
 // Constants
 const express = require('express');
 const app = express();
-const mysql = require("mysql")
+const sqlite3 = require("sqlite3");
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv')
 dotenv.config({ path: './.env' })
-
-const db = mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE
-})
-
 const port = 5500;
+
+app.set('view engine', 'ejs');
+
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = new sqlite3.Database('userData.db');
 
 const users = [
     { id: 1, name: 'user1', skills: ['JavaScript', 'HTML', 'CSS'], seeking: ['Python'] },
@@ -24,11 +23,6 @@ const skillListings = [
     { id: 101, userId: 1, skill: ['Python'], description: 'Offering Python Tutoring.' },
     { id: 102, userId: 2, skill: ['JavaScript'], description: 'Offering JavaScript tutoring.' },
 ];
-
-app.set('view engine', 'ejs');
-
-app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Login route
 app.get('/', (req, res) => {
