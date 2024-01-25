@@ -59,13 +59,13 @@ button {
     border-radius: 10px;
     background-color: #e0c5ff;
     /* make the box smaller and centered in the page */
-    width: 50%;
+    width: 30%;
     margin: 0 auto;
 }
 
 /* make the t-box class have a width of 20% and padding of 2% */
 .t-box {
-    width: 100%;
+    width: 30%;
     padding: 2%;
     margin-bottom: 1em;
     margin-top: 1%;
@@ -84,12 +84,12 @@ button {
     border-radius: 10px;
     background-color: #e0c5ff;
     /* make the box smaller and centered in the page */
-    width: 50%;
+    width: 30%;
     margin: 0 auto;
 } 
 
 .t-box {
-    width: 20%;
+    width: 30%;
     padding: 2%;
     margin-bottom: 1em;
     margin-top: 1%;
