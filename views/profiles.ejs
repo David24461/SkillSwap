@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= user.name %>'s Profile</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <ul>
+        <% for(let i = 0; i < users.length; i++) { %>
+            <p><%= users[i].name %></p>
+        <% } %>
+    </ul>
+    <header>
+        <h1>
+            <%= user.name %>
+        </h1>
+    </header>
+    <main>
+        <section>
+            <h2>Profile</h2>
+            <p>
+                <%= user.profile %>
+            </p>
+        </section>
+        <section>
+            <h2>Skills</h2>
+            <ul>
+                <% user.skills.forEach(function(skill) { %>
+                    <li>
+                        <%= skill %>
+                    </li>
+                    <% }) %>
+            </ul>
+        </section>
+        <section>
+            <h2>Seeking</h2>
+            <p>
+                <%= user.seeking %>
+            </p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <%= new Date().getFullYear() %> User Profile</p>
+    </footer>
+</body>
+
+</html>
