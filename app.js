@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const session = require('express-session');
 const port = 5500;
-const saltRounds = 10;
+const saltRounds = 5;
 
 const db = new sqlite3.Database('Users.db');
 
@@ -21,16 +21,6 @@ app.use(session({
     saveUninitialized: true,
 }));
 
-// const users = [
-//     { id: 1, name: 'user1', skills: ['JavaScript', 'HTML', 'CSS'], seeking: ['Python'] },
-//     { id: 2, name: 'user2', skills: ['Python', 'Java'], seeking: ['JavaScript'] },
-// ];
-
-// const skillListings = [
-//     { id: 101, userId: 1, skill: ['Python'], description: 'Offering Python Tutoring.' },
-//     { id: 102, userId: 2, skill: ['JavaScript'], description: 'Offering JavaScript tutoring.' },
-// ];
-
 // Login route
 app.get('/login', (req, res) => {
     res.render('login.ejs');
@@ -42,7 +32,7 @@ app.post('/login', (req, res) => {
     const password = req.body.password;
 
     // Query the database to find the user
-    db.get(`SELECT * FROM users WHERE name = ?`, [username], (err, row) => {
+    db.get(`SELECT * FROM users WHERE Name = ?`, [username], (err, row) => {
         if (err) {
             console.log(err.message);
             return res.status(500).send({error: 'Database error'});
@@ -84,7 +74,7 @@ app.post('/signup', (req, res) => {
     const seeking = req.body.seeking;
     const description = req.body.description;
     bcrypt.hash(password, saltRounds, function(err, hash) {
-        db.run(`INSERT INTO users(name, password) VALUES(?, ?)`, [username, hash], function(err) {
+        db.run(`INSERT INTO users(Name, Password, Skills, Seeking, Description) VALUES(?, ?, ?, ?, ?)`, [username, hash, skills, seeking, description], function(err) {
             if (err) {
                 console.log(err.message);
                 return res.status(500).send({error: 'Database error'});

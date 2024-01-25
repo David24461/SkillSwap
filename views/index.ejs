@@ -23,7 +23,13 @@
             <% }); %>
         </section>
 
-        <h2>Skills</h2>
+        <h2>About Me</h2>
+        <section id="user-profiles">
+        <% users.forEach(user => { %>
+            <div class="user-profile">
+                <p><%= user.Description %></p>
+            </div>
+        <% }); %>
         
     </main>
     <footer>
