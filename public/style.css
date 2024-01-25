@@ -112,13 +112,13 @@ button {
 
 }
 
-#user-profiles, #skill-listings {
+#user-profiles {
     display: flex;
     flex-wrap: wrap;
     gap: 45px;
 }
 
-.user-profile, .skill-listing {
+.user-profile {
     border: 3px solid #5a3497;
     border-radius: 2;
     padding: 12px;
