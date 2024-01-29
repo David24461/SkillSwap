@@ -24,6 +24,7 @@ main {
     flex-direction: column;
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
+    padding: 2em;
 }
 
 section {
@@ -36,8 +37,8 @@ footer {
     padding: 1em 0;
 }
 
-button {
-    width: 13%;
+#logoutbtn {
+    width: auto;
     padding: 1em;
     border: 1px solid #43135a;
     border-radius: 10px;
@@ -61,6 +62,17 @@ button {
     /* make the box smaller and centered in the page */
     width: 30%;
     margin: 0 auto;
+}
+
+#loginbtn {
+    width: auto;
+    padding: 1em;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+    background-color: #a97fbb;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /* make the t-box class have a width of 20% and padding of 2% */
@@ -87,6 +99,17 @@ button {
     width: 30%;
     margin: 0 auto;
 } 
+
+#signupbtn {
+    width: auto;
+    padding: 1em;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+    background-color: #a97fbb;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 .t-box {
     width: 30%;
@@ -118,10 +141,34 @@ button {
     gap: 45px;
 }
 
+#aboutme {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
+}
+
 .user-profile {
     border: 3px solid #5a3497;
     border-radius: 2;
     padding: 12px;
     width: 200px;
     text-align: center;
+}
+
+@media screen and (max-width: 650px){
+    #login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2%;
+        border: 3px solid #753194;
+        border-radius: 10px;
+        background-color: #e0c5ff;
+        /* make the box smaller and centered in the page */
+        /* width: auto; */
+        min-width: 40%;
+        max-width: 50%;
+        margin: 0 auto;
+    }
 }

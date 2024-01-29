@@ -39,7 +39,7 @@ app.post('/login', (req, res) => {
         }
         // If the user is found
         if (row) {
-            console.log(row);
+            // console.log(row);
             // Compare the provided password with the stored hash
             bcrypt.compare(password, row.Password, function(err, result) {
                 if (err) {
@@ -101,5 +101,5 @@ app.get('/index', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running at http://localhost:${port}/login`);
 });
