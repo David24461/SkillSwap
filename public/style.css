@@ -18,6 +18,10 @@ header, footer {
     font-size: 115%;
 }
 
+footer {
+    margin-top: auto;
+}
+
 main {
     flex: 1; /* Grow to fill the available vertical space */
     display: flex;
@@ -30,14 +34,7 @@ section {
     margin-bottom: 20px;
 }
 
-footer {
-    width: 100%;
-    text-align: center;
-    padding: 1em 0;
-}
-
 button {
-    width: 13%;
     padding: 1em;
     border: 1px solid #43135a;
     border-radius: 10px;
@@ -45,11 +42,15 @@ button {
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+    margin: 0 auto;
 }
 
-/* LOGIN PAGE */
+button:hover {
+    background-color: #43135a;
+}
+/* LOGIN PAGE / CREATE ACCOUNT PAGE / SIGNUP PAGE*/
 
-#login {
+#profilePage, #login, #signup{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,35 +59,18 @@ button {
     border: 3px solid #753194;
     border-radius: 10px;
     background-color: #e0c5ff;
-    /* make the box smaller and centered in the page */
     width: 30%;
-    margin: 0 auto;
+    margin: auto;
 }
 
-/* make the t-box class have a width of 20% and padding of 2% */
-.t-box {
-    width: 30%;
-    padding: 2%;
-    margin-bottom: 1em;
-    margin-top: 1%;
-    border: 1px solid #43135a;
-    border-radius: 10px;
+h3, #userName{
+    color: black;
+    text-decoration: none;
 }
 
-/* CREATE ACCOUNT PAGE */
-#signup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2%;
-    border: 3px solid #753194;
-    border-radius: 10px;
-    background-color: #e0c5ff;
-    /* make the box smaller and centered in the page */
-    width: 30%;
-    margin: 0 auto;
-} 
+#userName:hover{
+    color: #43135a;
+}
 
 .t-box {
     width: 30%;
@@ -96,8 +80,6 @@ button {
     border: 1px solid #43135a;
     border-radius: 10px;
 }
-
-/* MAIN PAGE: USER PROFILES */
 
 #logout {
     width: 8%;
@@ -112,7 +94,7 @@ button {
 
 }
 
-#user-profiles, #skill-listings {
+#user-profiles, #skill-listings{
     display: flex;
     flex-wrap: wrap;
     gap: 45px;

@@ -56,7 +56,7 @@ app.post('/signup', (req, res) => {
     const skills = req.body.skills;
     const seeking = req.body.seeking;
     const description = req.body.description;
-    users.push({ id: users.length + 1, name: username, skills: [], seeking: []});
+    users.push({ id: users.length + 1, name: username, skills: [], seeking: [] });
     users[users.length - 1].skills.push(skills);
     users[users.length - 1].seeking.push(seeking);
     skillListings.push({ id: skillListings.length + 1, userId: users.length, skill: skills, description: description });
@@ -66,6 +66,16 @@ app.post('/signup', (req, res) => {
 
 app.get('/index', (req, res) => {
     res.render('index.ejs', { users, skillListings });
+});
+
+app.get('/profiles/:id', (req, res) => {
+    const userId = parseInt(req.params.id);
+    const user = users.find(user => user.id === userId);
+    if (!user) {
+        res.status(404).send('User not found');
+    } else {
+        res.render('profile.ejs', { user });
+    }
 });
 
 
