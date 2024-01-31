@@ -1,5 +1,6 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: monospace;
+    font-size: 125%;
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,6 +14,12 @@ header, footer {
     color: #fff;
     text-align: center;
     padding: 1em 0;
+    letter-spacing: 0.1em;
+    font-size: 115%;
+}
+
+footer {
+    margin-top: auto;
 }
 
 main {
@@ -21,19 +28,97 @@ main {
     flex-direction: column;
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
+    padding: 2em;
 }
 
 section {
     margin-bottom: 20px;
 }
 
-#user-profiles, #skill-listings {
+button {
+    padding: 1em;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+    background-color: #a97fbb;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #43135a;
+}
+
+/* LOGIN PAGE / CREATE ACCOUNT PAGE / SIGNUP PAGE / PROFILES PAGE*/
+
+#profilePage, #login, #signup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+    border: 3px solid #753194;
+    border-radius: 10px;
+    background-color: #e0c5ff;
+    width: 35%;
+    margin: 0 auto;
+}
+
+#loginbtn, #signupbtn, #logoutbtn {
+    width: auto;
+    padding: 1em;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+    background-color: #a97fbb;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+h3, #userName{
+    color: black;
+    text-decoration: none;
+}
+
+#userName:hover{
+    color: #43135a;
+}
+
+.t-box {
+    width: 30%;
+    padding: 2%;
+    margin-bottom: 1em;
+    margin-top: 1%;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+}
+
+#logout {
+    width: 8%;
+    padding: 1em;
+    border: 1px solid #5a3497;
+    border-radius: 10px;
+    background-color: rgb(157, 126, 189);
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+
+#user-profiles {
     display: flex;
     flex-wrap: wrap;
     gap: 45px;
 }
 
-.user-profile, .skill-listing {
+#aboutme {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
+}
+
+.user-profile {
     border: 3px solid #5a3497;
     border-radius: 2;
     padding: 12px;
@@ -41,13 +126,66 @@ section {
     text-align: center;
 }
 
-#messaging {
-    border: 1px solid #ddd;
-    padding: 10px;
+.search {
+    /* center the items in the form */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    margin-bottom: 1em;
+    margin-top: 1%;
+    border-radius: 10px;
 }
 
-footer {
+.search.t-box {
     width: 100%;
-    text-align: center;
-    padding: 1em 0;
+    padding: 2%;
+    margin-bottom: 1em;
+    margin-top: 1%;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+}
+
+#searchbtn {
+    width: auto;
+    padding: 0.5em;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+    background-color: #9267a5;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px){
+    #login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2%;
+        border: 3px solid #753194;
+        border-radius: 10px;
+        background-color: #e0c5ff;
+        /* width: auto; */
+        min-width: 70%;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    #signup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2%;
+        border: 3px solid #753194;
+        border-radius: 10px;
+        background-color: #e0c5ff;
+        /* width: auto; */
+        min-width: 70%;
+        max-width: 90%;
+        margin: 0 auto;
+    }
 }

@@ -7,29 +7,29 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
+<body id="create">
     <header>
         <h1>Skill Swap Network</h1>
     </header>
-    <h1>Create a new Account</h1>
-    <form action="/signup" method="post">
+    <h1 style="text-align: center;">Create a new Account</h1>
+    <form id="signup" action="/signup" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" >
-        <br><br>
+        <input class="t-box" type="text" id="username" name="username" autocomplete="username">
+            <br><br>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" >
-        <br><br>
+        <input class="t-box" type="password" id="password" name="password" autocomplete="new-password">
+            <br><br>
         <label for="skills">Skills:</label> (one word)
-        <input type="text" id="skills" name="skills">
-        <br><br>
-        <label for="description">Describe your skill(s):</label>
-        <textarea name="description" id="description" cols="30" rows="2"></textarea>
-        <br><br>
+        <input class="t-box" type="text" id="skills" name="skills">
+            <br><br>
         <label for="seeking">What job are you seeking:</label>
-        <textarea name="seeking" id="seeking" cols="30" rows="2"></textarea>
-        <br><br>
-        <button type="submit">Sign Up</button>
-        <p>Have an account already? Sign in -> <a href="/">Sign in</a></p>
+        <textarea class="t-box" name="seeking" id="seeking" cols="30" rows="2"></textarea>
+            <br><br>
+        <label for="description">Professional Description:</label>
+        <textarea class="t-box" name="description" id="description" cols="30" rows="2"></textarea>
+            <br><br>
+        <button id="signupbtn" type="submit">Sign Up</button>
+        <p>Have an account already? Sign in -> <a href="/login">Sign in</a></p>
     </form>
 </body>
 </html>

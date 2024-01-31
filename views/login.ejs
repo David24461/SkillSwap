@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,17 +12,24 @@
     <header>
         <h1>Skill Swap Network</h1>
     </header>
-    <h1>Log in</h1>
-    <p>For now, just put "user1" for user and "password" for the password since this project is a rough draft</p>
-    <form action="/login" method="post">
+
+    <% if (typeof error !== 'undefined') { %>
+        <p><%= error %></p>
+    <% } %>
+    
+
+    <h1 style="text-align: center;">Log in</h1>
+    <p style="text-align: center;">Enter Username and Password</p>
+    <form id="login" action="/login" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <input class="t-box" type="text" id="username" name="username" autocomplete="username" required>
         <br><br>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Log in</button>
+        <input class="t-box" type="password" id="password" name="password" autocomplete="current-password" required>
+        <button id="loginbtn" type="submit">Log in</button>
         <p>Don't have an account? Make one -><a href="/create">Create account</a></p>
-    </form>
+    </form>  
 
 </body>
+
 </html>

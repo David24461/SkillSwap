@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>Skill Swap Network</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="profilePage">
+        <h1>
+            <%= user.name %>'s Profile
+        </h1>
+        <p>Skills: <%= Array.isArray(user.skills) ? user.skills.join(', ') : ' No skills listed' %>
+        </p>
+        <p>Seeking Job in: <%= Array.isArray(user.seeking) ? user.seeking.join(' , ') : ' No job preferences listed' %>
+        </p>
+    </div>
+</body>
+<footer>
+    <p>&copy; Skill Swap Network</p>
+</footer>
+
+</html>

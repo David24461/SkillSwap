@@ -1,10 +1,8 @@
 packages needed:
 ejs
 express
-bcryptjs
 dotenv
-hbs
-mysql
+sqlite
 nodemon (used to automatically restart the server when file changes are detected)
 
 Things needed for project in no specific order:
