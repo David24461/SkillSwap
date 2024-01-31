@@ -8,14 +8,20 @@
 </head>
 
 <body>
+    <header>
+        <h1>Skill Swap Network</h1>
+    </header>
+
     <div id="profilePage">
+        <% users.forEach(user => { %>
         <h1>
-            <%= user.name %>'s Profile
+            <%= user.Name %>'s Profile
         </h1>
-        <p>Skills: <%= Array.isArray(user.skills) ? user.skills.join(', ') : ' No skills listed' %>
+        <p>Skills: <%= user.Skills %>
         </p>
-        <p>Seeking Job in: <%= Array.isArray(user.seeking) ? user.seeking.join(' , ') : ' No job preferences listed' %>
+        <p>Seeking Job in: <%= user.Seeking %>
         </p>
+        <% }); %>
     </div>
 </body>
 <footer>
