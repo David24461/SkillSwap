@@ -113,6 +113,9 @@ app.get('/index', (req, res) => {
     }
 });
 
+// create users array
+const users = [];
+
 // link profile.ejs to app.js
 app.get('/profiles', (req, res) => {
     const userId = parseInt(req.params.id);
