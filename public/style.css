@@ -124,6 +124,7 @@ h3, #userName{
     padding: 12px;
     width: 200px;
     text-align: center;
+    cursor: pointer;
 }
 
 .search {
@@ -156,6 +157,10 @@ h3, #userName{
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+}
+
+#profilePage {
+    margin-top: 2%;
 }
 
 @media screen and (max-width: 750px){

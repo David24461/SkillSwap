@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const session = require('express-session');
+const { parse } = require('dotenv');
 const port = 5500;
 const saltRounds = 5;
 
@@ -112,16 +113,17 @@ app.get('/index', (req, res) => {
     }
 });
 
-app.get('/profiles/:id', (req, res) => {
+// link profile.ejs to app.js
+app.get('/profiles', (req, res) => {
     const userId = parseInt(req.params.id);
-    const user = users.find(user => user.id === userId);
-    if (!user) {
-        res.status(404).send('User not found');
-    } else {
-        res.render('profile.ejs', { user });
-    }
+    db.all(`SELECT * FROM users`, [], (err, rows) => {
+        if (err) {
+            return console.error(err.message);
+        }
+        var user = rows.find(user => user.Id === userId);
+        res.render('profiles', { users: rows });
+    });
 });
-
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}/login`);

@@ -21,7 +21,7 @@
         <h2 class="home-sections">User Profiles</h2>
         <section id="user-profiles">
             <% users.forEach(user => { %>
-                <div class="user-profile">
+                <div class="user-profile" onclick="window.location.href = '/profiles'">
                     <h3 style="font-size: 130%;"><a href="/profiles" style="color: rgb(90, 26, 150);"><%= user.Name %></a></h3>
                     <p>Skills: <%= user.Skills %></p>
                     <p>Seeking Job in: <%= user.Seeking %></p>
