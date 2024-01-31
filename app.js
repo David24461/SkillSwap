@@ -112,6 +112,17 @@ app.get('/index', (req, res) => {
     }
 });
 
+app.get('/profiles/:id', (req, res) => {
+    const userId = parseInt(req.params.id);
+    const user = users.find(user => user.id === userId);
+    if (!user) {
+        res.status(404).send('User not found');
+    } else {
+        res.render('profile.ejs', { user });
+    }
+});
+
+
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}/login`);
 });
