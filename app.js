@@ -11,8 +11,8 @@ const saltRounds = 5;
 
 const db = new sqlite3.Database('Users.db');
 
+// Set up the application
 app.set('view engine', 'ejs');
-
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
@@ -97,6 +97,16 @@ app.get('/index', (req, res) => {
         });
     } else {
         res.redirect('/login');
+    }
+});
+
+app.get('/profiles/:id', (req, res) => {
+    const userId = parseInt(req.params.id);
+    const user = users.find(user => user.id === userId);
+    if (!user) {
+        res.status(404).send('User not found');
+    } else {
+        res.render('profile.ejs', { user });
     }
 });
 

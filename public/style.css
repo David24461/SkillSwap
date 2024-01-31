@@ -48,6 +48,9 @@ button {
 }
 
 /* LOGIN PAGE */
+button:hover {
+    background-color: #330a46;
+}
 
 #login {
     display: flex;
@@ -124,4 +127,5 @@ button {
     padding: 12px;
     width: 200px;
     text-align: center;
+    cursor: pointer;
 }
