@@ -2,48 +2,24 @@
 <html>
 
 <head>
-    <title><%= user.name %>'s Profile</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width">
+    <title>Skill Swap Network</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <ul>
-        <% for(let i = 0; i < users.length; i++) { %>
-            <p><%= users[i].name %></p>
-        <% } %>
-    </ul>
-    <header>
+    <div id="profilePage">
         <h1>
-            <%= user.name %>
+            <%= user.name %>'s Profile
         </h1>
-    </header>
-    <main>
-        <section>
-            <h2>Profile</h2>
-            <p>
-                <%= user.profile %>
-            </p>
-        </section>
-        <section>
-            <h2>Skills</h2>
-            <ul>
-                <% user.skills.forEach(function(skill) { %>
-                    <li>
-                        <%= skill %>
-                    </li>
-                    <% }) %>
-            </ul>
-        </section>
-        <section>
-            <h2>Seeking</h2>
-            <p>
-                <%= user.seeking %>
-            </p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; <%= new Date().getFullYear() %> User Profile</p>
-    </footer>
+        <p>Skills: <%= Array.isArray(user.skills) ? user.skills.join(', ') : ' No skills listed' %>
+        </p>
+        <p>Seeking Job in: <%= Array.isArray(user.seeking) ? user.seeking.join(' , ') : ' No job preferences listed' %>
+        </p>
+    </div>
 </body>
+<footer>
+    <p>&copy; Skill Swap Network</p>
+</footer>
 
 </html>
