@@ -19,17 +19,14 @@
     
 
     <h1 style="text-align: center;">Log in</h1>
-    <p style="text-align: center;">
-        For now, just put "user1" for user and "password" for the password since this project is a rough draft. 
-        (User auth is coming soon)
-    </p>
+    <p style="text-align: center;">Enter Username and Password</p>
     <form id="login" action="/login" method="post">
         <label for="username">Username:</label>
         <input class="t-box" type="text" id="username" name="username" autocomplete="username" required>
         <br><br>
         <label for="password">Password:</label>
         <input class="t-box" type="password" id="password" name="password" autocomplete="current-password" required>
-        <button type="submit">Log in</button>
+        <button id="loginbtn" type="submit">Log in</button>
         <p>Don't have an account? Make one -><a href="/create">Create account</a></p>
     </form>  
 

@@ -39,15 +39,15 @@ app.post('/login', (req, res) => {
         }
         // If the user is found
         if (row) {
-            console.log(row);
-            // Compare the provided password with the stored hash
+            // console.log(row);
+            // Compare the provided password with the stored hash using bcrypt for encryption
             bcrypt.compare(password, row.Password, function(err, result) {
                 if (err) {
                     console.log(err.message);
                     return res.status(500).send({error: 'Error comparing passwords'});
                 }
                 if (result) {
-                    // If the password is correct, set the session user and redirect to index
+                    // If the password is correct, set the session user and redirect to index (home page)
                     req.session.user = row;
                     return res.redirect('/index');
                 } else {
@@ -67,6 +67,7 @@ app.get('/create', (req, res) => {
     res.render('create.ejs');
 });
 
+// Handle create form submission
 app.post('/signup', (req, res) => {
     const password = req.body.password;
     const username = req.body.username;
@@ -81,12 +82,23 @@ app.post('/signup', (req, res) => {
             } else {
                 // get the last insert id
                 console.log(`A row has been inserted with row-ID ${this.lastID}`);
-                return res.redirect('/index'); // Add return here
+                return res.redirect('/index');
             }
         });
     });
 });
 
+app.get('/search', (req, res) => {
+    const query = req.query.query;
+    db.all(`SELECT * FROM users WHERE name LIKE ?`, [`%${query}%`], (err, rows) => {
+        if (err) {
+            return console.error(err.message);
+        }
+        res.render('index', { users: rows }); 
+    });
+});
+
+// link index.ejs to app.js
 app.get('/index', (req, res) => {
     if(req.session.user) {
         db.all(`SELECT * FROM users`, [], (err, rows) => {
@@ -112,5 +124,5 @@ app.get('/profiles/:id', (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running at http://localhost:${port}/login`);
 });
