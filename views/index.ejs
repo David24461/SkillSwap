@@ -12,6 +12,12 @@
     </header>
     <main>
         <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
+
+        <form class="search" action="/search" method="GET">
+            <input class="t-box" type="text" name="query" placeholder="Search users">
+            <button id="searchbtn" type="submit">Search</button>
+        </form>
+
         <h2 class="home-sections">User Profiles</h2>
         <section id="user-profiles">
             <% users.forEach(user => { %>
@@ -31,7 +37,7 @@
                     <p><%= user.Description %></p>
                 </div>
             <% }); %>
-        
+        </section>
     </main>
     <footer>
         <p>&copy; Skill Swap Network</p>
