@@ -4,22 +4,32 @@
 <head>
     <meta name="viewport" content="width=device-width">
     <title>Skill Swap Network</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
     <div id="profilePage">
         <h1>
-            <%= user.name %>'s Profile
+            <%= users.Name %>'s Profile
         </h1>
-        <p>Skills: <%= Array.isArray(user.skills) ? user.skills.join(', ') : ' No skills listed' %>
-        </p>
-        <p>Seeking Job in: <%= Array.isArray(user.seeking) ? user.seeking.join(' , ') : ' No job preferences listed' %>
-        </p>
+        <% if (users.Skills != null || users.Skills != "") { %>
+            <p>Skills: <%= users.Skills %></p>
+        <% }  else {%>
+            <p>No skills listed</p>
+        <% } %>
+
+        <% if (users.Seeking != null || users.Seeking != "") { %>
+            <p>Seeking Job in: <%= users.Seeking %></p>
+        <% }  else {%>
+            <p>No job preferences listed</p>
+        <% } %>
+        
+
+        <p>About Me: <%= users.Description %></p>
     </div>
+    <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
 </body>
 <footer>
     <p>&copy; Skill Swap Network</p>
 </footer>
-
 </html>

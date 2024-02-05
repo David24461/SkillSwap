@@ -13,9 +13,11 @@ header, footer {
     background-color: #52318f;
     color: #fff;
     text-align: center;
-    padding: 1em 0;
+    padding: 0.23%;
     letter-spacing: 0.1em;
     font-size: 115%;
+    font-weight: bold;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 footer {
@@ -64,7 +66,6 @@ button:hover {
     width: 35%;
     margin: 0 auto;
 }
-
 #loginbtn, #signupbtn, #logoutbtn {
     width: auto;
     padding: 1em;
@@ -74,6 +75,11 @@ button:hover {
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+}
+
+#loginbtn:hover, #signupbtn:hover, #logoutbtn:hover {
+    background-color: #43135a;
+    border: 1px solid #a97fbb;
 }
 
 h3, #userName{

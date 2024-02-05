@@ -105,6 +105,7 @@ app.get('/index', (req, res) => {
             if (err) {
                 return console.error(err.message);
             }
+            console.log(rows)
             res.render('index', { users: rows });
         });
     } else {
@@ -112,14 +113,19 @@ app.get('/index', (req, res) => {
     }
 });
 
+const users = []; // Declare the users array
+
 app.get('/profiles/:id', (req, res) => {
     const userId = parseInt(req.params.id);
-    const user = users.find(user => user.id === userId);
-    if (!user) {
-        res.status(404).send('User not found');
-    } else {
-        res.render('profile.ejs', { user });
-    }
+    //const userId = 12;
+    db.all(`SELECT * FROM users WHERE ID = ?`, userId, (err, row) => {
+        if (err) {
+            return console.error(err.message);
+        }
+        var user = row.find(user => user.id === userId);
+        console.log(row);
+        res.render('profiles', { users: row[0] });
+    });
 });
 
 
