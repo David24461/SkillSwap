@@ -33,6 +33,7 @@ main {
 
 section {
     margin-bottom: 20px;
+    margin: auto auto;
 }
 
 button {
@@ -118,13 +119,14 @@ h3, #userName{
     gap: 45px;
 }
 
-.user-profile {
+#user-profile {
     border: 3px solid #5a3497;
     border-radius: 2;
     padding: 12px;
     width: 200px;
     text-align: center;
     cursor: pointer;
+    background-color: rgb(222, 193, 255);
 }
 
 .search {
@@ -133,14 +135,14 @@ h3, #userName{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 30%;
+    width: 35%;
     margin-bottom: 1em;
     margin-top: 1%;
     border-radius: 10px;
 }
 
 .search.t-box {
-    width: 100%;
+    width: auto;
     padding: 2%;
     margin-bottom: 1em;
     margin-top: 1%;
@@ -161,9 +163,75 @@ h3, #userName{
 
 #profilePage {
     margin-top: 2%;
+    margin-bottom: 2%;
 }
 
-@media screen and (max-width: 750px){
+@media screen and (max-width: 1000px) {
+    .search {
+        /* center the items in the form */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1em;
+        margin-top: 1%;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2%;
+        border: 3px solid #753194;
+        border-radius: 10px;
+        background-color: #e0c5ff;
+        min-width: 70%;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    #signup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2%;
+        border: 3px solid #753194;
+        border-radius: 10px;
+        background-color: #e0c5ff;
+        min-width: 70%;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1em;
+        margin-top: 1%;
+        border-radius: 10px;
+    }
+    
+    .search.t-box {
+        width: auto;
+        padding: 2%;
+        margin-bottom: 1em;
+        margin-top: 1%;
+        border: 1px solid #43135a;
+        border-radius: 10px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
     #login {
         display: flex;
         flex-direction: column;
@@ -193,4 +261,36 @@ h3, #userName{
         max-width: 90%;
         margin: 0 auto;
     }
+
+    #user-profiles {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #user-profile {
+        margin: auto;
+    }
+
+    .search {
+        /* center the items in the form */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 110%;
+        margin-bottom: 1em;
+        margin-top: 1%;
+        border-radius: 10px;
+    }
+    
+    .search.t-box {
+        width: auto;
+        padding: 2%;
+        margin-bottom: 1em;
+        margin-top: 1%;
+        border: 1px solid #43135a;
+        border-radius: 10px;
+    }
+    
 }

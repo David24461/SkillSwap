@@ -95,7 +95,9 @@ app.get('/search', (req, res) => {
         if (err) {
             return console.error(err.message);
         }
+        else {
         res.render('index', { users: rows }); 
+        }
     });
 });
 

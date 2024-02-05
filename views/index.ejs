@@ -18,22 +18,14 @@
             <button id="searchbtn" type="submit">Search</button>
         </form>
 
-        <h2 class="home-sections">User Profiles</h2>
+        <h2 class="home-sections" style="color: rgb(68, 17, 116);">User Profiles</h2>
         <section id="user-profiles">
             <% users.forEach(user => { %>
-                <div class="user-profile" onclick="window.location.href = '/profiles'">
-                    <h3 style="font-size: 130%;"><a href="/profiles" style="color: rgb(90, 26, 150);"><%= user.Name %></a></h3>
+                <div id="user-profile" onclick="window.location.href = '/profiles'">
+                    <h3 style="font-size: 130%; color: rgb(90, 26, 150); text-decoration: underline;"><%= user.Name %></a></h3>
                     <p>Skills: <%= user.Skills %></p>
                     <p>Seeking Job in: <%= user.Seeking %></p>
-                </div>
-            <% }); %>
-        </section>
-
-        <h2 class="home-sections">About Me</h2>
-        <section id="aboutme">
-            <% users.forEach(user => { %>
-                <div class="user-profile">
-                    <p style="font-size: 130%; font-weight: bold;"><%= user.Name %></p>
+                    <h3 style="color: rgb(90, 26, 150); text-decoration: underline; font-size: 120%;">About Me</h3>
                     <p><%= user.Description %></p>
                 </div>
             <% }); %>
