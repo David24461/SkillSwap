@@ -111,6 +111,7 @@ h3, #userName{
     display: flex;
     flex-wrap: wrap;
     gap: 45px;
+    margin-top: 1%;
 }
 
 #aboutme {
@@ -123,10 +124,11 @@ h3, #userName{
     border: 3px solid #5a3497;
     border-radius: 2;
     padding: 12px;
-    width: 200px;
+    width: 300px;
     text-align: center;
     cursor: pointer;
     background-color: rgb(222, 193, 255);
+    overflow: hidden;
 }
 
 .search {
@@ -230,6 +232,30 @@ h3, #userName{
     }
 }
 
+@media screen and (min-height: 1100px){
+    #user-profiles {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #user-profile {
+        margin: auto;
+        width: 70%;
+    }
+
+    .search {
+        /* center the items in the form */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 700px;
+        margin-bottom: 1em;
+        margin-top: 2%;
+        border-radius: 10px;
+    }
+}
 
 @media screen and (max-width: 600px) {
     #login {
@@ -270,6 +296,7 @@ h3, #userName{
 
     #user-profile {
         margin: auto;
+        width: 70%;
     }
 
     .search {

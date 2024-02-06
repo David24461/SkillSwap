@@ -23,9 +23,12 @@
             <% users.forEach(user => { %>
                 <div id="user-profile" onclick="window.location.href = '/profiles'">
                     <h3 style="font-size: 130%; color: rgb(90, 26, 150); text-decoration: underline;"><%= user.Name %></a></h3>
+                    <p>Email: <%= user.Email %></p>
                     <p>Skills: <%= user.Skills %></p>
                     <p>Seeking Job in: <%= user.Seeking %></p>
+                    <p>...............</p>
                     <h3 style="color: rgb(90, 26, 150); text-decoration: underline; font-size: 120%;">About Me</h3>
+                    <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
                     <p><%= user.Description %></p>
                 </div>
             <% }); %>
