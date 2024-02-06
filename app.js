@@ -72,11 +72,13 @@ app.get('/create', (req, res) => {
 app.post('/signup', (req, res) => {
     const password = req.body.password;
     const username = req.body.username;
+    const email = req.body.email;
     const skills = req.body.skills;
     const seeking = req.body.seeking;
     const description = req.body.description;
+    const classPos = req.body.class;
     bcrypt.hash(password, saltRounds, function(err, hash) {
-        db.run(`INSERT INTO users(Name, Password, Skills, Seeking, Description) VALUES(?, ?, ?, ?, ?)`, [username, hash, skills, seeking, description], function(err) {
+        db.run(`INSERT INTO users(Name, Password, Email, Skills, Seeking, Description, Class) VALUES(?, ?, ?, ?, ?, ?, ?)`, [username, hash, email, skills, seeking, description, classPos], function(err) {
             if (err) {
                 console.log(err.message);
                 return res.status(500).send({error: 'Database error'});
