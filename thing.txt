@@ -13,6 +13,7 @@ Things needed for project in no specific order:
 
 - searching system/filtering system to find specific people/skills
 - direct/private messaging integration (teams could be used for this tho)
+- junior or senior filtering/dividing
 - Reviews for people / recommendations
 - calendar to track events and meetings
 - mobile optimization

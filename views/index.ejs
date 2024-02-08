@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <title>Skill Swap Network</title>
 </head>
+
 <body>
     <header>
         <h1>Skill Swap Network Home</h1>
@@ -18,29 +20,47 @@
             <button id="searchbtn" type="submit">Search</button>
         </form>
 
-        <h2 class="home-sections">User Profiles</h2>
+        <h2 class="home-sections" style="color: rgb(68, 17, 116); font-size: 180%;">Users</h2>
         <section id="user-profiles">
-            <% users.forEach(user => { %>
-                <div class="user-profile" onclick="window.location.href = '/profiles'">
-                    <h3 style="font-size: 130%;"><a href="/profiles" style="color: rgb(90, 26, 150);"><%= user.Name %></a></h3>
-                    <p>Skills: <%= user.Skills %></p>
-                    <p>Seeking Job in: <%= user.Seeking %></p>
-                </div>
-            <% }); %>
-        </section>
-
-        <h2 class="home-sections">About Me</h2>
-        <section id="aboutme">
-            <% users.forEach(user => { %>
-                <div class="user-profile">
-                    <p style="font-size: 130%; font-weight: bold;"><%= user.Name %></p>
-                    <p><%= user.Description %></p>
-                </div>
+            <h2 id="seniorlbl" style="color: rgb(90, 26, 150);">Seniors</h2>
+            <br>
+            <h2 id="juniorlbl" style="color: rgb(90, 26, 150);">Juniors</h2>
+            <% users.forEach(user=> { %>
+                <% if (user.Class == 'Senior' ) { %>
+                    <div id="class-senior">
+                        <div id="user-profile" onclick="window.location.href = '/profiles'"> 
+                            <h3 style="font-size: 130%; color: rgb(90, 26, 150); text-decoration: underline;"><%= user.Name %></a></h3>
+                            <p>Email: <%= user.Email %></p>
+                            <p>Skills: <%= user.Skills %></p>
+                            <p>Seeking Job in: <%= user.Seeking %></p>
+                            <p>...............</p>
+                            <h3 style="color: rgb(90, 26, 150); text-decoration: underline; font-size: 120%;">About Me</h3>
+                            <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
+                            <p><%= user.Description %></p>
+                        </div>
+                    </div>
+                    
+                <% } else if (user.Class == 'Junior' ) { %>
+                    <div id="class-junior">
+                        <div id="user-profile" onclick="window.location.href = '/profiles'">
+                            <h3 style="font-size: 130%; color: rgb(90, 26, 150); text-decoration: underline;"><%= user.Name %></a></h3>
+                            <p>Email: <%= user.Email %></p>
+                            <p>Skills: <%= user.Skills %></p>
+                            <p>Seeking Job in: <%= user.Seeking %></p>
+                            <p>...............</p>
+                            <h3 style="color: rgb(90, 26, 150); text-decoration: underline; font-size: 120%;">About Me</h3>
+                            <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
+                            <p><%= user.Description %></p>
+                        </div>
+                    </div>                   
+                <% } %>
             <% }); %>
         </section>
     </main>
+
     <footer>
         <p>&copy; Skill Swap Network</p>
     </footer>
 </body>
+
 </html>
