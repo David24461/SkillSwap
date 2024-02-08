@@ -23,11 +23,10 @@ footer {
 }
 
 main {
-    flex: 1; /* Grow to fill the available vertical space */
+
     display: flex;
     flex-direction: column;
     align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
     padding: 2em;
 }
 
@@ -77,15 +76,6 @@ button:hover {
     cursor: pointer;
 }
 
-h3, #userName{
-    color: black;
-    text-decoration: none;
-}
-
-#userName:hover{
-    color: #43135a;
-}
-
 .t-box {
     width: 30%;
     padding: 2%;
@@ -95,36 +85,45 @@ h3, #userName{
     border-radius: 10px;
 }
 
-#logout {
-    width: 8%;
-    padding: 1em;
-    border: 1px solid #5a3497;
-    border-radius: 10px;
-    background-color: rgb(157, 126, 189);
-    color: #fff;
-    font-weight: bold;
-    margin-bottom: 1em;
-    cursor: pointer;
+#juniorlbl, #seniorlbl {
+    height: 1em;
+    border: solid black 2px;
+}
+
+#class-junior {
+    order: 1;
+    width: 50%;
+}
+
+#juniorlbl {
+    order: 1;
+    margin: 1em;
+    text-align: center;
+    z-index: 2;
+}
+
+#class-senior {
+    order: 2;
+    width: 50%;
+}
+
+#seniorlbl {
+    order: 2;
+    margin: 1em;
 }
 
 #user-profiles {
     display: flex;
-    flex-wrap: wrap;
-    gap: 45px;
-    margin-top: 1%;
-}
-
-#aboutme {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 45px;
+    justify-content: space-between;
+    gap: 5px;
 }
 
 #user-profile {
     border: 3px solid #5a3497;
     border-radius: 2;
     padding: 12px;
-    width: 300px;
+    width: 75%;
+    height: 90%;
     text-align: center;
     cursor: pointer;
     background-color: rgb(222, 193, 255);
@@ -134,27 +133,24 @@ h3, #userName{
 .search {
     /* center the items in the form */
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 35%;
     margin-bottom: 1em;
     margin-top: 1%;
     border-radius: 10px;
+    gap: 5px;
 }
 
 .search.t-box {
-    width: auto;
-    padding: 2%;
-    margin-bottom: 1em;
-    margin-top: 1%;
+    padding: auto;
     border: 1px solid #43135a;
     border-radius: 10px;
 }
 
 #searchbtn {
-    width: auto;
-    padding: 0.5em;
+    text-align: center;
+    margin: 0;
     border: 1px solid #43135a;
     border-radius: 10px;
     background-color: #9267a5;
@@ -319,5 +315,4 @@ h3, #userName{
         border: 1px solid #43135a;
         border-radius: 10px;
     }
-    
 }
