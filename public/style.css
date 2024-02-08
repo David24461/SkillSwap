@@ -95,16 +95,16 @@ button:hover {
     width: 50%;
 }
 
+#class-senior {
+    order: 2;
+    width: 50%;
+}
+
 #juniorlbl {
     order: 1;
     margin: 1em;
     text-align: center;
     z-index: 2;
-}
-
-#class-senior {
-    order: 2;
-    width: 50%;
 }
 
 #seniorlbl {
@@ -114,7 +114,6 @@ button:hover {
 
 #user-profiles {
     display: flex;
-    justify-content: space-between;
     gap: 5px;
 }
 
@@ -292,7 +291,8 @@ button:hover {
 
     #user-profile {
         margin: auto;
-        width: 70%;
+        margin-left: -6%;
+        width: 100%;
     }
 
     .search {
