@@ -35,16 +35,16 @@ app.post('/login', (req, res) => {
     db.get(`SELECT * FROM users WHERE Name = ?`, [username], (err, row) => {
         if (err) {
             console.log(err.message);
-            return res.status(500).send({error: 'Database error'});
+            return res.status(500).send({ error: 'Database error' });
         }
         // If the user is found
         if (row) {
             // console.log(row);
             // Compare the provided password with the stored hash using bcrypt for encryption
-            bcrypt.compare(password, row.Password, function(err, result) {
+            bcrypt.compare(password, row.Password, function (err, result) {
                 if (err) {
                     console.log(err.message);
-                    return res.status(500).send({error: 'Error comparing passwords'});
+                    return res.status(500).send({ error: 'Error comparing passwords' });
                 }
                 if (result) {
                     // If the password is correct, set the session user and redirect to index (home page)
@@ -52,7 +52,7 @@ app.post('/login', (req, res) => {
                     return res.redirect('/index');
                 } else {
                     // If the password is incorrect, send an error message
-                    return res.status(401).send({error: 'Incorrect password'});
+                    return res.status(401).send({ error: 'Incorrect password' });
                 }
             });
         } else {
@@ -74,11 +74,11 @@ app.post('/signup', (req, res) => {
     const skills = req.body.skills;
     const seeking = req.body.seeking;
     const description = req.body.description;
-    bcrypt.hash(password, saltRounds, function(err, hash) {
-        db.run(`INSERT INTO users(Name, Password, Skills, Seeking, Description) VALUES(?, ?, ?, ?, ?)`, [username, hash, skills, seeking, description], function(err) {
+    bcrypt.hash(password, saltRounds, function (err, hash) {
+        db.run(`INSERT INTO users(Name, Password, Skills, Seeking, Description) VALUES(?, ?, ?, ?, ?)`, [username, hash, skills, seeking, description], function (err) {
             if (err) {
                 console.log(err.message);
-                return res.status(500).send({error: 'Database error'});
+                return res.status(500).send({ error: 'Database error' });
             } else {
                 // get the last insert id
                 console.log(`A row has been inserted with row-ID ${this.lastID}`);
@@ -94,13 +94,13 @@ app.get('/search', (req, res) => {
         if (err) {
             return console.error(err.message);
         }
-        res.render('index', { users: rows }); 
+        res.render('index', { users: rows });
     });
 });
 
 // link index.ejs to app.js
 app.get('/index', (req, res) => {
-    if(req.session.user) {
+    if (req.session.user) {
         db.all(`SELECT * FROM users`, [], (err, rows) => {
             if (err) {
                 return console.error(err.message);
@@ -126,6 +126,14 @@ app.get('/profiles/:id', (req, res) => {
         console.log(row);
         res.render('profiles', { users: row[0] });
     });
+});
+
+app.get('/certificationTest', (req, res) => {
+    // Fetch the certification tests from your database or another data source here
+    const certificationTests = [];
+
+    // Render the certification tests page with the certification tests data
+    res.render('certificationTest', { certificationTests });
 });
 
 

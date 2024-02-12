@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>Certification Tests</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Skill Swap Network</h1>
+    </header>
+
+    <main>
+        <h4>Certification Tests</h4>
+        <% certificationTests.forEach(test=> { %>
+            <div class="test-container">
+                <h2>
+                    <%= test.name %>
+                </h2>
+                <p>
+                    <%= test.description %>
+                </p>
+                <a href="/take-test/<%= test.id %>">Take Test</a>
+            </div>
+            <% }) %>
+
+                <button onclick="window.location.href = '/index'">Go Back Home</button>
+
+                <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
+    </main>
+</body>
+
+</html>

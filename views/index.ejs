@@ -1,46 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <title>Skill Swap Network</title>
 </head>
+
 <body>
     <header>
         <h1>Skill Swap Network Home</h1>
     </header>
     <main>
-        
+
         <form class="search" action="/search" method="GET">
             <input class="t-box" type="text" name="query" placeholder="Search users">
             <button id="searchbtn" type="submit">Search</button>
         </form>
-        
+        <div>
+            <a href="/certificationTest" id="certificationTest">Certification Tests</a>
+        </div>
+
         <h2 class="home-sections">User Profiles</h2>
         <section id="user-profiles">
-            <% users.forEach(user => { %>
+            <% users.forEach(user=> { %>
                 <div class="user-profile">
-                    <h3 style="font-size: 130%;"><a href="/profiles/<%- user.ID %>" id="userName"><%= user.Name %></a></h3>
-                    <p>Skills: <%= user.Skills %></p>
-                    <p>Seeking Job in: <%= user.Seeking %></p>
+                    <h3 style="font-size: 130%;"><a href="/profiles/<%- user.ID %>" id="userName">
+                            <%= user.Name %>
+                        </a></h3>
+                    <p>Skills: <%= user.Skills %>
+                    </p>
+                    <p>Seeking Job in: <%= user.Seeking %>
+                    </p>
                 </div>
                 <% }); %>
-            </section>
+        </section>
 
         <h2 class="home-sections">About Me</h2>
         <section id="aboutme">
-            <% users.forEach(user => { %>
+            <% users.forEach(user=> { %>
                 <div class="user-profile">
-                    <p style="font-size: 130%; font-weight: bold;"><%= user.Name %></p>
-                    <p><%= user.Description %></p>
+                    <p style="font-size: 130%; font-weight: bold;">
+                        <%= user.Name %>
+                    </p>
+                    <p>
+                        <%= user.Description %>
+                    </p>
                 </div>
                 <% }); %>
-            </section>
-            <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
-        </main>
+        </section>
+        <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
+    </main>
     <footer>
-        <p>&copy; Skill Swap Network</p>
+        <p class="footerText">&copy; Skill Swap Network</p>
     </footer>
 </body>
+
 </html>

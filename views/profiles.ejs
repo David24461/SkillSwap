@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta name="viewport" content="width=device-width">
@@ -12,24 +12,28 @@
         <h1>
             <%= users.Name %>'s Profile
         </h1>
-        <% if (users.Skills != null || users.Skills != "") { %>
-            <p>Skills: <%= users.Skills %></p>
-        <% }  else {%>
-            <p>No skills listed</p>
-        <% } %>
+        <% if (users.Skills !=null || users.Skills !="" ) { %>
+            <p>Skills: <%= users.Skills %>
+            </p>
+            <% } else {%>
+                <p>No skills listed</p>
+                <% } %>
 
-        <% if (users.Seeking != null || users.Seeking != "") { %>
-            <p>Seeking Job in: <%= users.Seeking %></p>
-        <% }  else {%>
-            <p>No job preferences listed</p>
-        <% } %>
-        
+                    <% if (users.Seeking !=null || users.Seeking !="" ) { %>
+                        <p>Seeking Job in: <%= users.Seeking %>
+                        </p>
+                        <% } else {%>
+                            <p>No job preferences listed</p>
+                            <% } %>
 
-        <p>About Me: <%= users.Description %></p>
+
+                                <p>About Me: <%= users.Description %>
+                                </p>
     </div>
     <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
 </body>
 <footer>
     <p>&copy; Skill Swap Network</p>
 </footer>
+
 </html>
