@@ -21,41 +21,45 @@
         </form>
 
         <h2 class="home-sections" style="color: rgb(68, 17, 116); font-size: 180%;">Users</h2>
-        <section id="user-profiles">
-            <h2 id="seniorlbl" style="color: rgb(90, 26, 150);">Seniors</h2>
-            <br>
-            <h2 id="juniorlbl" style="color: rgb(90, 26, 150);">Juniors</h2>
-            <% users.forEach(user=> { %>
-                <% if (user.Class == 'Senior' ) { %>
-                    <div id="class-senior">
-                        <div id="user-profile" onclick="window.location.href = '/profiles'"> 
-                            <h3 style="font-size: 130%; color: rgb(90, 26, 150); text-decoration: underline;"><%= user.Name %></a></h3>
-                            <p>Email: <%= user.Email %></p>
-                            <p>Skills: <%= user.Skills %></p>
-                            <p>Seeking Job in: <%= user.Seeking %></p>
-                            <p>...............</p>
-                            <h3 style="color: rgb(90, 26, 150); text-decoration: underline; font-size: 120%;">About Me</h3>
-                            <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
-                            <p><%= user.Description %></p>
+
+                <h2 id="seniorlbl" style="color: rgb(90, 26, 150);">Seniors</h2>
+                <br>
+                <h2 id="juniorlbl" style="color: rgb(90, 26, 150);">Juniors</h2>
+                <% users.forEach(user=> { %>
+                    <% if (user.Class == 'Senior' ) { %>
+                        <div id="class-senior">
+                            <div id="user-profile" onclick="window.location.href = '/profiles'"> 
+                                <h3 style="font-size: 130%; color: rgb(90, 26, 150); text-decoration: underline;"><%= user.Name %></a></h3>
+                                <p>Email: <%= user.Email %></p>
+                                <p>Skills: <%= user.Skills %></p>
+                                <p>Seeking Job in: <%= user.Seeking %></p>
+                                <p>Current Job: <%= user.Job %></p>
+                                <p>...............</p>
+                                <h3 style="color: rgb(90, 26, 150); text-decoration: underline; font-size: 120%;">About Me</h3>
+                                <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
+                                <p><%= user.Description %></p>
+
+                            </div>
                         </div>
-                    </div>
-                    
-                <% } else if (user.Class == 'Junior' ) { %>
-                    <div id="class-junior">
-                        <div id="user-profile" onclick="window.location.href = '/profiles'">
-                            <h3 style="font-size: 130%; color: rgb(90, 26, 150); text-decoration: underline;"><%= user.Name %></a></h3>
-                            <p>Email: <%= user.Email %></p>
-                            <p>Skills: <%= user.Skills %></p>
-                            <p>Seeking Job in: <%= user.Seeking %></p>
-                            <p>...............</p>
-                            <h3 style="color: rgb(90, 26, 150); text-decoration: underline; font-size: 120%;">About Me</h3>
-                            <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
-                            <p><%= user.Description %></p>
-                        </div>
-                    </div>                   
-                <% } %>
-            <% }); %>
-        </section>
+                        
+                    <% } else if (user.Class == 'Junior' ) { %>
+                        <div id="class-junior">
+                            <div id="user-profile" onclick="window.location.href = '/profiles'">
+                                <h3 style="font-size: 130%; color: rgb(90, 26, 150); text-decoration: underline;"><%= user.Name %></a></h3>
+                                <p>Email: <%= user.Email %></p>
+                                <p>Skills: <%= user.Skills %></p>
+                                <p>Seeking Job in: <%= user.Seeking %></p>
+                                <p>Current Job: <%= user.Job %></p>
+                                <p>...............</p>
+                                <h3 style="color: rgb(90, 26, 150); text-decoration: underline; font-size: 120%;">About Me</h3>
+                                <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
+                                <p><%= user.Description %></p>
+
+                            </div>
+                        </div>                   
+                    <% } %>
+                <% }); %>
+
     </main>
 
     <footer>

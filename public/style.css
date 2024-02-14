@@ -1,4 +1,5 @@
 body {
+    display: flex;
     font-family: monospace;
     font-size: 125%;
     margin: 0;
@@ -23,16 +24,10 @@ footer {
 }
 
 main {
-
     display: flex;
     flex-direction: column;
     align-items: center; /* Center items horizontally */
     padding: 2em;
-}
-
-section {
-    margin-bottom: 20px;
-    margin: auto auto;
 }
 
 button {
@@ -52,7 +47,7 @@ button:hover {
 
 /* LOGIN PAGE / CREATE ACCOUNT PAGE / SIGNUP PAGE / PROFILES PAGE*/
 
-#profilePage, #login, #signup{
+#profilePage, #login, #signup {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,46 +82,54 @@ button:hover {
 
 #juniorlbl, #seniorlbl {
     height: 1em;
-    border: solid black 2px;
+    font-size: 2em;
 }
 
-#class-junior {
-    order: 1;
+#class-junior, #class-senior {
+    display: flex;
+    justify-content: flex-start; 
     width: 50%;
 }
 
 #class-senior {
+    display: flex;
+    justify-content: center;
+    order: 1;
+    width: 50%;
+}
+
+#class-junior {
+    display: flex;
+    justify-content: center;
     order: 2;
     width: 50%;
 }
 
-#juniorlbl {
+
+#seniorlbl {
     order: 1;
+    margin: 1em;
+    margin-top: -1%;
+}
+
+#juniorlbl {
+    order: 2;
     margin: 1em;
     text-align: center;
     z-index: 2;
 }
 
-#seniorlbl {
-    order: 2;
-    margin: 1em;
-}
-
-#user-profiles {
-    display: flex;
-    gap: 5px;
-}
-
 #user-profile {
     border: 3px solid #5a3497;
-    border-radius: 2;
+    border-radius: 20px;
     padding: 12px;
-    width: 75%;
+    width: 25em;
     height: 90%;
     text-align: center;
     cursor: pointer;
     background-color: rgb(222, 193, 255);
     overflow: hidden;
+    margin: 1em;
 }
 
 .search {
@@ -178,21 +181,7 @@ button:hover {
 }
 
 @media screen and (max-width: 900px) {
-    #login {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 2%;
-        border: 3px solid #753194;
-        border-radius: 10px;
-        background-color: #e0c5ff;
-        min-width: 70%;
-        max-width: 90%;
-        margin: 0 auto;
-    }
-
-    #signup {
+    #login, #signup {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -235,7 +224,7 @@ button:hover {
     }
 
     #user-profile {
-        margin: auto;
+        margin: 1em;
         width: 70%;
     }
 
@@ -252,8 +241,8 @@ button:hover {
     }
 }
 
-@media screen and (max-width: 600px) {
-    #login {
+@media screen and (max-width: 550px) {
+    #login, #signup {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -262,37 +251,21 @@ button:hover {
         border: 3px solid #753194;
         border-radius: 10px;
         background-color: #e0c5ff;
-        /* width: auto; */
         min-width: 70%;
         max-width: 90%;
         margin: 0 auto;
-    }
-
-    #signup {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 2%;
-        border: 3px solid #753194;
-        border-radius: 10px;
-        background-color: #e0c5ff;
-        /* width: auto; */
-        min-width: 70%;
-        max-width: 90%;
-        margin: 0 auto;
-    }
-
-    #user-profiles {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
     #user-profile {
-        margin: auto;
-        margin-left: -6%;
-        width: 100%;
+        border: 3px solid #5a3497;
+        border-radius: 20px;
+        min-width: 70%;
+        max-width: 90%;
+        height: 90%;
+        text-align: center;
+        cursor: pointer;
+        background-color: rgb(222, 193, 255);
+        margin: 1em;
     }
 
     .search {
