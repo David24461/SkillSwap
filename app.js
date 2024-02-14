@@ -31,7 +31,6 @@ app.get('/login', (req, res) => {
 app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-
     // Query the database to find the user
     db.get(`SELECT * FROM users WHERE Name = ?`, [username], (err, row) => {
         if (err) {
@@ -117,9 +116,6 @@ app.get('/index', (req, res) => {
         res.redirect('/login');
     }
 });
-
-// create users array
-const users = [];
 
 // link profile.ejs to app.js
 app.get('/profiles', (req, res) => {
