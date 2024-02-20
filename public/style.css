@@ -92,7 +92,8 @@ h3,
 #loginbtn,
 #signupbtn,
 #logoutbtn,
-#searchbtn {
+#searchbtn,
+#backbtn {
     width: auto;
     padding: 1em;
     border: 1px solid #43135a;
@@ -102,6 +103,9 @@ h3,
     font-weight: bold;
     cursor: pointer;
     margin: auto;
+}
+#backbtn {
+    margin-bottom: 1em;
 }
 
 
@@ -120,7 +124,8 @@ h3,
 
 #loginbtn:hover,
 #signupbtn:hover,
-#logoutbtn:hover {
+#logoutbtn:hover,
+#backbtn:hover {
     background-color: #43135a;
     border: 1px solid #a97fbb;
 }

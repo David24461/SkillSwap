@@ -13,22 +13,45 @@
     </header>
 
     <main>
-        <h4>Certification Tests</h4>
-        <% certificationTests.forEach(test=> { %>
-            <div class="test-container">
-                <h2>
-                    <%= test.name %>
-                </h2>
-                <p>
-                    <%= test.description %>
-                </p>
-                <a href="/take-test/<%= test.id %>">Take Test</a>
+            <h2>Multiple Choice Quiz</h2>
+
+            <div class="question">
+                <p>Question 1: What does CSS stand for?</p>
+                <ul>
+                    <li><input type="radio" name="q1" value="a"> a) Computer Style Sheets</li>
+                    <li><input type="radio" name="q1" value="b"> b) Creative Style Sheets</li>
+                    <li><input type="radio" name="q1" value="c"> c) Cascading Style Sheets</li>
+                    <li><input type="radio" name="q1" value="d"> d) Centralizing Style Sheets</li>
+                </ul>
             </div>
-            <% }) %>
 
-                <button onclick="window.location.href = '/index'">Go Back Home</button>
+            <button onclick="submitQuiz()">Submit Quiz</button>
+        </main>
 
-                <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
+        <script>
+            function submitQuiz() {
+                    // Get the selected answers
+                    const q1Answer = document.querySelector('input[name="q1"]:checked').value;
+                    
+
+                    // Check if the answers are correct
+                    if (q1Answer === 'c') {
+                        alert('You got the question right!');
+                    } else {
+                        alert('You got the question wrong.');
+                }  
+            }
+        </script>
+    </body>
+
+    </html>
+        
+
+        
+
+
+        <button id="backbtn" onclick="window.location.href = '/index'">Go Back Home</button>
+        <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
     </main>
 </body>
 

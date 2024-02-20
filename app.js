@@ -129,11 +129,9 @@ app.get('/profiles/:id', (req, res) => {
 });
 
 app.get('/certificationTest', (req, res) => {
-    // Fetch the certification tests from your database or another data source here
-    const certificationTests = [];
 
     // Render the certification tests page with the certification tests data
-    res.render('certificationTest', { certificationTests });
+    res.render('certificationTest',);
 });
 
 
