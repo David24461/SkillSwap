@@ -129,6 +129,10 @@ app.get('/profiles', (req, res) => {
     });
 });
 
+app.get('/alumni', (req, res) => {
+    res.render('alumni.ejs')
+});
+
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}/login`);
 });

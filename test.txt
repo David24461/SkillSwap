@@ -36,3 +36,5 @@ if (user == user && password === 'password') {
 // users[users.length - 1].seeking.push(seeking);
 // skillListings.push({ id: skillListings.length + 1, userId: users.length, skill: skills, description: description });
 // console.log(users);
+
+<!-- <h2 class="home-sections" style="color: rgb(68, 17, 116); font-size: 180%;">All Users</h2> -->
