@@ -16,20 +16,22 @@
             <input class="t-box" type="text" name="query" placeholder="Search users">
             <button id="searchbtn" type="submit">Search</button>
         </form>
-        <h2 id="seniorlbl" style="color: rgb(90, 26, 150);">Seniors</h2>
+        <button id="alumlbl" style="cursor: pointer; font-size: 80%;" onclick="window.location.href = '/alumni'">Past Alumni</button>
         <br>
-        <h2 id="juniorlbl" style="color: rgb(90, 26, 150);">Juniors</h2>
+        <h2 id="seniorlbl" style="color: #52318f;">Seniors</h2>
+        <br>
+        <h2 id="juniorlbl" style="color: #52318f;">Juniors</h2>
         <% users.forEach(user => { %>
             <% if (user.Class == 'Senior' ) { %>
                 <div id="class-senior">
                     <div id="user-profile" onclick="window.location.href = '/profiles'"> 
-                        <h3 style="font-size: 130%; color: rgb(90, 26, 150); text-decoration: underline;"><%= user.Name %></a></h3>
+                        <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></a></h3>
                         <p>Email: <%= user.Email %></p>
                         <p>Skills: <%= user.Skills %></p>
                         <p>Seeking Job in: <%= user.Seeking %></p>
                         <p>Current Job: <%= user.Job %></p>
                         <p>...............</p>
-                        <h3 style="color: rgb(90, 26, 150); text-decoration: underline; font-size: 120%;">About Me</h3>
+                        <h3 style="color: #52318f; text-decoration: underline; font-size: 120%;">About Me</h3>
                         <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
                         <p><%= user.Description %></p>
                     </div>
@@ -37,20 +39,19 @@
             <% } else if (user.Class == 'Junior' ) { %>
                 <div id="class-junior">
                     <div id="user-profile" onclick="window.location.href = '/profiles'">
-                        <h3 style="font-size: 130%; color: rgb(90, 26, 150); text-decoration: underline;"><%= user.Name %></a></h3>
+                        <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></a></h3>
                         <p>Email: <%= user.Email %></p>
                         <p>Skills: <%= user.Skills %></p>
                         <p>Seeking Job in: <%= user.Seeking %></p>
                         <p>Current Job: <%= user.Job %></p>
                         <p>...............</p>
-                        <h3 style="color: rgb(90, 26, 150); text-decoration: underline; font-size: 120%;">About Me</h3>
+                        <h3 style="color: #52318f; text-decoration: underline; font-size: 120%;">About Me</h3>
                         <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
                         <p><%= user.Description %></p>
                     </div>
                 </div>                   
             <% } %>
         <% }); %>
-        <h2 id="juniorlbl" style="color: rgb(90, 26, 150); cursor: pointer;" onclick="window.location.href = '/alumni'">Past Alumni</h2>
     </main>
     <footer>
         <p>&copy; Skill Swap Network</p>

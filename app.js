@@ -130,7 +130,12 @@ app.get('/profiles', (req, res) => {
 });
 
 app.get('/alumni', (req, res) => {
-    res.render('alumni.ejs')
+    db.all(`SELECT * FROM alumni`, [], (err, rows) => {
+        if (err) {
+            return console.error(err.message);
+        }
+        res.render('alumni', { alumni: rows });
+    });
 });
 
 app.listen(port, () => {
