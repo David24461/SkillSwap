@@ -53,7 +53,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     padding: 2%;
-    border: 3px solid #753194;
+    border: 3px solid #52318f;;
     border-radius: 10px;
     background-color: #e0c5ff;
     width: 32%;
@@ -65,10 +65,14 @@ button:hover {
     padding: 1em;
     border: 1px solid #43135a;
     border-radius: 10px;
-    background-color: #a97fbb;
+    background-color: rgb(151, 120, 202);
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+}
+
+#loginbtn:hover, #signupbtn:hover {
+    background-color: #5a3497;
 }
 
 .t-box {
