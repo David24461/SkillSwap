@@ -18,11 +18,11 @@
         </form>
         <button id="alumlbl" style="cursor: pointer; font-size: 80%;" onclick="window.location.href = '/alumni'">Past Alumni</button>
         <br>
-        <h2 id="seniorlbl" style="color: #52318f;">Seniors</h2>
+        <h2 id="seniorlbl" style="color: #52318f;">Seniors</h2> 
         <br>
         <h2 id="juniorlbl" style="color: #52318f;">Juniors</h2>
-        <% users.forEach(user => { %>
-            <% if (user.Class == 'Senior' ) { %>
+        <% users.forEach(user => { %> <!-- loops through all the users in the database -->
+            <% if (user.Class == 'Senior' ) { %> <!-- checks if the user is a senior -->
                 <div id="class-senior">
                     <div id="user-profile" onclick="window.location.href = '/profiles'"> 
                         <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></a></h3>
@@ -36,7 +36,7 @@
                         <p><%= user.Description %></p>
                     </div>
                 </div>
-            <% } else if (user.Class == 'Junior' ) { %>
+            <% } else if (user.Class == 'Junior' ) { %> <!-- checks if the user is a junior -->
                 <div id="class-junior">
                     <div id="user-profile" onclick="window.location.href = '/profiles'">
                         <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></a></h3>

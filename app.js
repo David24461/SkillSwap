@@ -1,3 +1,10 @@
+// JUNIORS SHOULD NOT TOUCH THIS FILE
+// ********************************************************* \\
+// This file is the main server file for the SkillSwap project
+// It is responsible for handling all requests and responses
+// It also connects to the database and sets up the server
+// ********************************************************* \\ 
+
 // Constants
 const express = require('express');
 const app = express();
@@ -10,10 +17,11 @@ const { parse } = require('dotenv');
 const port = 5500;
 const saltRounds = 5;
 
+// Connect to the database
 const db = new sqlite3.Database('Users.db');
 
+// sets up the app to use ejs and public folder
 app.set('view engine', 'ejs');
-
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
@@ -39,7 +47,6 @@ app.post('/login', (req, res) => {
         }
         // If the user is found
         if (row) {
-            // console.log(row);
             // Compare the provided password with the stored hash using bcrypt for encryption
             bcrypt.compare(password, row.Password, function(err, result) {
                 if (err) {
@@ -91,6 +98,7 @@ app.post('/signup', (req, res) => {
     });
 });
 
+// search endpoint
 app.get('/search', (req, res) => {
     const query = req.query.query;
     db.all(`SELECT * FROM users WHERE name LIKE ?`, [`%${query}%`], (err, rows) => {
@@ -129,6 +137,7 @@ app.get('/profiles', (req, res) => {
     });
 });
 
+// link alumni.ejs to app.js
 app.get('/alumni', (req, res) => {
     db.all(`SELECT * FROM alumni`, [], (err, rows) => {
         if (err) {
@@ -138,6 +147,7 @@ app.get('/alumni', (req, res) => {
     });
 });
 
+// listen on port 5500
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}/login`);
 });
