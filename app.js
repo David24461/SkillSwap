@@ -1,3 +1,10 @@
+// JUNIORS SHOULD NOT TOUCH THIS FILE
+// ********************************************************* \\
+// This file is the main server file for the SkillSwap project
+// It is responsible for handling all requests and responses
+// It also connects to the database and sets up the server
+// ********************************************************* \\ 
+
 // Constants
 const express = require('express');
 const app = express();
@@ -10,10 +17,11 @@ const { parse } = require('dotenv');
 const port = 5500;
 const saltRounds = 5;
 
+// Connect to the database
 const db = new sqlite3.Database('Users.db');
 
+// sets up the app to use ejs and public folder
 app.set('view engine', 'ejs');
-
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
@@ -31,7 +39,6 @@ app.get('/login', (req, res) => {
 app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-
     // Query the database to find the user
     db.get(`SELECT * FROM users WHERE Name = ?`, [username], (err, row) => {
         if (err) {
@@ -40,7 +47,6 @@ app.post('/login', (req, res) => {
         }
         // If the user is found
         if (row) {
-            // console.log(row);
             // Compare the provided password with the stored hash using bcrypt for encryption
             bcrypt.compare(password, row.Password, function(err, result) {
                 if (err) {
@@ -77,8 +83,9 @@ app.post('/signup', (req, res) => {
     const seeking = req.body.seeking;
     const description = req.body.description;
     const classPos = req.body.class;
+    const job = req.body.job;
     bcrypt.hash(password, saltRounds, function(err, hash) {
-        db.run(`INSERT INTO users(Name, Password, Email, Skills, Seeking, Description, Class) VALUES(?, ?, ?, ?, ?, ?, ?)`, [username, hash, email, skills, seeking, description, classPos], function(err) {
+        db.run(`INSERT INTO users(Name, Password, Email, Skills, Seeking, Description, Class, Job) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`, [username, hash, email, skills, seeking, description, classPos, job], function(err) {
             if (err) {
                 console.log(err.message);
                 return res.status(500).send({error: 'Database error'});
@@ -91,6 +98,7 @@ app.post('/signup', (req, res) => {
     });
 });
 
+// search endpoint
 app.get('/search', (req, res) => {
     const query = req.query.query;
     db.all(`SELECT * FROM users WHERE name LIKE ?`, [`%${query}%`], (err, rows) => {
@@ -117,9 +125,6 @@ app.get('/index', (req, res) => {
     }
 });
 
-// create users array
-const users = [];
-
 // link profile.ejs to app.js
 app.get('/profiles', (req, res) => {
     const userId = parseInt(req.params.id);
@@ -132,6 +137,17 @@ app.get('/profiles', (req, res) => {
     });
 });
 
+// link alumni.ejs to app.js
+app.get('/alumni', (req, res) => {
+    db.all(`SELECT * FROM alumni`, [], (err, rows) => {
+        if (err) {
+            return console.error(err.message);
+        }
+        res.render('alumni', { alumni: rows });
+    });
+});
+
+// listen on port 5500
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}/login`);
 });

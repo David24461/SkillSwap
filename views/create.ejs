@@ -14,29 +14,32 @@
     </header>
     <h1 style="text-align: center;">Create a new Account</h1>
     <form id="signup" action="/signup" method="post">
-        <label for="username">Username:</label>
-        <input class="t-box" type="text" id="username" name="username" placeholder="Name" autocomplete="username">
+        <label for="username">Username:</label> 
+        <input class="t-box" type="text" id="username" name="username" placeholder="Name" autocomplete="username"> <!-- Input box for username -->
         <br><br>
         <label for="password">Password:</label>
-        <input class="t-box" type="password" id="password" name="password" placeholder="Password" autocomplete="new-password">
+        <input class="t-box" type="password" id="password" name="password" placeholder="Password" autocomplete="new-password"> <!-- Input box for password -->
         <br><br>
         <label for="email">Email:</label>
-        <input class="t-box" type="text" id="email" name="email" placeholder="School Email" autocomplete="email">
+        <input class="t-box" type="text" id="email" name="email" placeholder="School Email" autocomplete="email"> <!-- Input box for email -->
         <br><br>
         <label for="skills">Skills:</label> (one word)
-        <input class="t-box" type="text" id="skills" name="skills" placeholder="Ex: Skill1, Skill2">
+        <input class="t-box" type="text" id="skills" name="skills" placeholder="Ex: Skill1, Skill2"> <!-- Input box for user's skills -->
         <br><br>
         <label for="seeking">What job are you seeking:</label>
-        <textarea class="t-box" name="seeking" id="seeking" cols="30" rows="2" placeholder="State the jobs you are interested in"></textarea>
+        <textarea class="t-box" name="seeking" id="seeking" cols="30" rows="2" placeholder="State the job(s) you are interested in"></textarea> <!-- text box for jobs the user is seeking -->
         <br><br>
         <label for="description">Professional Description:</label>
-        <textarea class="t-box" name="description" id="description" cols="30" rows="2" placeholder="Describe your skills/experiences"></textarea>
+        <textarea class="t-box" name="description" id="description" cols="30" rows="2" placeholder="Describe your skills/experiences"></textarea> <!-- Input box for use's description -->
         <br><br>
         <label for="class">Class Level:</label>
-        <input class="t-box" type="text" id="class" name="class" placeholder="Junior or Senior (Pick your grade)">
+        <input class="t-box" type="text" id="class" name="class" placeholder="Junior or Senior (Pick your grade)"> <!-- Input box for user's class -->
         <br><br>
-        <button id="signupbtn" type="submit">Sign Up</button>
-        <p>Have an account already? Sign in -> <a href="/login">Sign in</a></p>
+        <label for="job">Current Job (n/a if not applicable):</label>
+        <input class="t-box" type="text" id="job" name="job" placeholder="State your current job"> <!-- Input box for the user's current job -->
+        <br><br>
+        <button id="signupbtn" type="submit">Sign Up</button> <!-- Submit button -->
+        <p>Have an account already? Sign in -> <a href="/login">Sign in</a></p> 
     </form>
 </body>
 
