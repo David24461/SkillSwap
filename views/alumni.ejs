@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Skill Swap</title>
+</head>
+<body>
+    <header>
+        <h1>Skill Swap Home</h1>
+    </header>
+    <main>
+        <button id="logoutbtn" style="margin-top: 2%;" onclick="window.location.href = '/index'">Back to Home</button>
+        <h2 id="alumlbl" style="color: rgb(90, 26, 150); font-size: 200%;">Past Alumni</h2>
+        <% alumni.forEach(alum => { %>
+            <div class="class-senior">
+                <div id="user-profile">
+                    <h3 style="font-size: 150%; color: rgb(90, 26, 150); text-decoration: underline;"><%= alum.Name %></a></h3>
+                    <p>Email: <%= alum.Email %></p>
+                    <p>Legacy: <%= alum.Legacy %></p>
+                </div>
+            </div>
+        <% }) %> 
+</main>
+</body>
+</html>
