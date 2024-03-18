@@ -26,12 +26,15 @@ footer {
 
 }
 
-main {
-    flex: 1;
+main, .question {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+}
+
+main {
     padding: 2em;
 }
 
@@ -68,6 +71,7 @@ h3,
     color: black;
     text-decoration: none;
 }
+
 /* LOGIN PAGE / CREATE ACCOUNT PAGE / SIGNUP PAGE / PROFILES PAGE*/
 
 #profilePage,
@@ -104,6 +108,7 @@ h3,
     cursor: pointer;
     margin: auto;
 }
+
 #backbtn {
     margin-bottom: 1em;
 }
