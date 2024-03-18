@@ -1,5 +1,5 @@
-// JUNIORS SHOULD NOT TOUCH THIS FILE
-// ********************************************************* \\
+// JUNIORS SHOULD NOT TOUCH THIS FILE UNLESS THEY ARE GIVEN AN ISSUE THAT INVOLVES THIS FILE
+// ***************************************************************************************** \\
 // This file is the main server file for the SkillSwap project
 // It is responsible for handling all requests and responses
 // It also connects to the database and sets up the server

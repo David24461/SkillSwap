@@ -1,1 +1,6 @@
 Used to put removed lines of code that might be needed for later
+
+
+        <label for="class">Class Level:</label>
+        <input class="t-box" type="text" id="class" name="class" placeholder="Junior or Senior (Pick your grade)"> <!-- Input box for user's class -->
+        <br><br>
