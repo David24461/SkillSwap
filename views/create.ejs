@@ -33,7 +33,11 @@
         <textarea class="t-box" name="description" id="description" cols="30" rows="2" placeholder="Describe your skills/experiences"></textarea> <!-- Input box for use's description -->
         <br><br>
         <label for="class">Class Level:</label>
-        <input class="t-box" type="text" id="class" name="class" placeholder="Junior or Senior (Pick your grade)"> <!-- Input box for user's class -->
+        <div id="classlvl">
+            <input class="rdobtn" type="radio" id="class" name="class" value="Junior">Junior <!-- Input box for user's class -->
+            <br>
+            <input class="rdobtn" type="radio" id="class" name="class" value="Senior">Senior <!-- Input box for user's class -->
+        </div>
         <br><br>
         <label for="job">Current Job (n/a if not applicable):</label>
         <input class="t-box" type="text" id="job" name="job" placeholder="State your current job"> <!-- Input box for the user's current job -->
