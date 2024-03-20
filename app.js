@@ -86,7 +86,6 @@ app.post('/signup', (req, res) => {
     const job = req.body.job;
     bcrypt.hash(password, saltRounds, function(err, hash) {
         db.run(`INSERT INTO users(Name, Password, Email, Skills, Seeking, Description, Class, Job) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`, [username, hash, email, skills, seeking, description, classPos, job], function(err) {
-
             if (err) {
                 console.log(err.message);
                 return res.status(500).send({ error: 'Database error' });
@@ -127,8 +126,6 @@ app.get('/index', (req, res) => {
     }
 });
 
-const users = []; // Declare the users array
-
 app.get('/profiles/:id', (req, res) => {
     const userId = parseInt(req.params.id);
     //const userId = 12;
@@ -143,7 +140,6 @@ app.get('/profiles/:id', (req, res) => {
 });
 
 app.get('/certificationTest', (req, res) => {
-
     // Render the certification tests page with the certification tests data
     res.render('certificationTest',);
 });
