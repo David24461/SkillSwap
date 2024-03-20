@@ -10,7 +10,8 @@ body {
     background-color: #d5b1ff;
 }
 
-header, footer {
+header,
+footer {
     background-color: #52318f;
     color: #fff;
     text-align: center;
@@ -47,20 +48,24 @@ button:hover {
 
 /* LOGIN PAGE / CREATE ACCOUNT PAGE / SIGNUP PAGE / PROFILES PAGE*/
 
-#profilePage, #login, #signup {
+#profilePage,
+#login,
+#signup {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2%;
-    border: 3px solid #52318f;;
+    border: 3px solid #52318f;
+    ;
     border-radius: 10px;
     background-color: #e0c5ff;
     width: 32%;
     margin: 0 auto;
 }
 
-#loginbtn, #signupbtn {
+#loginbtn,
+#signupbtn {
     width: auto;
     padding: 1em;
     border: 1px solid #43135a;
@@ -71,7 +76,8 @@ button:hover {
     cursor: pointer;
 }
 
-#loginbtn:hover, #signupbtn:hover {
+#loginbtn:hover,
+#signupbtn:hover {
     background-color: #5a3497;
 }
 
@@ -84,14 +90,16 @@ button:hover {
     border-radius: 10px;
 }
 
-#juniorlbl, #seniorlbl {
+#juniorlbl,
+#seniorlbl {
     height: 1em;
     font-size: 2em;
 }
 
-#class-junior, #class-senior {
+#class-junior,
+#class-senior {
     display: flex;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     width: 50%;
 }
 
@@ -180,6 +188,34 @@ button:hover {
     margin-bottom: 2%;
 }
 
+#LSidebar {
+    width: 13%;
+    height: 72%;
+    position: fixed;
+    top: 15%;
+    bottom: 20px;
+    left: 0px;
+    background-color: rgb(222, 193, 255);
+    border-top:  6.7727px solid #52318f;
+    border-bottom:  6.7727px solid #52318f;
+    border-right: 6.7727px solid #52318f;
+    border-radius: 0px 30px 30px 0px;
+}
+
+#RSidebar {
+    width: 13%;
+    height: 72%;
+    position: fixed;
+    top: 15%;
+    bottom: 20px;
+    right: 0px;
+    background-color: rgb(222, 193, 255);
+    border-top:  6.7727px solid #52318f;
+    border-bottom:  6.7727px solid #52318f;
+    border-left: 6.7727px solid #52318f;
+    border-radius: 30px 0px 0px 30px;
+}
+
 @media screen and (max-width: 1000px) {
     .search {
         display: flex;
@@ -194,7 +230,9 @@ button:hover {
 }
 
 @media screen and (max-width: 900px) {
-    #login, #signup {
+
+    #login,
+    #signup {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -218,7 +256,7 @@ button:hover {
         margin-top: 1%;
         border-radius: 10px;
     }
-    
+
     .search.t-box {
         width: auto;
         padding: 2%;
@@ -229,7 +267,7 @@ button:hover {
     }
 }
 
-@media screen and (min-height: 1100px){
+@media screen and (min-height: 1100px) {
     #user-profiles {
         display: flex;
         flex-direction: column;
@@ -254,7 +292,9 @@ button:hover {
 }
 
 @media screen and (max-width: 550px) {
-    #login, #signup {
+
+    #login,
+    #signup {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -290,7 +330,7 @@ button:hover {
         margin-top: 1%;
         border-radius: 10px;
     }
-    
+
     .search.t-box {
         width: auto;
         padding: 2%;
