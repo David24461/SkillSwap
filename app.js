@@ -144,6 +144,26 @@ app.get('/certificationTest', (req, res) => {
     res.render('certificationTest',);
 });
 
+app.get('/newAlum', (req, res) => {
+    res.render('newAlum.ejs');
+});
+
+app.post('/newStudent', (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const legacy = req.body.legacy;
+    db.run(`INSERT INTO alumni(Name, Email, Legacy) VALUES(?, ?, ?)`, [name, email, legacy], function(err) {
+        if (err) {
+            console.log(err.message);
+            return res.status(500).send({ error: 'Database error' });
+        } else {
+            // get the last insert id
+            console.log(`Alumni has been added sucessfully. Row-ID is ${this.lastID}`);
+            return res.redirect('/alumni');
+        }
+    });
+});
+
 // link alumni.ejs to app.js
 app.get('/alumni', (req, res) => {
     db.all(`SELECT * FROM alumni`, [], (err, rows) => {
