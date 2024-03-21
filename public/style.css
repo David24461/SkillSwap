@@ -1,5 +1,4 @@
 body {
-    display: flex;
     font-family: monospace;
     font-size: 125%;
     margin: 0;
@@ -10,31 +9,44 @@ body {
     background-color: #d5b1ff;
 }
 
-header, footer {
+header,
+footer {
     background-color: #52318f;
     color: #fff;
     text-align: center;
-    padding: 1em 0;
+    padding: 0.23%;
     letter-spacing: 0.1em;
     font-size: 115%;
+    font-weight: bold;
+    box-shadow: 0 0 5px 0 #000;
 }
 
 footer {
     margin-top: auto;
+
 }
 
-main {
+main, .question {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
+}
+
+main {
     padding: 2em;
+}
+
+section {
+    margin-bottom: 20px;
 }
 
 button {
     padding: 1em;
     border: 1px solid #43135a;
     border-radius: 10px;
-    background-color: rgb(151, 120, 202);
+    background-color: #a97fbb;
     color: #fff;
     font-weight: bold;
     cursor: pointer;
@@ -42,37 +54,90 @@ button {
 }
 
 button:hover {
-    background-color: #5a3497;
+    background-color: #43135a;
+}
+
+h1,
+h4 {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-size: 2.5em;
+    filter: drop-shadow(0 0 0.75rem #43135a);
+    color: white;
+}
+
+h3,
+#userName {
+    color: black;
+    text-decoration: none;
 }
 
 /* LOGIN PAGE / CREATE ACCOUNT PAGE / SIGNUP PAGE / PROFILES PAGE*/
 
-#profilePage, #login, #signup {
+#profilePage,
+#login,
+#signup {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2%;
-    border: 3px solid #52318f;;
+    border: 3px solid #753194;
     border-radius: 10px;
     background-color: #e0c5ff;
-    width: 32%;
+    width: 35%;
     margin: 0 auto;
 }
 
-#loginbtn, #signupbtn {
+#profilePage {
+    margin-top: auto;
+}
+
+#loginbtn,
+#signupbtn,
+#logoutbtn,
+#searchbtn,
+#backbtn {
     width: auto;
     padding: 1em;
     border: 1px solid #43135a;
     border-radius: 10px;
-    background-color: rgb(151, 120, 202);
+    background-color: #a97fbb;
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+    margin: auto;
 }
 
-#loginbtn:hover, #signupbtn:hover {
-    background-color: #5a3497;
+#backbtn {
+    margin-bottom: 1em;
+}
+
+
+#certificationTest {
+    width: auto;
+    padding: 1em;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+    background-color: #a97fbb;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0;
+    text-decoration: none;
+}
+
+#loginbtn:hover,
+#signupbtn:hover,
+#logoutbtn:hover,
+#backbtn:hover {
+    background-color: #43135a;
+    border: 1px solid #a97fbb;
+}
+
+
+#userName:hover {
+    color: #43135a;
 }
 
 .t-box {
@@ -84,117 +149,61 @@ button:hover {
     border-radius: 10px;
 }
 
-#juniorlbl, #seniorlbl {
-    height: 1em;
-    font-size: 2em;
-}
-
-#class-junior, #class-senior {
-    display: flex;
-    justify-content: flex-start; 
-    width: 50%;
-}
-
-#class-senior {
-    display: flex;
-    justify-content: center;
-    order: 1;
-    width: 50%;
-}
-
-#class-junior {
-    display: flex;
-    justify-content: center;
-    order: 2;
-    width: 50%;
-}
-
-#alumlbl {
-    margin: 1em;
-}
-
-#seniorlbl {
-    order: 1;
-    margin: 1em;
-    margin-top: -1%;
-}
-
-#juniorlbl {
-    order: 2;
-    margin: 1em;
-    text-align: center;
-    z-index: 2;
-}
-
-#user-profile {
-    border: 3px solid #52318f;
-    border-radius: 20px;
-    padding: 12px;
-    width: 25em;
-    height: 90%;
-    text-align: center;
+#logout {
+    width: 8%;
+    padding: 1em;
+    border: 1px solid #5a3497;
+    border-radius: 10px;
+    background-color: rgb(157, 126, 189);
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 1em;
     cursor: pointer;
-    background-color: rgb(222, 193, 255);
-    overflow: hidden;
-    margin: 1em;
 }
 
-#user-profile:hover {
-    background-color: rgb(200, 157, 255);
+#user-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
+}
+
+#aboutme {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
+}
+
+.user-profile {
+    border: 3px solid #5a3497;
+    border-radius: 2;
+    padding: 12px;
+    width: 200px;
+    text-align: center;
 }
 
 .search {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 35%;
+    width: 30%;
     margin-bottom: 1em;
     margin-top: 1%;
     border-radius: 10px;
-    gap: 5px;
 }
 
 .search.t-box {
-    padding: auto;
+    width: 100%;
+    padding: 2%;
+    margin-bottom: 1em;
+    margin-top: 1%;
     border: 1px solid #43135a;
     border-radius: 10px;
 }
 
-#searchbtn {
-    text-align: center;
-    margin: 0;
-    border: 1px solid #43135a;
-    border-radius: 10px;
-    background-color: rgb(151, 120, 202);
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-}
 
-#searchbtn:hover {
-    background-color: #5a3497;
-}
-
-#profilePage {
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-
-@media screen and (max-width: 1000px) {
-    .search {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 1em;
-        margin-top: 1%;
-        border-radius: 10px;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    #login, #signup {
+@media screen and (max-width: 750px) {
+    #login {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -208,53 +217,7 @@ button:hover {
         margin: 0 auto;
     }
 
-    .search {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 1em;
-        margin-top: 1%;
-        border-radius: 10px;
-    }
-    
-    .search.t-box {
-        width: auto;
-        padding: 2%;
-        margin-bottom: 1em;
-        margin-top: 1%;
-        border: 1px solid #43135a;
-        border-radius: 10px;
-    }
-}
-
-@media screen and (min-height: 1100px){
-    #user-profiles {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #user-profile {
-        margin: 1em;
-        width: 70%;
-    }
-
-    .search {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 700px;
-        margin-bottom: 1em;
-        margin-top: 2%;
-        border-radius: 10px;
-    }
-}
-
-@media screen and (max-width: 550px) {
-    #login, #signup {
+    #signup {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -266,37 +229,5 @@ button:hover {
         min-width: 70%;
         max-width: 90%;
         margin: 0 auto;
-    }
-
-    #user-profile {
-        border: 3px solid #5a3497;
-        border-radius: 20px;
-        min-width: 70%;
-        max-width: 90%;
-        height: 90%;
-        text-align: center;
-        cursor: pointer;
-        background-color: rgb(222, 193, 255);
-        margin: 1em;
-    }
-
-    .search {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 110%;
-        margin-bottom: 1em;
-        margin-top: 1%;
-        border-radius: 10px;
-    }
-    
-    .search.t-box {
-        width: auto;
-        padding: 2%;
-        margin-bottom: 1em;
-        margin-top: 1%;
-        border: 1px solid #43135a;
-        border-radius: 10px;
     }
 }
