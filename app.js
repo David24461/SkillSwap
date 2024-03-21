@@ -86,7 +86,6 @@ app.post('/signup', (req, res) => {
     const job = req.body.job;
     bcrypt.hash(password, saltRounds, function(err, hash) {
         db.run(`INSERT INTO users(Name, Password, Email, Skills, Seeking, Description, Class, Job) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`, [username, hash, email, skills, seeking, description, classPos, job], function(err) {
-
             if (err) {
                 console.log(err.message);
                 return res.status(500).send({ error: 'Database error' });
@@ -127,8 +126,6 @@ app.get('/index', (req, res) => {
     }
 });
 
-const users = []; // Declare the users array
-
 app.get('/profiles/:id', (req, res) => {
     const userId = parseInt(req.params.id);
     //const userId = 12;
@@ -143,9 +140,28 @@ app.get('/profiles/:id', (req, res) => {
 });
 
 app.get('/certificationTest', (req, res) => {
-
     // Render the certification tests page with the certification tests data
     res.render('certificationTest',);
+});
+
+app.get('/newAlum', (req, res) => {
+    res.render('newAlum.ejs');
+});
+
+app.post('/newStudent', (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const legacy = req.body.legacy;
+    db.run(`INSERT INTO alumni(Name, Email, Legacy) VALUES(?, ?, ?)`, [name, email, legacy], function(err) {
+        if (err) {
+            console.log(err.message);
+            return res.status(500).send({ error: 'Database error' });
+        } else {
+            // get the last insert id
+            console.log(`Alumni has been added sucessfully. Row-ID is ${this.lastID}`);
+            return res.redirect('/alumni');
+        }
+    });
 });
 
 // link alumni.ejs to app.js
