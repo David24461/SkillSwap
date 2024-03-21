@@ -1,4 +1,5 @@
 body {
+    display: flex;
     font-family: monospace;
     font-size: 125%;
     margin: 0;
@@ -35,18 +36,17 @@ main, .question {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 2em;
-}
-
-section {
-    margin-bottom: 20px;
 }
 
 button {
     padding: 1em;
     border: 1px solid #43135a;
     border-radius: 10px;
-    background-color: #a97fbb;
+    background-color: rgb(151, 120, 202);
     color: #fff;
     font-weight: bold;
     cursor: pointer;
@@ -54,7 +54,7 @@ button {
 }
 
 button:hover {
-    background-color: #43135a;
+    background-color: #5a3497;
 }
 
 h1,
@@ -74,18 +74,16 @@ h3,
 
 /* LOGIN PAGE / CREATE ACCOUNT PAGE / SIGNUP PAGE / PROFILES PAGE*/
 
-#profilePage,
-#login,
-#signup {
+#profilePage, #login, #signup {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2%;
-    border: 3px solid #753194;
+    border: 3px solid #52318f;;
     border-radius: 10px;
     background-color: #e0c5ff;
-    width: 35%;
+    width: 32%;
     margin: 0 auto;
 }
 
@@ -102,7 +100,7 @@ h3,
     padding: 1em;
     border: 1px solid #43135a;
     border-radius: 10px;
-    background-color: #a97fbb;
+    background-color: rgb(151, 120, 202);
     color: #fff;
     font-weight: bold;
     cursor: pointer;
@@ -149,61 +147,117 @@ h3,
     border-radius: 10px;
 }
 
-#logout {
-    width: 8%;
-    padding: 1em;
-    border: 1px solid #5a3497;
-    border-radius: 10px;
-    background-color: rgb(157, 126, 189);
-    color: #fff;
-    font-weight: bold;
-    margin-bottom: 1em;
-    cursor: pointer;
+#juniorlbl, #seniorlbl {
+    height: 1em;
+    font-size: 2em;
 }
 
-#user-profiles {
+#class-junior, #class-senior {
     display: flex;
-    flex-wrap: wrap;
-    gap: 45px;
+    justify-content: flex-start; 
+    width: 50%;
 }
 
-#aboutme {
+#class-senior {
     display: flex;
-    flex-wrap: wrap;
-    gap: 45px;
+    justify-content: center;
+    order: 1;
+    width: 50%;
 }
 
-.user-profile {
-    border: 3px solid #5a3497;
-    border-radius: 2;
-    padding: 12px;
-    width: 200px;
+#class-junior {
+    display: flex;
+    justify-content: center;
+    order: 2;
+    width: 50%;
+}
+
+#alumlbl {
+    margin: 1em;
+}
+
+#seniorlbl {
+    order: 1;
+    margin: 1em;
+    margin-top: -1%;
+}
+
+#juniorlbl {
+    order: 2;
+    margin: 1em;
     text-align: center;
+    z-index: 2;
+}
+
+#user-profile {
+    border: 3px solid #52318f;
+    border-radius: 20px;
+    padding: 12px;
+    width: 25em;
+    height: 90%;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgb(222, 193, 255);
+    overflow: hidden;
+    margin: 1em;
+}
+
+#user-profile:hover {
+    background-color: rgb(200, 157, 255);
 }
 
 .search {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 30%;
+    width: 35%;
     margin-bottom: 1em;
     margin-top: 1%;
     border-radius: 10px;
+    gap: 5px;
 }
 
 .search.t-box {
-    width: 100%;
-    padding: 2%;
-    margin-bottom: 1em;
-    margin-top: 1%;
+    padding: auto;
     border: 1px solid #43135a;
     border-radius: 10px;
 }
 
+#searchbtn {
+    text-align: center;
+    margin: 0;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+    background-color: rgb(151, 120, 202);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-@media screen and (max-width: 750px) {
-    #login {
+#searchbtn:hover {
+    background-color: #5a3497;
+}
+
+#profilePage {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+@media screen and (max-width: 1000px) {
+    .search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1em;
+        margin-top: 1%;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #login, #signup {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -217,7 +271,53 @@ h3,
         margin: 0 auto;
     }
 
-    #signup {
+    .search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1em;
+        margin-top: 1%;
+        border-radius: 10px;
+    }
+    
+    .search.t-box {
+        width: auto;
+        padding: 2%;
+        margin-bottom: 1em;
+        margin-top: 1%;
+        border: 1px solid #43135a;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (min-height: 1100px){
+    #user-profiles {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #user-profile {
+        margin: 1em;
+        width: 70%;
+    }
+
+    .search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 700px;
+        margin-bottom: 1em;
+        margin-top: 2%;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #login, #signup {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -229,5 +329,37 @@ h3,
         min-width: 70%;
         max-width: 90%;
         margin: 0 auto;
+    }
+
+    #user-profile {
+        border: 3px solid #5a3497;
+        border-radius: 20px;
+        min-width: 70%;
+        max-width: 90%;
+        height: 90%;
+        text-align: center;
+        cursor: pointer;
+        background-color: rgb(222, 193, 255);
+        margin: 1em;
+    }
+
+    .search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 110%;
+        margin-bottom: 1em;
+        margin-top: 1%;
+        border-radius: 10px;
+    }
+    
+    .search.t-box {
+        width: auto;
+        padding: 2%;
+        margin-bottom: 1em;
+        margin-top: 1%;
+        border: 1px solid #43135a;
+        border-radius: 10px;
     }
 }
