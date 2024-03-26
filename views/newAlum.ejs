@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Alumni</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body id="create">
+    <header>
+        <h1>Skill Swap Network</h1>
+    </header>
+    <h1 style="text-align: center;">Add Alumni</h1>
+    <form id="signup" action="/newStudent" method="post">
+        <button id="signupbtn" onclick="window.location.href = '/alumni'">Go Back</button> <!-- Back button -->
+        <br>
+        <label for="name">Name:</label> 
+        <input class="t-box" type="text" id="username" name="name" placeholder="Name"> <!-- Input box for person's name -->
+        <br><br>
+        <label for="email">Email:</label>
+        <input class="t-box" type="text" id="email" name="email" placeholder="Personal Email"> <!-- Input box for email -->
+        <br><br>
+        <label for="legacy">Legacy:</label>
+        <input class="t-box" type="text" id="skills" name="legacy" placeholder="Project Name"> <!-- Input box for user's skills -->
+        <button id="signupbtn" type="submit">Submit</button> <!-- Submit button -->
+    </form>
+</body>
+
+</html>

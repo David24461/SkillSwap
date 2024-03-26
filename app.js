@@ -1,5 +1,5 @@
-// JUNIORS SHOULD NOT TOUCH THIS FILE
-// ********************************************************* \\
+// JUNIORS SHOULD NOT TOUCH THIS FILE UNLESS THEY ARE GIVEN AN ISSUE THAT INVOLVES THIS FILE
+// ***************************************************************************************** \\
 // This file is the main server file for the SkillSwap project
 // It is responsible for handling all requests and responses
 // It also connects to the database and sets up the server
@@ -11,8 +11,8 @@ const app = express();
 const sqlite3 = require("sqlite3");
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const session = require('express-session');
+const expressfileupload = require('express-fileupload');
 const { parse } = require('dotenv');
 const port = 5500;
 const saltRounds = 5;
@@ -23,6 +23,7 @@ const db = new sqlite3.Database('Users.db');
 // sets up the app to use ejs and public folder
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(expressfileupload());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
     secret: 'skillswap',
@@ -43,15 +44,15 @@ app.post('/login', (req, res) => {
     db.get(`SELECT * FROM users WHERE Name = ?`, [username], (err, row) => {
         if (err) {
             console.log(err.message);
-            return res.status(500).send({error: 'Database error'});
+            return res.status(500).send({ error: 'Database error' });
         }
         // If the user is found
         if (row) {
             // Compare the provided password with the stored hash using bcrypt for encryption
-            bcrypt.compare(password, row.Password, function(err, result) {
+            bcrypt.compare(password, row.Password, function (err, result) {
                 if (err) {
                     console.log(err.message);
-                    return res.status(500).send({error: 'Error comparing passwords'});
+                    return res.status(500).send({ error: 'Error comparing passwords' });
                 }
                 if (result) {
                     // If the password is correct, set the session user and redirect to index (home page)
@@ -59,7 +60,7 @@ app.post('/login', (req, res) => {
                     return res.redirect('/index');
                 } else {
                     // If the password is incorrect, send an error message
-                    return res.status(401).send({error: 'Incorrect password'});
+                    return res.status(401).send({ error: 'Incorrect password' });
                 }
             });
         } else {
@@ -88,7 +89,7 @@ app.post('/signup', (req, res) => {
         db.run(`INSERT INTO users(Name, Password, Email, Skills, Seeking, Description, Class, Job) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`, [username, hash, email, skills, seeking, description, classPos, job], function(err) {
             if (err) {
                 console.log(err.message);
-                return res.status(500).send({error: 'Database error'});
+                return res.status(500).send({ error: 'Database error' });
             } else {
                 // get the last insert id
                 console.log(`A row has been inserted with row-ID ${this.lastID}`);
@@ -113,7 +114,7 @@ app.get('/search', (req, res) => {
 
 // link index.ejs to app.js
 app.get('/index', (req, res) => {
-    if(req.session.user) {
+    if (req.session.user) {
         db.all(`SELECT * FROM users`, [], (err, rows) => {
             if (err) {
                 return console.error(err.message);
@@ -125,15 +126,41 @@ app.get('/index', (req, res) => {
     }
 });
 
-// link profile.ejs to app.js
-app.get('/profiles', (req, res) => {
+app.get('/profiles/:id', (req, res) => {
     const userId = parseInt(req.params.id);
-    db.all(`SELECT * FROM users`, [], (err, rows) => {
+    //const userId = 12;
+    db.all(`SELECT * FROM users WHERE ID = ?`, userId, (err, row) => {
         if (err) {
             return console.error(err.message);
         }
-        var user = rows.find(user => user.Id === userId);
-        res.render('profiles', { users: rows });
+        var user = row.find(user => user.id === userId);
+        console.log(row);
+        res.render('profiles', { users: row[0] });
+    });
+});
+
+app.get('/certificationTest', (req, res) => {
+    // Render the certification tests page with the certification tests data
+    res.render('certificationTest',);
+});
+
+app.get('/newAlum', (req, res) => {
+    res.render('newAlum.ejs');
+});
+
+app.post('/newStudent', (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const legacy = req.body.legacy;
+    db.run(`INSERT INTO alumni(Name, Email, Legacy) VALUES(?, ?, ?)`, [name, email, legacy], function(err) {
+        if (err) {
+            console.log(err.message);
+            return res.status(500).send({ error: 'Database error' });
+        } else {
+            // get the last insert id
+            console.log(`Alumni has been added sucessfully. Row-ID is ${this.lastID}`);
+            return res.redirect('/alumni');
+        }
     });
 });
 
@@ -145,6 +172,15 @@ app.get('/alumni', (req, res) => {
         }
         res.render('alumni', { alumni: rows });
     });
+});
+
+app.get('/upload', (req, res) => {
+    res.render('upload.ejs');
+});
+
+app.post('/upload', (req, res) => {
+    console.log(req.files); // This will log the uploaded files
+    res.json({ message: 'File uploaded successfully' });
 });
 
 // listen on port 5500

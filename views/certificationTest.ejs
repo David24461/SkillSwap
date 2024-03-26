@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>Certification Tests</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Skill Swap Network</h1>
+    </header>
+
+    <main>
+        <h2>Multiple Choice Quiz</h2>
+
+        <div class="question" id="question1">
+            <p>Question 1: What does CSS stand for?</p>
+            <ul>
+                <li><input type="radio" name="q1" value="a"> a) Computer Style Sheets</li>
+                <li><input type="radio" name="q1" value="b"> b) Creative Style Sheets</li>
+                <li><input type="radio" name="q1" value="c"> c) Cascading Style Sheets</li>
+                <li><input type="radio" name="q1" value="d"> d) Colorful Style Sheets</li>
+            </ul>
+            <button onclick="nextQuestion(2)">Next</button>
+        </div>
+
+        <div class="question" id="question2" style="display: none;">
+            <p>Question 2: Which CSS property is used to set the background color of an element?</p>
+            <ul>
+                <li><input type="radio" name="q2" value="a"> a) color</li>
+                <li><input type="radio" name="q2" value="b"> b) background-color</li>
+                <li><input type="radio" name="q2" value="c"> c) bgcolor</li>
+                <li><input type="radio" name="q2" value="d"> d) background</li>
+            </ul>
+            <button onclick="nextQuestion(3)">Next</button>
+        </div>
+
+        <div class="question" id="question3" style="display: none;">
+            <p>Question 3: In CSS, what is the purpose of the "float" property?</p>
+            <ul>
+                <li><input type="radio" name="q3" value="a"> a) Aligns text to the left or right</li>
+                <li><input type="radio" name="q3" value="b"> b) Makes an element semi-transparent</li>
+                <li><input type="radio" name="q3" value="c"> c) Adds a shadow to the element</li>
+                <li><input type="radio" name="q3" value="d"> d) Centers the element on the page</li>
+            </ul>
+            <button onclick="nextQuestion(4)">Next</button>
+        </div>
+
+        <div class="question" id="question4" style="display: none;">
+            <p>Question 4: What does the "box-sizing" property control in CSS?</p>
+            <ul>
+                <li><input type="radio" name="q4" value="a"> a) The size of the font</li>
+                <li><input type="radio" name="q4" value="b"> b) The size of the border</li>
+                <li><input type="radio" name="q4" value="c"> c) The size of the margin</li>
+                <li><input type="radio" name="q4" value="d"> d) The size of the box model</li>
+            </ul>
+            <button onclick="nextQuestion(5)">Next</button>
+        </div>
+        <button onclick="submitQuiz()" style="display: none;" id="submitBtn">Submit</button>
+    </main>
+
+    <script>
+        function nextQuestion(questionNumber) {
+            // Hide the current question
+            document.getElementById('question' + (questionNumber - 1)).style.display = 'none';
+
+            // Show the next question or the submit button if there are no more questions
+            if (document.getElementById('question' + questionNumber)) {
+                document.getElementById('question' + questionNumber).style.display = '';
+            } else {
+                document.getElementById('submitBtn').style.display = '';
+            }
+        }
+
+        function submitQuiz() {
+            // Initialize the count of correct answers
+            let correctAnswers = 0;
+
+            // Get the selected answers
+            const q1Answer = document.querySelector('input[name="q1"]:checked').value;
+            const q2Answer = document.querySelector('input[name="q2"]:checked').value;
+            const q3Answer = document.querySelector('input[name="q3"]:checked').value;
+            const q4Answer = document.querySelector('input[name="q4"]:checked').value;
+            // Check if the answers are correct
+            if (q1Answer === 'c') {
+                correctAnswers++;
+            }
+            if (q2Answer === 'b') {
+                correctAnswers++;
+            }
+            if (q3Answer === 'a') {
+                correctAnswers++;
+            }
+            if (q4Answer === 'b') {
+                correctAnswers++;
+            }
+
+            // Display the number of correct answers out of 10
+            alert('You got ' + correctAnswers + ' out of 10 questions right!');
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+<button id="backbtn" onclick="window.location.href = '/index'">Go Back Home</button>
+<button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
+</main>
+</body>
+
+</html>
