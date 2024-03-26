@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <title>Skill Swap Home</title>
 </head>
+
 <body>
 
     <header>
@@ -43,9 +45,12 @@
                         <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
                         <p><%= user.Description %></p>
                     </div>
-                </div>                   
+                </div>
             <% } %>
         <% }); %>
+        <div>
+            <a href="/certificationTest" id="certificationTest">Certification Tests</a>
+        </div>
     </main>
     <!--displays sidebar-->
     <div id="Sidebar">
@@ -59,7 +64,8 @@
     </div>
 
     <footer>
-        <p>&copy; Skill Swap Network</p>
+        <p class="footerText">&copy; Skill Swap Network</p>
     </footer>
 </body>
+
 </html>
