@@ -11,7 +11,6 @@ const app = express();
 const sqlite3 = require("sqlite3");
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const session = require('express-session');
 const { parse } = require('dotenv');
 const port = 5500;
@@ -118,7 +117,6 @@ app.get('/index', (req, res) => {
             if (err) {
                 return console.error(err.message);
             }
-            console.log(rows)
             res.render('index', { users: rows });
         });
     } else {
