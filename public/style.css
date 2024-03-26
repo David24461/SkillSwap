@@ -188,8 +188,8 @@ button:hover {
     margin-bottom: 2%;
 }
 
-#LSidebar {
-    width: 13%;
+#Sidebar {
+    width: 18%;
     height: 72%;
     position: fixed;
     top: 15%;
@@ -200,20 +200,22 @@ button:hover {
     border-bottom:  6.7727px solid #52318f;
     border-right: 6.7727px solid #52318f;
     border-radius: 0px 30px 30px 0px;
+    text-align: center;
 }
 
-#RSidebar {
-    width: 13%;
-    height: 72%;
-    position: fixed;
-    top: 15%;
-    bottom: 20px;
-    right: 0px;
-    background-color: rgb(222, 193, 255);
-    border-top:  6.7727px solid #52318f;
-    border-bottom:  6.7727px solid #52318f;
-    border-left: 6.7727px solid #52318f;
-    border-radius: 30px 0px 0px 30px;
+#sidebarButton{
+    background-color: rgb(151, 120, 202);
+    color: #fff;
+    border: 2px solid #52318f;
+    border-radius: 10px;
+    padding: 15px; 
+    cursor: pointer; 
+    z-index: 1;
+    margin-top: 5%;
+}
+
+#sidebarButton:hover {
+    background-color: #5a3497;
 }
 
 @media screen and (max-width: 1000px) {

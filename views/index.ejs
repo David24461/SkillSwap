@@ -12,15 +12,6 @@
         <h1>Skill Swap Home</h1>
     </header>
     <main>
-        <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
-        <form class="search" action="/search" method="GET">
-            <input class="t-box" type="text" name="query" placeholder="Search users">
-            <button id="searchbtn" type="submit">Search</button>
-        </form>
-        <button id="alumlbl" style="cursor: pointer; font-size: 80%;" onclick="window.location.href = '/alumni'">Past Alumni</button>
-        <br>
-        
-
         <h2 id="seniorlbl" style="color: #52318f;">Seniors</h2> 
         <br>
         <h2 id="juniorlbl" style="color: #52318f;">Juniors</h2>
@@ -56,9 +47,17 @@
             <% } %>
         <% }); %>
     </main>
-    <!--displays sidebars-->
-    <div id="LSidebar"></div>
-    <div id="RSidebar"></div>
+    <!--displays sidebar-->
+    <div id="Sidebar">
+	<form class="search" action="/search" method="GET">
+            <input class="t-box" type="text" name="query" placeholder="Search users"> <br>
+            <button id="searchbtn" type="submit">Search</button>
+        </form>
+        <button id="sidebarButton" onclick="window.location.href = '/profiles'">To profiles</button> <br>
+        <button id="sidebarButton" onclick="window.location.href = '/alumni'">Past Alumni</button> <br>
+        <button id="sidebarButton" onclick="window.location.href = '/login'">Logout</button>
+    </div>
+
     <footer>
         <p>&copy; Skill Swap Network</p>
     </footer>
