@@ -92,7 +92,7 @@ h3,
 
 
 #loginbtn,
-#signupbtn {
+#signupbtn, 
 #profilePage {
     margin-top: auto;
 }
@@ -118,6 +118,7 @@ h3,
 #loginbtn:hover,
 #signupbtn:hover {
     background-color: #5a3497;
+}
 
 #backbtn {
     margin-bottom: 1em;
