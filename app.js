@@ -11,9 +11,8 @@ const app = express();
 const sqlite3 = require("sqlite3");
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
-const expressfileupload = require('express-fileupload');
-const axios = require('axios');
 const session = require('express-session');
+const expressfileupload = require('express-fileupload');
 const { parse } = require('dotenv');
 const port = 5500;
 const saltRounds = 5;
@@ -25,7 +24,6 @@ const db = new sqlite3.Database('Users.db');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(expressfileupload());
-app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
     secret: 'skillswap',
@@ -121,7 +119,6 @@ app.get('/index', (req, res) => {
             if (err) {
                 return console.error(err.message);
             }
-            console.log(rows)
             res.render('index', { users: rows });
         });
     } else {
@@ -181,8 +178,12 @@ app.get('/alumni', (req, res) => {
     });
 });
 
+app.get('/upload', (req, res) => {
+    res.render('upload.ejs');
+});
+
 app.post('/upload', (req, res) => {
-    console.log(req.body);
+    console.log(req.files); // This will log the uploaded files
     res.json({ message: 'File uploaded successfully' });
 });
 
