@@ -12,6 +12,7 @@ const sqlite3 = require("sqlite3");
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const expressfileupload = require('express-fileupload');
 const { parse } = require('dotenv');
 const port = 5500;
 const saltRounds = 5;
@@ -22,6 +23,7 @@ const db = new sqlite3.Database('Users.db');
 // sets up the app to use ejs and public folder
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(expressfileupload());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
     secret: 'skillswap',
@@ -170,6 +172,15 @@ app.get('/alumni', (req, res) => {
         }
         res.render('alumni', { alumni: rows });
     });
+});
+
+app.get('/upload', (req, res) => {
+    res.render('upload.ejs');
+});
+
+app.post('/upload', (req, res) => {
+    console.log(req.files); // This will log the uploaded files
+    res.json({ message: 'File uploaded successfully' });
 });
 
 // listen on port 5500
