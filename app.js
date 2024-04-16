@@ -8,6 +8,7 @@
 // Constants
 const express = require('express');
 const app = express();
+const path = require('path');
 const sqlite3 = require("sqlite3");
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
@@ -30,6 +31,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }));
+
+
 
 // Login route
 app.get('/login', (req, res) => {
