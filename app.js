@@ -1,9 +1,9 @@
 // JUNIORS SHOULD NOT TOUCH THIS FILE UNLESS THEY ARE GIVEN AN ISSUE THAT INVOLVES THIS FILE
-// ***************************************************************************************** \\
-// This file is the main server file for the SkillSwap project
-// It is responsible for handling all requests and responses
-// It also connects to the database and sets up the server
-// ********************************************************* \\ 
+// ***************************************************************************************** \\ 
+//              This file is the main server file for the SkillSwap project                  \\ 
+//               It is responsible for handling all requests and responses                   \\ 
+//                It also connects to the database and sets up the server                    \\ 
+// ***************************************************************************************** \\ 
 
 // Constants
 const express = require('express');
@@ -126,6 +126,10 @@ app.get('/index', (req, res) => {
     }
 });
 
+// link profiles.ejs to app.js
+
+const users = [];
+
 app.get('/profiles/:id', (req, res) => {
     const userId = parseInt(req.params.id);
     //const userId = 12;
@@ -135,7 +139,7 @@ app.get('/profiles/:id', (req, res) => {
         }
         var user = row.find(user => user.id === userId);
         console.log(row);
-        res.render('profiles', { users: row[0] });
+        res.render('profiles', { users: row });
     });
 });
 

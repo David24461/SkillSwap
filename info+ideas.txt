@@ -5,6 +5,7 @@ bcrypt
 sqlite3
 body-parser
 express-session
+express-fileupload
 dotenv
 
 Things needed for project in no specific order:

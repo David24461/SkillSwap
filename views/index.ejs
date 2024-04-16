@@ -20,7 +20,7 @@
         <% users.forEach(user => { %> <!-- loops through all the users in the database -->
             <% if (user.Class == 'Senior' ) { %> <!-- checks if the user is a senior -->
                 <div id="class-senior">
-                    <div id="user-profile" onclick="window.location.href = '/profiles'"> 
+                    <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'"> 
                         <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></a></h3>
                         <p>Email: <%= user.Email %></p>
                         <p>Skills: <%= user.Skills %></p>
@@ -34,7 +34,7 @@
                 </div>
             <% } else if (user.Class == 'Junior' ) { %> <!-- checks if the user is a junior -->
                 <div id="class-junior">
-                    <div id="user-profile" onclick="window.location.href = '/profiles'">
+                    <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'">
                         <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></a></h3>
                         <p>Email: <%= user.Email %></p>
                         <p>Skills: <%= user.Skills %></p>

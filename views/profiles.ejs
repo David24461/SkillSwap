@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta name="viewport" content="width=device-width">
     <title>Skill Swap Network</title>
     <link rel="stylesheet" href="/style.css">
 </head>
-
+ 
 <body>
     <header>
         <h1>Skill Swap Users</h1>
     </header>
-
+ 
     <div id="profilePage">
         <button id="logoutbtn" onclick="window.location.href = '/index'">Back to Home</button>
+        <br>
         <button id="logoutbtn" onclick="window.location.href = '/upload'">Upload Resume</button>
-
+ 
         <% users.forEach(user => { %>
-        <h1>
-            <%= users.Name %>'s Profile
-        </h1>
-        <% if (users.Skills !=null || users.Skills !="" ) { %>
-            <p>Skills: <%= users.Skills %>
-            </p>
-            <% } else {%>
-                <p>No skills listed</p>
-                <% } %>
-
-                    <% if (users.Seeking !=null || users.Seeking !="" ) { %>
-                        <p>Seeking Job in: <%= users.Seeking %>
-                        </p>
-                        <% } else {%>
-                            <p>No job preferences listed</p>
-                            <% } %>
-
-
-                                <p>About Me: <%= users.Description %>
-                                </p>
+            <h1>
+                <%= user.Name %>'s Profile
+            </h1>
+            <% if (user.Skills !=null || user.Skills !="" ) { %>
+                <p>Skills: <%= user.Skills %>
+                </p>
+                <% } else {%>
+                    <p>No skills listed</p>
+                    <% } %>
+                        <% if (user.Seeking !=null || user.Seeking !="" ) { %>
+                            <p>Seeking Job in: <%= user.Seeking %>
+                            </p>
+                            <% } else {%>
+                                <p>No job preferences listed</p>
+                                <% } %>
+ 
+                                    <p>About Me: <%= user.Description %>
+                                    </p>
+                                    <% }); %>
     </div>
     <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
 </body>
 <footer>
     <p>&copy; Skill Swap Network</p>
 </footer>
-
+ 
 </html>
