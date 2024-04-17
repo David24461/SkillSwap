@@ -8,6 +8,7 @@
 // Constants
 const express = require('express');
 const app = express();
+const path = require('path');
 const sqlite3 = require("sqlite3");
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
@@ -30,6 +31,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }));
+
+
 
 // Login route
 app.get('/login', (req, res) => {
@@ -126,6 +129,10 @@ app.get('/index', (req, res) => {
     }
 });
 
+// link profiles.ejs to app.js
+
+const users = [];
+
 app.get('/profiles/:id', (req, res) => {
     const userId = parseInt(req.params.id);
     //const userId = 12;
@@ -135,7 +142,7 @@ app.get('/profiles/:id', (req, res) => {
         }
         var user = row.find(user => user.id === userId);
         console.log(row);
-        res.render('profiles', { users: row[0] });
+        res.render('profiles', { users: row });
     });
 });
 
