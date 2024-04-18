@@ -14,9 +14,7 @@
  
     <div id="profilePage">
         <button id="logoutbtn" onclick="window.location.href = '/index'">Back to Home</button>
-        <br>
-        <button id="logoutbtn" onclick="window.location.href = '/upload'">Upload Resume</button>
- 
+        <br> 
         <% users.forEach(user => { %>
             <h1>
                 <%= user.Name %>'s Profile
@@ -35,7 +33,15 @@
  
                                     <p>About Me: <%= user.Description %>
                                     </p>
-                                    <% }); %
+
+                                    <% }); %>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file">File</label>
+            <input id="file" name="file" type="file" />
+            <button>Upload</button>
+            <script src="script.js"></script>
+        </form>
+
     </div>
     <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
 </body>
