@@ -32,8 +32,6 @@ app.use(session({
     saveUninitialized: true,
 }));
 
-
-
 // Login route
 app.get('/login', (req, res) => {
     res.render('login.ejs');
@@ -140,7 +138,6 @@ app.get('/profiles/:id', (req, res) => {
         if (err) {
             return console.error(err.message);
         }
-
         let resume;
         // search upload for a file with the same name as the profile's username
         //if it exists, set the profile's resume to the file path
