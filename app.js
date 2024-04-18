@@ -202,6 +202,10 @@ app.post('/upload', (req, res) => {
     });
 });
 
+app.get('/showcase', (req, res) => {
+    res.render('showcase.ejs');
+});
+
 // listen on port 5500
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}/login`);
