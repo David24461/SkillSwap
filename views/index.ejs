@@ -21,7 +21,7 @@
             <% if (user.Class == 'Senior' ) { %> <!-- checks if the user is a senior -->
                 <div id="class-senior">
                     <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'"> 
-                        <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></a></h3>
+                        <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></h3>
                         <p>Email: <%= user.Email %></p>
                         <p>Skills: <%= user.Skills %></p>
                         <p>Seeking Job in: <%= user.Seeking %></p>
@@ -35,7 +35,7 @@
             <% } else if (user.Class == 'Junior' ) { %> <!-- checks if the user is a junior -->
                 <div id="class-junior">
                     <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'">
-                        <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></a></h3>
+                        <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></h3>
                         <p>Email: <%= user.Email %></p>
                         <p>Skills: <%= user.Skills %></p>
                         <p>Seeking Job in: <%= user.Seeking %></p>
@@ -60,7 +60,7 @@
         </form>
         <button id="sidebarButton" onclick="window.location.href = '/profiles'">To profiles</button> <br>
         <button id="sidebarButton" onclick="window.location.href = '/alumni'">Past Alumni</button> <br>
-        <button id="sidebarButton" onclick="window.location.href = '/certificationTest'">Cert Test</button> <br>
+        <button id="sidebarButton" onclick="window.location.href = '/showcase'">Company Showcase</button> <br>
         <button id="sidebarButton" onclick="window.location.href = '/login'">Logout</button>
     </div>
 

@@ -1,18 +1,19 @@
 // JUNIORS SHOULD NOT TOUCH THIS FILE UNLESS THEY ARE GIVEN AN ISSUE THAT INVOLVES THIS FILE
-// ***************************************************************************************** \\ 
-//              This file is the main server file for the SkillSwap project                  \\ 
-//               It is responsible for handling all requests and responses                   \\ 
-//                It also connects to the database and sets up the server                    \\ 
-// ***************************************************************************************** \\ 
+// ***************************************************************************************** \\
+// This file is the main server file for the SkillSwap project
+// It is responsible for handling all requests and responses
+// It also connects to the database and sets up the server
+// ********************************************************* \\ 
 
 // Constants
 const express = require('express');
 const app = express();
+const path = require('path');
 const sqlite3 = require("sqlite3");
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const expressfileupload = require('express-fileupload');
+const fileUpload = require('express-fileupload');
 const { parse } = require('dotenv');
 const port = 5500;
 const saltRounds = 5;
@@ -23,7 +24,7 @@ const db = new sqlite3.Database('Users.db');
 // sets up the app to use ejs and public folder
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-app.use(expressfileupload());
+app.use(fileUpload());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
     secret: 'skillswap',
@@ -85,8 +86,8 @@ app.post('/signup', (req, res) => {
     const description = req.body.description;
     const classPos = req.body.class;
     const job = req.body.job;
-    bcrypt.hash(password, saltRounds, function(err, hash) {
-        db.run(`INSERT INTO users(Name, Password, Email, Skills, Seeking, Description, Class, Job) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`, [username, hash, email, skills, seeking, description, classPos, job], function(err) {
+    bcrypt.hash(password, saltRounds, function (err, hash) {
+        db.run(`INSERT INTO users(Name, Password, Email, Skills, Seeking, Description, Class, Job) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`, [username, hash, email, skills, seeking, description, classPos, job], function (err) {
             if (err) {
                 console.log(err.message);
                 return res.status(500).send({ error: 'Database error' });
@@ -107,7 +108,7 @@ app.get('/search', (req, res) => {
             return console.error(err.message);
         }
         else {
-        res.render('index', { users: rows }); 
+            res.render('index', { users: rows });
         }
     });
 });
@@ -133,13 +134,15 @@ const users = [];
 app.get('/profiles/:id', (req, res) => {
     const userId = parseInt(req.params.id);
     //const userId = 12;
-    db.all(`SELECT * FROM users WHERE ID = ?`, userId, (err, row) => {
+    db.get(`SELECT * FROM users WHERE ID = ?`, userId, (err, row) => {
         if (err) {
             return console.error(err.message);
         }
-        var user = row.find(user => user.id === userId);
-        console.log(row);
-        res.render('profiles', { users: row });
+        let resume;
+        // search upload for a file with the same name as the profile's username
+        //if it exists, set the profile's resume to the file path
+
+        res.render('profiles', { user: row, resume: resume });
     });
 });
 
@@ -156,7 +159,7 @@ app.post('/newStudent', (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const legacy = req.body.legacy;
-    db.run(`INSERT INTO alumni(Name, Email, Legacy) VALUES(?, ?, ?)`, [name, email, legacy], function(err) {
+    db.run(`INSERT INTO alumni(Name, Email, Legacy) VALUES(?, ?, ?)`, [name, email, legacy], function (err) {
         if (err) {
             console.log(err.message);
             return res.status(500).send({ error: 'Database error' });
@@ -183,8 +186,24 @@ app.get('/upload', (req, res) => {
 });
 
 app.post('/upload', (req, res) => {
-    console.log(req.files); // This will log the uploaded files
-    res.json({ message: 'File uploaded successfully' });
+    console.log(req.files.file); // This will log the uploaded files
+
+    let resumeFile = req.files.file;
+
+    let uploadPath = __dirname + '/uploads/' + req.body.userName;
+    // find out the file extension of the uploaded file and add it to the end of the upload path
+
+    resumeFile.mv(uploadPath, function (err) {
+        if (err) {
+            return res.status(500).send(err);
+        }
+
+        res.send('File uploaded');
+    });
+});
+
+app.get('/showcase', (req, res) => {
+    res.render('showcase.ejs');
 });
 
 // listen on port 5500
