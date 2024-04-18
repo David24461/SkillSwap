@@ -14,73 +14,56 @@
         <h1>Skill Swap Home</h1>
     </header>
     <main>
-        <h2 id="seniorlbl" style="color: #52318f;">Seniors</h2>
+        <h2 id="seniorlbl" style="color: #52318f;">Seniors</h2> 
         <br>
         <h2 id="juniorlbl" style="color: #52318f;">Juniors</h2>
-        <% users.forEach(user=> { %> <!-- loops through all the users in the database -->
-            <% if (user.Class=='Senior' ) { %> <!-- checks if the user is a senior -->
+        <% users.forEach(user => { %> <!-- loops through all the users in the database -->
+            <% if (user.Class == 'Senior' ) { %> <!-- checks if the user is a senior -->
                 <div id="class-senior">
-                    <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'">
-                        <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;">
-                            <%= user.Name %>
-                        </h3>
-                        <p>Email: <%= user.Email %>
-                        </p>
-                        <p>Skills: <%= user.Skills %>
-                        </p>
-                        <p>Seeking Job in: <%= user.Seeking %>
-                        </p>
-                        <p>Current Job: <%= user.Job %>
-                        </p>
+
+                    <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'"> 
+                        <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></h3>
+
+                        <p>Email: <%= user.Email %></p>
+                        <p>Skills: <%= user.Skills %></p>
+                        <p>Seeking Job in: <%= user.Seeking %></p>
+                        <p>Current Job: <%= user.Job %></p>
                         <p>...............</p>
                         <h3 style="color: #52318f; text-decoration: underline; font-size: 120%;">About Me</h3>
-                        <p style="font-weight: 900; font-size: 110%;">
-                            <%= user.Class %>
-                        </p>
-                        <p>
-                            <%= user.Description %>
-                        </p>
+                        <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
+                        <p><%= user.Description %></p>
                     </div>
                 </div>
-                <% } else if (user.Class=='Junior' ) { %> <!-- checks if the user is a junior -->
-                    <div id="class-junior">
-                        <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID%>'">
-                            <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;">
-                                <%= user.Name %></a>
-                            </h3>
-                            <p>Email: <%= user.Email %>
-                            </p>
-                            <p>Skills: <%= user.Skills %>
-                            </p>
-                            <p>Seeking Job in: <%= user.Seeking %>
-                            </p>
-                            <p>Current Job: <%= user.Job %>
-                            </p>
-                            <p>...............</p>
-                            <h3 style="color: #52318f; text-decoration: underline; font-size: 120%;">About Me</h3>
-                            <p style="font-weight: 900; font-size: 110%;">
-                                <%= user.Class %>
-                            </p>
-                            <p>
-                                <%= user.Description %>
-                            </p>
-                        </div>
+            <% } else if (user.Class == 'Junior' ) { %> <!-- checks if the user is a junior -->
+                <div id="class-junior">
+                    <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'">
+                        <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></h3>
+                        <p>Email: <%= user.Email %></p>
+                        <p>Skills: <%= user.Skills %></p>
+                        <p>Seeking Job in: <%= user.Seeking %></p>
+                        <p>Current Job: <%= user.Job %></p>
+                        <p>...............</p>
+                        <h3 style="color: #52318f; text-decoration: underline; font-size: 120%;">About Me</h3>
+                        <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
+                        <p><%= user.Description %></p>
                     </div>
-                    <% } %>
-                        <% }); %>
-                            <div>
-                                <a href="/certificationTest" id="certificationTest">Certification Tests</a>
-                            </div>
+                </div>
+            <% } %>
+        <% }); %>
+        <div>
+            <a href="/certificationTest" id="certificationTest">Certification Tests</a>
+        </div>
     </main>
     <!--displays sidebar-->
     <div id="Sidebar">
-        <form class="search" action="/search" method="GET">
+	<form class="search" action="/search" method="GET">
             <input class="t-box" type="text" name="query" placeholder="Search users"> <br>
             <button id="searchbtn" type="submit">Search</button>
         </form>
         <button id="sidebarButton" onclick="window.location.href = '/profiles'">To profiles</button> <br>
         <button id="sidebarButton" onclick="window.location.href = '/alumni'">Past Alumni</button> <br>
         <button id="sidebarButton" onclick="window.location.href = '/showcase'">Company Showcase</button> <br>
+        <button id="sidebarButton" onclick="window.location.href = '/certificationTest'">Cert Test</button> <br>
         <button id="sidebarButton" onclick="window.location.href = '/login'">Logout</button>
     </div>
 
