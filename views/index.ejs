@@ -47,10 +47,7 @@
                     </div>
                 </div>
             <% } %>
-        <% }); %>
-        <div>
-            <a href="/certificationTest" id="certificationTest">Certification Tests</a>
-        </div>
+        <% }); %> <!-- end of loop -->
     </main>
     <!--displays sidebar-->
     <div id="Sidebar">
@@ -58,8 +55,8 @@
             <input class="t-box" type="text" name="query" placeholder="Search users"> <br>
             <button id="searchbtn" type="submit">Search</button>
         </form>
-        <button id="sidebarButton" onclick="window.location.href = '/profiles'">To profiles</button> <br>
         <button id="sidebarButton" onclick="window.location.href = '/alumni'">Past Alumni</button> <br>
+        <button id="sidebarButton" onclick="window.location.href = '/certificationTest'">Certification Tests</button>
         <button id="sidebarButton" onclick="window.location.href = '/upload'">Upload File</button> <br>
         <button id="sidebarButton" onclick="window.location.href = '/login'">Logout</button>
     </div>
