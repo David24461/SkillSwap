@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <title>Skill Swap Home</title>
 </head>
-
 <body>
 
     <header>
@@ -22,6 +20,7 @@
                 <div id="class-senior">
                     <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'"> 
                         <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></h3>
+
                         <p>Email: <%= user.Email %></p>
                         <p>Skills: <%= user.Skills %></p>
                         <p>Seeking Job in: <%= user.Seeking %></p>
@@ -33,6 +32,7 @@
                     </div>
                 </div>
             <% } else if (user.Class == 'Junior' ) { %> <!-- checks if the user is a junior -->
+
                 <div id="class-junior">
                     <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'">
                         <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></h3>
@@ -45,28 +45,47 @@
                         <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
                         <p><%= user.Description %></p>
                     </div>
-                </div>
+                </div>                   
             <% } %>
-        <% }); %>
-        <div>
-            <a href="/certificationTest" id="certificationTest">Certification Tests</a>
-        </div>
+        <% }); %> <!-- end of loop -->
     </main>
-    <!--displays sidebar-->
-    <div id="Sidebar">
-	<form class="search" action="/search" method="GET">
-            <input class="t-box" type="text" name="query" placeholder="Search users"> <br>
-            <button id="searchbtn" type="submit">Search</button>
+    <!--displays sidebars and content in the sidebars-->
+    <div id="Sidebar"> 
+        <form class="search" action="/search" method="GET">
+            <input class="t-box" type="text" name="query" placeholder="Search users"> <br> 
+            <button id="searchbtn" type="submit">Search</button> <br>
         </form>
-        <button id="sidebarButton" onclick="window.location.href = '/profiles'">To profiles</button> <br>
+        <h2>Filter by Grade</h2>
+        <button id="sidebarButton" onclick="filter('Senior')">Seniors</button> 
+        <button id="sidebarButton" onclick="filter('Junior')">Juniors</button> 
+        <button id="sidebarButton" onclick="filter('All')">Both</button>
+        <button id="sidebarButton" style="margin-top: 20%;" onclick="window.location.href = '/profiles'">To profiles</button> <br>
         <button id="sidebarButton" onclick="window.location.href = '/alumni'">Past Alumni</button> <br>
+        <button id="sidebarButton" onclick="window.location.href = '/certificationTest'">Certification Tests</button>
         <button id="sidebarButton" onclick="window.location.href = '/showcase'">Company Showcase</button> <br>
         <button id="sidebarButton" onclick="window.location.href = '/login'">Logout</button>
     </div>
-
     <footer>
-        <p class="footerText">&copy; Skill Swap Network</p>
+        <p>&copy; Skill Swap Network</p>
     </footer>
+    <script>
+        var users = <%- JSON.stringify(users) %>;
+        //a function used to filter the users based on their grade
+        function filter(grade) {
+           for (const user of users) {
+            if (user.Class == grade) {
+                console.log(document.getElementsByClassName(user.Name));
+                document.getElementsByClassName(user.Name)[0].style.display = 'flex';
+            }
+            else if (grade == 'All') {
+                document.getElementsByClassName(user.Name)[0].style.display = 'flex';
+            }
+            else {
+                console.log(user.Name);
+                document.getElementsByClassName(user.Name)[0].style.display = 'none';
+            }
+           } 
+        }
+    </script>
 </body>
-
 </html>

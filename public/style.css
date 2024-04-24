@@ -18,6 +18,8 @@ footer {
     padding: 1em 0;
     letter-spacing: 0.1em;
     font-size: 115%;
+    font-weight: bold;
+    box-shadow: 0 0 5px 0 #000;
 }
 
 footer {
@@ -76,9 +78,54 @@ button:hover {
     cursor: pointer;
 }
 
+#backbtn {
+    margin-bottom: 2%;
+    margin-top: 3%;
+
+
+}
+
+
+#certificationTest {
+    width: auto;
+    padding: 1em;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+    background-color: #a97fbb;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0;
+    text-decoration: none;
+}
+
+
+#nextBtn,
+#prevBtn {
+    background-color: #a97fbb;
+    margin: 1 auto;
+    display: inline;
+    position: fixed;
+}
+
+#nextBtn {
+    right: 35%;
+}
+
+#prevBtn {
+    left: 35%;
+}
+
 #loginbtn:hover,
-#signupbtn:hover {
+#signupbtn:hover,
+#logoutbtn:hover,
+#backbtn:hover {
     background-color: #5a3497;
+    border: 1px solid #a97fbb;
+}
+
+#userName:hover {
+    color: #43135a;
 }
 
 .t-box {
@@ -196,20 +243,20 @@ button:hover {
     bottom: 20px;
     left: 0px;
     background-color: rgb(222, 193, 255);
-    border-top:  6.7727px solid #52318f;
-    border-bottom:  6.7727px solid #52318f;
+    border-top: 6.7727px solid #52318f;
+    border-bottom: 6.7727px solid #52318f;
     border-right: 6.7727px solid #52318f;
     border-radius: 0px 30px 30px 0px;
     text-align: center;
 }
 
-#sidebarButton{
+#sidebarButton {
     background-color: rgb(151, 120, 202);
     color: #fff;
     border: 2px solid #52318f;
     border-radius: 10px;
-    padding: 15px; 
-    cursor: pointer; 
+    padding: 15px;
+    cursor: pointer;
     z-index: 1;
     margin-top: 5%;
 }

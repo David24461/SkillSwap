@@ -9,6 +9,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+app.use('/img', express.static(path.join('/img', 'public/img')));
 const sqlite3 = require("sqlite3");
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
@@ -17,6 +18,9 @@ const fileUpload = require('express-fileupload');
 const { parse } = require('dotenv');
 const port = 5500;
 const saltRounds = 5;
+express.static(root, [options])
+const ejs = require("ejs");
+const pdf = require("html-pdf");
 
 // Connect to the database
 const db = new sqlite3.Database('Users.db');
@@ -205,6 +209,9 @@ app.post('/upload', (req, res) => {
 app.get('/showcase', (req, res) => {
     res.render('showcase.ejs');
 });
+
+app.use('/images', express.static('images'));
+app.use('publc/', express.static('public'));
 
 // listen on port 5500
 app.listen(port, () => {
