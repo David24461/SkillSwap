@@ -342,3 +342,19 @@ button:hover {
         border-radius: 10px;
     }
 }
+
+@media screen and (max-width: 1000px) {
+    #Sidebar {
+        width: 0; /* Hide the sidebar */
+        transition: width 0.5s; /* Smooth transition */
+    }
+
+    #sidebarButton {
+        display: block; /* Show the button */
+    }
+
+    #Sidebar.active {
+        width: 100%; /* When active, sidebar takes full width */
+        height: 100%; /* And full height */
+    }
+}
