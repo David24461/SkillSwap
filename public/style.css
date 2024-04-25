@@ -341,7 +341,6 @@ button:hover {
 }
 
 @media screen and (max-width: 550px) {
-
     #login,
     #signup {
         display: flex;
@@ -387,5 +386,21 @@ button:hover {
         margin-top: 1%;
         border: 1px solid #43135a;
         border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #Sidebar {
+        width: 0; /* Hide the sidebar */
+        transition: width 0.5s; /* Smooth transition */
+    }
+
+    #sidebarButton {
+        display: block; /* Show the button */
+    }
+
+    #Sidebar.active {
+        width: 100%; /* When active, sidebar takes full width */
+        height: 100%; /* And full height */
     }
 }
