@@ -341,7 +341,6 @@ button:hover {
 }
 
 @media screen and (max-width: 550px) {
-
     #login,
     #signup {
         display: flex;
