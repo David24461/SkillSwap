@@ -11,7 +11,9 @@
             text-align: center;
         }
     </style>
+</head>
 
+<body>
     <header>
         <h1>Skill Swap Company Showcase</h1>
     </header>
@@ -19,19 +21,34 @@
     <button id="backbtn" onclick="window.location.href = '/index'">Go Back Home</button>
     <h2>Post a picture of what your company does!</h2>
 
+    <!-- Container for images -->
+    <div id="imageContainer"></div>
+
     <script>
-        //CANNOT FIND IMG FOLDER
-        const imgarray = [
-            'formbarone',
-            'formbartwo',
-            'formbarthree',
-            'formbarfour',
-            'formbarfive',
-            'formbarsix',
+        // JavaScript to dynamically load images
+        const imgFolder = 'img/';
+        const imgArray = [
+            'formbarone.jpg',
+            'formbartwo.jpg',
+            'formbarthree.jpg',
+            'formbarfour.jpg',
+            'formbarfive.jpg',
+            'formbarsix.jpg',
         ];
+
+        const imageContainer = document.getElementById('imageContainer');
+
+        imgArray.forEach(img => {
+            const imgElement = document.createElement('img');
+            imgElement.src = imgFolder + img;
+            imgElement.width = 200;
+            imageContainer.appendChild(imgElement);
+        });
     </script>
 
     <footer>
         <p>&copy; Skill Swap Network</p>
     </footer>
-    </body>
+</body>
+
+</html>
