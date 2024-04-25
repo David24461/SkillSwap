@@ -19,7 +19,7 @@
     </header>
     <br>
     <button id="backbtn" onclick="window.location.href = '/index'">Go Back Home</button>
-    <h2>Post a picture of what your company does!</h2>
+    <h2 style="margin-bottom: 2%; margin-top: -0.5%;">Post a picture of what your company does!</h2>
 
     <!-- Container for images -->
     <div id="imageContainer"></div>
@@ -41,14 +41,18 @@
         imgArray.forEach(img => {
             const imgElement = document.createElement('img');
             imgElement.src = imgFolder + img;
-            imgElement.width = 200;
+            imgElement.width = 400;
             imageContainer.appendChild(imgElement);
         });
+
+        
     </script>
 
     <footer>
         <p>&copy; Skill Swap Network</p>
     </footer>
+    
 </body>
 
 </html>
+
