@@ -80,7 +80,7 @@ button:hover {
 
 #backbtn {
     margin-bottom: 2%;
-    margin-top: 3%;
+    margin-top: 1%;
 
 
 }
@@ -239,10 +239,10 @@ button:hover {
     width: 18%;
     height: 72%;
     position: fixed;
-    top: 20%;
+    top: 16%;
     bottom: 20px;
     left: 0px;
-    background-color: rgb(222, 193, 255);
+    background-color: rgb(207, 175, 245);
     border-top: 6.7727px solid #52318f;
     border-bottom: 6.7727px solid #52318f;
     border-right: 6.7727px solid #52318f;
@@ -263,6 +263,13 @@ button:hover {
 
 #sidebarButton:hover {
     background-color: #5a3497;
+}
+
+img {
+    width: 25%;
+    height: 30%;
+    object-fit: cover;
+    margin: 1em;
 }
 
 @media screen and (max-width: 1000px) {
@@ -341,6 +348,7 @@ button:hover {
 }
 
 @media screen and (max-width: 550px) {
+
     #login,
     #signup {
         display: flex;
@@ -391,16 +399,21 @@ button:hover {
 
 @media screen and (max-width: 1000px) {
     #Sidebar {
-        width: 0; /* Hide the sidebar */
-        transition: width 0.5s; /* Smooth transition */
+        width: 0;
+        /* Hide the sidebar */
+        transition: width 0.5s;
+        /* Smooth transition */
     }
 
     #sidebarButton {
-        display: block; /* Show the button */
+        display: block;
+        /* Show the button */
     }
 
     #Sidebar.active {
-        width: 100%; /* When active, sidebar takes full width */
-        height: 100%; /* And full height */
+        width: 100%;
+        /* When active, sidebar takes full width */
+        height: 100%;
+        /* And full height */
     }
 }
