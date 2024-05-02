@@ -11,23 +11,26 @@ const app = express();
 const path = require('path');
 const sqlite3 = require("sqlite3");
 const bcrypt = require('bcrypt');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const fileUpload = require('express-fileupload');
 const { parse } = require('dotenv');
 const port = 5500;
-const saltRounds = 5;
-const upload = multer({
-    storage,
-    fileFilter,
-    limits: { fileSize: 1000000, files: 2 },
-});
+const saltRounds = 5; // for bcrypt
+
+// Get middleware for file upload
+const filesPayloadExists = require('./middleware/filesPayloadExists');
+const fileExtLimiter = require('./middleware/fileExtLimiter');
+const fileSizeLimiter = require('./middleware/fileSizeLimiter');
 
 // Connect to the database
 const db = new sqlite3.Database('Users.db');
 
 // sets up the app to use ejs and public folder
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 app.use(fileUpload());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -132,24 +135,43 @@ app.get('/index', (req, res) => {
     }
 });
 
-// link profiles.ejs to app.js
-
 const users = [];
 
+// link profiles.ejs to app.js
 app.get('/profiles/:id', (req, res) => {
     const userId = parseInt(req.params.id);
-    //const userId = 12;
     db.get(`SELECT * FROM users WHERE ID = ?`, userId, (err, row) => {
         if (err) {
             return console.error(err.message);
         }
         let resume;
         // search upload for a file with the same name as the profile's username
+
         //if it exists, set the profile's resume to the file path
 
-        res.render('profiles', { user: row, resume: resume });
+    res.render('profiles', { user: row, resume: resume });
     });
 });
+
+app.get('/myProfile', (req, res) => {
+    if (req.session.user) {
+        const userId = req.session.user.ID;
+        db.get(`SELECT * FROM users WHERE ID = ?`, userId, (err, row) => {
+            if (err) {
+                return console.error(err.message);
+            }
+            res.render('profiles', { user: row });
+        });
+    } else {
+        res.redirect('/login');
+    }
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/login');
+});
+
 
 app.get('/certificationTest', (req, res) => {
     // Render the certification tests page with the certification tests data
@@ -185,6 +207,7 @@ app.get('/alumni', (req, res) => {
         res.render('alumni', { alumni: rows });
     });
 });
+
 
 app.get('/upload', (req, res) => {
     res.render('upload.ejs');

@@ -19,26 +19,62 @@
             <%= user.Name %>'s Profile
         </h1>
         <% if (user.Skills !=null || user.Skills !="" ) { %>
-            <p>Skills: <%= user.Skills %>
+            <p>
+                Skills: <%= user.Skills %>
             </p>
-            <% } else {%>
-                <p>No skills listed</p>
-                <% } %>
-                    <% if (user.Seeking !=null || user.Seeking !="" ) { %>
-                        <p>Seeking Job in: <%= user.Seeking %>
-                        </p>
-                        <% } else {%>
-                            <p>No job preferences listed</p>
-                            <% } %>
+        <% } else {%>
+            <p>
+                No skills listed
+            </p>
+        <% } %>
+        <% if (user.Seeking !=null || user.Seeking !="" ) { %>
+            <p>
+                Seeking Job in: <%= user.Seeking %>
+            </p>
+        <% } else {%>
+            <p>No job preferences listed</p>
+        <% } %>
+            <p>
+                About Me: <%= user.Description %> 
+            </p>
 
-                                <p>About Me: <%= user.Description %>
-                                </p>
-                                <form action="/upload" method="post" enctype="multipart/form-data">
-                                    <input type="hidden" name="userName" value="<%= user.Name %>" />
-                                    <label for="file">File</label>
-                                    <input id="file" name="file" type="file" />
-                                    <button>Upload</button>
-                                </form>
+        <form id="uploadForm">
+            <input type="file" id="myFiles" accept="image/*" multiple />
+            <label for="myFiles">Upload Files</label>
+            <button>Submit</button>
+        </form>
+
+        <script>
+            const form = document.getElementById('uploadForm');
+
+            const sendFiles = async () => {
+                const myFiles = document.getElementById('myFiles').files;
+
+                const formData = new FormData();
+
+                Object.keys(myFiles).forEach(key => {
+                    formData.append(myFiles.item(key).name, myFiles.item(key))
+                });
+
+                const response = await fetch('http://localhost:5500/profiles/<%- user.ID %>', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const json = await response.json();
+                const h2 = document.querySelector('h2');
+                h2.textContent = `Status: ${json?.status}`;
+                const h3 = document.querySelector('h3');
+                h3.textContent = json?.message;
+                console.log(json);
+            };
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                sendFiles();
+            });
+        </script>
+
     </div>
     <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
 </body>
