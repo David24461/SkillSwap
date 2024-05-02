@@ -148,6 +148,7 @@ app.get('/profiles/:id', (req, res) => {
         // search upload for a file with the same name as the profile's username
 
         //if it exists, set the profile's resume to the file path
+
     res.render('profiles', { user: row, resume: resume });
     });
 });
@@ -183,6 +184,7 @@ app.get('/logout', (req, res) => {
     res.redirect('/login');
 });
 
+
 app.get('/certificationTest', (req, res) => {
     // Render the certification tests page with the certification tests data
     res.render('certificationTest',);
@@ -215,6 +217,28 @@ app.get('/alumni', (req, res) => {
             return console.error(err.message);
         }
         res.render('alumni', { alumni: rows });
+    });
+});
+
+
+app.get('/upload', (req, res) => {
+    res.render('upload.ejs');
+});
+
+app.post('/upload', (req, res) => {
+    res.json({ status: "Success" }); // This will log the uploaded files
+
+    let resumeFile = req.files.file;
+
+    let uploadPath = __dirname + '/uploads/' + req.body.userName;
+    // find out the file extension of the uploaded file and add it to the end of the upload path
+
+    resumeFile.mv(uploadPath, function (err) {
+        if (err) {
+            return res.status(500).send(err);
+        }
+
+        res.send('File uploaded');
     });
 });
 
