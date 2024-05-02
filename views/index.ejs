@@ -24,14 +24,14 @@
                 <div id="class-senior" class="<%= user.Name %>">
                     <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'">
                         <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></h3>
-                        <p>Email: <%= user.Email %></p>
-                        <p>Skills: <%= user.Skills %></p>
-                        <p>Seeking Job in: <%= user.Seeking %></p>
-                        <p>Current Job: <%= user.Job %></p>
+                        <p>Email: <br> <%= user.Email %></p>
+                        <p>Skills: <br> <%= user.Skills %></p>
+                        <p>Seeking Job in: <br><%= user.Seeking %></p>
+                        <p>Current Job: <br> <%= user.Job %></p>
                         <p>...............</p>
                         <h3 style="color: #52318f; text-decoration: underline; font-size: 120%;">About Me</h3>
                         <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
-                        <p><%= user.Description %></p>
+                        <p> <%= user.Description %></p>
                     </div>
                 </div>
 
@@ -39,10 +39,10 @@
                 <div id="class-junior" class="<%= user.Name %>">
                     <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'">
                         <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;"><%= user.Name %></h3>
-                        <p>Email: <%= user.Email %></p>
-                        <p>Skills: <%= user.Skills %></p>
-                        <p>Seeking Job in: <%= user.Seeking %></p>
-                        <p>Current Job: <%= user.Job %></p>
+                        <p>Email: <br> <%= user.Email %></p>
+                        <p>Skills: <br> <%= user.Skills %></p>
+                        <p>Seeking Job in: <br> <%= user.Seeking %></p>
+                        <p>Current Job: <br> <%= user.Job %></p>
                         <p>...............</p>
                         <h3 style="color: #52318f; text-decoration: underline; font-size: 120%;">About Me</h3>
                         <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>

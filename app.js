@@ -166,6 +166,18 @@ app.get('/myProfile', (req, res) => {
     }
 });
 
+app.post('/upload', filesPayloadExists, fileExtLimiter, fileSizeLimiter, (req, res) => {
+    const file = req.files.file;
+    const username = req.session.user.Name;
+    const filePath = `uploads/${username}.pdf`;
+    file.mv(filePath, (err) => {
+        if (err) {
+            return res.status(500).send({ error: 'Error uploading file' });
+        }
+        res.redirect('/myProfile');
+    });
+});
+
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/login');
