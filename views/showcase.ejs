@@ -7,6 +7,11 @@
     <title>Skill Swap Gallery</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Makes the text centered */
+        h1 {
+            text-align: center;
+        }
+
         h2 {
             text-align: center;
         }
@@ -18,8 +23,31 @@
         <h1>Skill Swap Company Showcase</h1>
     </header>
     <br>
-    <button id="backbtn" onclick="window.location.href = '/index'">Go Back Home</button>
-    <h2>Post a picture of what your company does!</h2>
+
+    <div style="margin-right: 10%; margin-left: 10%; text-align: center;">
+        <button id="backbtn" onclick="window.location.href = '/index'">Go Back Home</button>
+        <button id="backbtn" onclick="window.location.href = '/upload'">Upload Image</button>
+    </div>
+
+    <h2 style="margin-bottom: 2%; margin-top: -0.5%;">Post a picture of what your company does!</h2>
+    <h2 style="margin-bottom: 2%; margin-top: -0.5%;">
+        -----------------------------------------------------------------------</h2>
+    <div class="CompanyShowCaseDiv">
+        <h1 style="margin-top: -1%;"> Formbar </h1>
+
+    </div>
+    <div>
+        <h1 style="margin-top: -1%;"> Only Pogs </h1>
+    </div>
+
+    <div>
+        <h1 style="margin-top: -1%;"> IRL Tech </h1>
+    </div>
+
+    <div>
+        <h1 style="margin-top: -1%;"> Pokepucks </h1>
+    </div>
+    <br>
 
     <!-- Container for images -->
     <div id="imageContainer"></div>
@@ -34,6 +62,17 @@
             'formbarfour.jpg',
             'formbarfive.jpg',
             'formbarsix.jpg',
+            'onlypogsone.png',
+            'onlypogstwo.png',
+            'onlypogsthree.png',
+            'onlypogsfour.png',
+            'onlypogsfive.png',
+            'IRLTechone.png',
+            'IRLTechtwo.png',
+            'IRLTechthree.png',
+            'Pokepucksone.png',
+            'Pokepuckstwo.png',
+            'Pokepucksthree.png',
         ];
 
         const imageContainer = document.getElementById('imageContainer');
@@ -41,9 +80,10 @@
         imgArray.forEach(img => {
             const imgElement = document.createElement('img');
             imgElement.src = imgFolder + img;
-            imgElement.width = 200;
+            imgElement.width = 400;
             imageContainer.appendChild(imgElement);
         });
+
     </script>
 
     <footer>

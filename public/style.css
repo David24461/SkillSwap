@@ -97,7 +97,7 @@ label[for="myFiles"]:hover {
 
 #backbtn {
     margin-bottom: 2%;
-    margin-top: 3%;
+    margin-top: 1%;
 }
 
 #certificationTest {
@@ -288,6 +288,13 @@ label[for="myFiles"]:hover {
     background-color: #5a3497;
 }
 
+img {
+    width: 25%;
+    height: 30%;
+    object-fit: cover;
+    margin: 1em;
+}
+
 @media screen and (max-width: 1000px) {
     .search {
         display: flex;
@@ -411,16 +418,21 @@ label[for="myFiles"]:hover {
 
 @media screen and (max-width: 1000px) {
     #Sidebar {
-        width: 0; /* Hide the sidebar */
-        transition: width 0.5s; /* Smooth transition */
+        width: 0;
+        /* Hide the sidebar */
+        transition: width 0.5s;
+        /* Smooth transition */
     }
 
     #sidebarButton {
-        display: block; /* Show the button */
+        display: block;
+        /* Show the button */
     }
 
     #Sidebar.active {
-        width: 100%; /* When active, sidebar takes full width */
-        height: 100%; /* And full height */
+        width: 100%;
+        /* When active, sidebar takes full width */
+        height: 100%;
+        /* And full height */
     }
 }
