@@ -160,7 +160,7 @@ app.get('/myProfile', (req, res) => {
             if (err) {
                 return console.error(err.message);
             }
-            res.render('profiles', { user: row });
+            res.render('myProfile', { user: row });
         });
     } else {
         res.redirect('/login');

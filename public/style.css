@@ -56,7 +56,7 @@ button:hover {
 
 /* LOGIN PAGE / CREATE ACCOUNT PAGE / SIGNUP PAGE / PROFILES PAGE*/
 
-#profilePage, #login, #signup {
+#profilePage, #login, #signup, #myProfilePage {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -222,7 +222,7 @@ button:hover {
     background-color: #5a3497;
 }
 
-#profilePage {
+#profilePage, #myProfilePage {
     margin-top: 2%;
     margin-bottom: 2%;
 }
