@@ -327,6 +327,10 @@ img {
         border: 1px solid #43135a;
         border-radius: 10px;
     }
+
+    #myProfilePage {
+        width: 60%;
+    }
 }
 
 @media screen and (min-height: 1100px) {
