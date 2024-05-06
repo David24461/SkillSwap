@@ -9,6 +9,8 @@
 </head>
 
 <body>
+
+<body>
     <header>
         <h1>Skill Swap Home</h1>
         <!-- make a button in the header that when clicked, takes the user to their own profile -->
@@ -45,8 +47,12 @@
                         <p>Current Job: <br> <%= user.Job %></p>
                         <p>...............</p>
                         <h3 style="color: #52318f; text-decoration: underline; font-size: 120%;">About Me</h3>
-                        <p style="font-weight: 900; font-size: 110%;"><%= user.Class %></p>
-                        <p><%= user.Description %></p>
+                        <p style="font-weight: 900; font-size: 110%;">
+                            <%= user.Class %>
+                        </p>
+                        <p>
+                            <%= user.Description %>
+                        </p>
                     </div>
                 </div>
             <% } %>
@@ -59,6 +65,7 @@
             <input class="t-box" type="text" name="query" placeholder="Search users"> <br>
             <button id="searchbtn" type="submit">Search</button> <br>
         </form>
+        
         <h2>Filter by Grade</h2>
         <button id="sidebarButton" onclick="filter('Senior')">Seniors</button>
         <button id="sidebarButton" onclick="filter('Junior')">Juniors</button>
@@ -68,11 +75,13 @@
         <button id="sidebarButton" onclick="window.location.href = '/showcase'">Company Showcase</button> <br>
         <button id="sidebarButton" onclick="window.location.href = '/login'">Logout</button>
     </div>
+
     <footer>
         <p>&copy; Skill Swap Network</p>
     </footer>
     <script>
-        var users = <%- JSON.stringify(users) %>;
+        //DONT TOUCH THIS CODE, THE ERROR IS SUPPOSED TO BE THERE
+        var users = <% - JSON.stringify(users) %>;
         //a function used to filter the users based on their grade
         function filter(grade) {
             for (const user of users) {
@@ -86,9 +95,21 @@
                 else {
                     console.log(user.Name);
                     document.getElementsByClassName(user.Name)[0].style.display = 'none';
-                }
-            }
-        }
+                };
+            };
+        };
+
+        function searchUsers() {
+            var searchTerm = document.getElementById('search').value.toLowerCase();
+            for (const user of users) {
+                var skills = user.Skills.toLowerCase();
+                if (skills.includes(searchTerm)) {
+                    document.getElementsByClassName(user.Name)[0].style.display = 'flex';
+                } else {
+                    document.getElementsByClassName(user.Name)[0].style.display = 'none';
+                };
+            };
+        };
     </script>
 </body>
 
