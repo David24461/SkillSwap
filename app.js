@@ -75,7 +75,7 @@ app.post('/login', (req, res) => {
         } else {
             // If the user is not found, send an error message
             return res.redirect('/login?error=User not found');
-        }
+        };
     });
 });
 
@@ -149,7 +149,7 @@ app.get('/profiles/:id', (req, res) => {
 
         //if it exists, set the profile's resume to the file path
 
-    res.render('profiles', { user: row, resume: resume });
+        res.render('profiles', { user: row, resume: resume });
     });
 });
 
