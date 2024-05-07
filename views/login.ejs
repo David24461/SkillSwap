@@ -17,21 +17,23 @@
         <p>
             <%= error %>
         </p>
-        <% } %>
+    <% } %>
 
-            <h1 style="text-align: center;">Log in</h1>
-            <p style="text-align: center;">Enter Username and Password</p>
-            <form id="login" action="/login" method="post">
-                <label for="username">Username:</label>
-                <input class="t-box" type="text" id="username" name="username" autocomplete="username" required>
-                <!-- Input box for username -->
-                <br><br>
-                <label for="password">Password:</label>
-                <input class="t-box" type="password" id="password" name="password" autocomplete="current-password"
-                    required> <!-- Input box for password -->
-                <button id="loginbtn" type="submit">Log in</button>
-                <p>Don't have an account? Make one -> <a href="/create">Create account</a></p>
-            </form>
+    <!-- Login form -->
+    <h1 style="text-align: center;">Log in</h1>
+    <p style="text-align: center;">Enter Username and Password</p>
+    <form id="login" action="/login" method="post">
+        <!-- Username input -->
+        <label for="username">Username:</label>
+        <input class="t-box" type="text" id="username" name="username" autocomplete="username" required>
+        <br><br>
+        <!-- Password input -->
+        <label for="password">Password:</label>
+        <input class="t-box" type="password" id="password" name="password" autocomplete="current-password" required>
+        <button id="loginbtn" type="submit">Log in</button>
+        <!-- Link to create account page -->
+        <p>Don't have an account? Make one -> <a href="/create">Create account</a></p>
+    </form>
 
 </body>
 

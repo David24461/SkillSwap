@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
+<!-- PLEASE DON'T "ALT + SHITF + F" THIS PAGE PLEASE IT LOOKS HORRIBLE -->
+
 <body>
     <header>
         <h1>Skill Swap Users</h1>
@@ -24,82 +26,86 @@
             <p>
                 Email: <%= user.Email %>
             </p>
-            <% } %>
-                <!-- Display user's skills if available, otherwise display a message -->
-                <% if (user.Skills !=null || user.Skills !="" ) { %>
-                    <p>
-                        Skills: <%= user.Skills %>
-                    </p>
-                    <% } else {%>
-                        <p>
-                            No skills listed
-                        </p>
-                        <% } %>
-                            <!-- Display user's job preferences if available, otherwise display a message -->
-                            <% if (user.Seeking !=null || user.Seeking !="" ) { %>
-                                <p>
-                                    Seeking Job in: <%= user.Seeking %>
-                                </p>
-                                <% } else {%>
-                                    <p>No job preferences listed</p>
-                                    <% } %>
-                                        <!-- Display user's current job if available, otherwise display a message -->
-                                        <% if (user.Job !=null || user.Job !="" ) { %>
-                                            <p>
-                                                Current Job: <%= user.Job %>
-                                            </p>
-                                            <% } else {%>
-                                                <p>
-                                                    No job listed
-                                                </p>
-                                                <% } %>
-                                                    <p>____________</p>
-                                                    <h3>About Me</h3>
-                                                    <p>
-                                                        <%= user.Description %>
-                                                    </p>
-                                                    <p>____________</p>
+        <% } %>
+        <!-- Display user's skills if available, otherwise display a message -->
+        <% if (user.Skills !=null || user.Skills !="" ) { %>
+            <p>
+                Skills: <%= user.Skills %>
+            </p>
+        <% } else {%>
+            <p>
+                No skills listed
+            </p>
+        <% } %>
+        <!-- Display user's job preferences if available, otherwise display a message -->
+        <% if (user.Seeking !=null || user.Seeking !="" ) { %>
+            <p>
+                Seeking Job in: <%= user.Seeking %>
+            </p>
+        <% } else {%>
+            <p>No job preferences listed</p>
+        <% } %>
+        <!-- Display user's current job if available, otherwise display a message -->
+        <% if (user.Job !=null || user.Job !="" ) { %>
+            <p>
+                Current Job: <%= user.Job %>
+            </p>
+        <% } else {%>
+            <p>
+                No job listed
+            </p>
+        <% } %>
+            <p>____________</p>
+        <h3>About Me</h3>
+        <p>
+            <%= user.Description %>
+        </p>
+        <p>____________</p>
 
-                                                    <h2>Upload files</h2>
-                                                    <div id="fileForm">
-                                                        <form id="uploadForm">
-                                                            <!-- File input field -->
-                                                            <input type="file" id="myFiles" accept="image/*" multiple />
-                                                            <button>Submit</button>
-                                                        </form>
-                                                    </div>
+        <h2>Upload files</h2>
+        <div id="fileForm">
+            <form id="uploadForm">
+                <!-- File input field -->
+                <input type="file" id="myFiles" accept="image/*" multiple />
+                <button>Submit</button>
+            </form>
+        </div>
 
-                                                    <script>
-                                                        // JavaScript to send files to the server
-                                                        const form = document.getElementById('uploadForm');
+        <script>
+            // JavaScript to send files to the server
+            const form = document.getElementById('uploadForm');
 
-                                                        const sendFiles = async () => {
-                                                            const myFiles = document.getElementById('myFiles').files;
+            const sendFiles = async () => {
+                const myFiles = document.getElementById('myFiles').files;
 
-                                                            const formData = new FormData();
+                const formData = new FormData();
 
-                                                            Object.keys(myFiles).forEach(key => {
-                                                                formData.append(myFiles.item(key).name, myFiles.item(key))
-                                                            });
+                // Append each file to the FormData object
+                Object.keys(myFiles).forEach(key => {
+                    formData.append(myFiles.item(key).name, myFiles.item(key))
+                });
 
-                                                            const response = await fetch('http://localhost:5500/myProfile', {
-                                                                method: 'POST',
-                                                                body: formData
-                                                            });
+                // Send the files to the server using fetch API
+                const response = await fetch('http://localhost:5500/myProfile', {
+                    method: 'POST',
+                    body: formData
+                });
 
-                                                            const json = await response.json();
-                                                            const h2 = document.querySelector('h2');
-                                                            h2.textContent = `Status: ${json?.status}`;
-                                                            const h3 = document.querySelector('h3');
-                                                            h3.textContent = json?.message;
-                                                            console.log(json);
-                                                        };
+                // Parse the response as JSON
+                const json = await response.json();
+                const h2 = document.querySelector('h2');
+                h2.textContent = `Status: ${json?.status}`;
+                const h3 = document.querySelector('h3');
+                h3.textContent = json?.message;
+                console.log(json);
+            };
 
-                                                        form.addEventListener('submit', (e) => {
-                                                            e.preventDefault();
-                                                            sendFiles();
-                                                        });
-                                                    </script>
+            // Listen for form submission event
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                sendFiles();
+            });
+        </script>
     </div>
 </body>
 
