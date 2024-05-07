@@ -38,11 +38,23 @@
         <% } else {%>
             <p>No job preferences listed</p>
         <% } %>
-        <p>____________</p>
+        <% if (user.Job !=null || user.Job !="" ) { %>
             <p>
-                About Me: <%= user.Description %> 
+                Current Job: <%= user.Job %>
             </p>
+        <% } else {%>
+            <p>
+                No job listed
+            </p>
+        <% } %>
+        <p>____________</p>
+        <h3>About Me</h3>
+            <p>
+                <%= user.Description %> 
+            </p>
+        <p>____________</p>
 
+        <h2>Upload files</h2>
         <div id="fileForm">
             <form id="uploadForm">
                 <input type="file" id="myFiles" accept="image/*" multiple />
@@ -51,6 +63,7 @@
         </div>
 
         <script>
+            // JavaScript to send files to the server
             const form = document.getElementById('uploadForm');
 
             const sendFiles = async () => {

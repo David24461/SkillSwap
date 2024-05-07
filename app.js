@@ -153,6 +153,7 @@ app.get('/profiles/:id', (req, res) => {
     });
 });
 
+// link editProfile.ejs to app.js
 app.get('/myProfile', (req, res) => {
     if (req.session.user) {
         const userId = req.session.user.ID;
@@ -167,33 +168,24 @@ app.get('/myProfile', (req, res) => {
     }
 });
 
-app.post('/upload', filesPayloadExists, fileExtLimiter, fileSizeLimiter, (req, res) => {
-    const file = req.files.file;
-    const username = req.session.user.Name;
-    const filePath = `uploads/${username}.pdf`;
-    file.mv(filePath, (err) => {
-        if (err) {
-            return res.status(500).send({ error: 'Error uploading file' });
-        }
-        res.redirect('/myProfile');
-    });
-});
-
+// link editProfile.ejs to app.js
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/login');
 });
 
-
+// link certificationTest.ejs to app.js
 app.get('/certificationTest', (req, res) => {
     // Render the certification tests page with the certification tests data
     res.render('certificationTest',);
 });
 
+// link newAlum.ejs to app.js
 app.get('/newAlum', (req, res) => {
     res.render('newAlum.ejs');
 });
 
+// Handle form submission for New Alumni Page
 app.post('/newStudent', (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
@@ -220,28 +212,25 @@ app.get('/alumni', (req, res) => {
     });
 });
 
-
+// link upload.ejs to app.js
 app.get('/upload', (req, res) => {
     res.render('upload.ejs');
 });
 
-app.post('/upload', (req, res) => {
-    res.json({ status: "Success" }); // This will log the uploaded files
-
-    let resumeFile = req.files.file;
-
-    let uploadPath = __dirname + '/uploads/' + req.body.userName;
-    // find out the file extension of the uploaded file and add it to the end of the upload path
-
-    resumeFile.mv(uploadPath, function (err) {
+// Handle file upload
+app.post('/upload', filesPayloadExists, fileExtLimiter, fileSizeLimiter, (req, res) => {
+    const file = req.files.file;
+    const username = req.session.user.Name;
+    const filePath = `uploads/${username}.pdf`;
+    file.mv(filePath, (err) => {
         if (err) {
-            return res.status(500).send(err);
+            return res.status(500).send({ error: 'Error uploading file' });
         }
-
-        res.send('File uploaded');
+        res.redirect('/myProfile');
     });
 });
 
+// link showcase.ejs to app.js
 app.get('/showcase', (req, res) => {
     res.render('showcase.ejs');
 });
