@@ -149,7 +149,7 @@ app.get('/profiles/:id', (req, res) => {
 
         //if it exists, set the profile's resume to the file path
 
-    res.render('profiles', { user: row, resume: resume });
+        res.render('profiles', { user: row, resume: resume });
     });
 });
 
