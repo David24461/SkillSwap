@@ -41,7 +41,7 @@
 
     <script>
         // JavaScript to dynamically load images
-        const imgFolder = 'img/';
+        const imgFolder = 'img/'; // Folder where the images are stored
         const imgArray = [
             'formbarone.jpg',
             'formbartwo.jpg',
@@ -60,15 +60,15 @@
             'IRLTechone.png',
             'IRLTechtwo.png',
             'IRLTechthree.png',
-        ];
+        ]; // Array of image file names
 
         const imageContainer = document.getElementById('imageContainer');
 
         imgArray.forEach(img => {
-            const imgElement = document.createElement('img');
-            imgElement.src = imgFolder + img;
-            imgElement.width = 400;
-            imageContainer.appendChild(imgElement);
+            const imgElement = document.createElement('img'); // Create an <img> element
+            imgElement.src = imgFolder + img; // Set the source of the image
+            imgElement.width = 400; // Set the width of the image
+            imageContainer.appendChild(imgElement); // Append the image to the container
         });
 
     </script>

@@ -18,28 +18,27 @@
         <h1>
             <%= user.Name %>'s Profile
         </h1>
-        <!--checks to see if there's anything in the users skills-->
+        <!-- Check if user has skills -->
         <% if (user.Skills !=null || user.Skills !="" ) { %>
             <p>
                 Skills: <%= user.Skills %>
             </p>
-        <% } else {%>
-            <p>
-                No skills listed
-            </p>
-        <% } %>
-        <!--checks to see if there's anything in the users seeking-->
-        <% if (user.Seeking !=null || user.Seeking !="" ) { %>
-            <p>
-                Seeking Job in: <%= user.Seeking %>
-            </p>
-        <% } else {%>
-            <p>No job preferences listed</p>
-        <% } %>
-            <p>
-                <!--shows the users description-->
-                About Me: <%= user.Description %> 
-            </p>
+            <% } else {%>
+                <p>
+                    No skills listed
+                </p>
+                <% } %>
+                    <!-- Check if user is seeking a job -->
+                    <% if (user.Seeking !=null || user.Seeking !="" ) { %>
+                        <p>
+                            Seeking Job in: <%= user.Seeking %>
+                        </p>
+                        <% } else {%>
+                            <p>No job preferences listed</p>
+                            <% } %>
+                                <p>
+                                    About Me: <%= user.Description %>
+                                </p>
     </div>
     <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
 </body>
