@@ -19,26 +19,24 @@
             <%= user.Name %>'s Profile
         </h1>
         <% if (user.Skills !=null || user.Skills !="" ) { %>
-            <p>Skills: <%= user.Skills %>
+            <p>
+                Skills: <%= user.Skills %>
             </p>
-            <% } else {%>
-                <p>No skills listed</p>
-                <% } %>
-                    <% if (user.Seeking !=null || user.Seeking !="" ) { %>
-                        <p>Seeking Job in: <%= user.Seeking %>
-                        </p>
-                        <% } else {%>
-                            <p>No job preferences listed</p>
-                            <% } %>
-
-                                <p>About Me: <%= user.Description %>
-                                </p>
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="userName" value="<%= user.Name %>" />
-            <label for="file">File</label>
-            <input id="file" name="file" type="file" />
-            <button>Upload</button>
-        </form>
+        <% } else {%>
+            <p>
+                No skills listed
+            </p>
+        <% } %>
+        <% if (user.Seeking !=null || user.Seeking !="" ) { %>
+            <p>
+                Seeking Job in: <%= user.Seeking %>
+            </p>
+        <% } else {%>
+            <p>No job preferences listed</p>
+        <% } %>
+            <p>
+                About Me: <%= user.Description %> 
+            </p>
     </div>
     <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
 </body>
