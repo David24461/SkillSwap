@@ -17,11 +17,13 @@
         <h1>
             <%= user.Name %>'s Profile
         </h1>
+        <!--checks to see if the users email is there-->
         <% if (user.Email !=null || user.Email !="" ) { %>
             <p>
                 Email: <%= user.Email %>
             </p>
         <% } %>
+        <!--checks to see if the users skills are there-->
         <% if (user.Skills !=null || user.Skills !="" ) { %>
             <p>
                 Skills: <%= user.Skills %>
@@ -31,6 +33,7 @@
                 No skills listed
             </p>
         <% } %>
+        <!--checks to see if the users job seeking is there-->
         <% if (user.Seeking !=null || user.Seeking !="" ) { %>
             <p>
                 Seeking Job in: <%= user.Seeking %>
@@ -38,6 +41,7 @@
         <% } else {%>
             <p>No job preferences listed</p>
         <% } %>
+        <!--checks to see if the users job is there-->
         <% if (user.Job !=null || user.Job !="" ) { %>
             <p>
                 Current Job: <%= user.Job %>

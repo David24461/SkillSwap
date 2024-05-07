@@ -18,6 +18,7 @@
         <h1>
             <%= user.Name %>'s Profile
         </h1>
+        <!--checks to see if there's anything in the users skills-->
         <% if (user.Skills !=null || user.Skills !="" ) { %>
             <p>
                 Skills: <%= user.Skills %>
@@ -27,6 +28,7 @@
                 No skills listed
             </p>
         <% } %>
+        <!--checks to see if there's anything in the users seeking-->
         <% if (user.Seeking !=null || user.Seeking !="" ) { %>
             <p>
                 Seeking Job in: <%= user.Seeking %>
@@ -35,6 +37,7 @@
             <p>No job preferences listed</p>
         <% } %>
             <p>
+                <!--shows the users description-->
                 About Me: <%= user.Description %> 
             </p>
     </div>

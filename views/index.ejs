@@ -81,7 +81,10 @@
     </footer>
     <script>
         //DONT TOUCH THIS CODE, THE ERROR IS SUPPOSED TO BE THERE
-        var users = <% - JSON.stringify(users) %>;
+        //CHECK THIS AFTER YOU ALT + SHIFT + F
+        //PUT THE "-" BACK 
+        //            |
+        var users = <%- JSON.stringify(users) %>;
         //a function used to filter the users based on their grade
         function filter(grade) {
             for (const user of users) {

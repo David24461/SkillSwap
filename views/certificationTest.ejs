@@ -16,14 +16,14 @@
         <h2>Multiple Choice Quiz</h2>
 
         <div class="question" id="question1">
-            <p>Question 1: What does CSS stand for?</p>
+            <p>Question 1: What does CSS stand for?</p><!--This is the question asked-->
             <ul>
-                <li onclick="clickInput(this)"><input type="radio" name="q1" value="a"> a) Computer Style Sheets</li>
-                <li onclick="clickInput(this)"><input type="radio" name="q1" value="b"> b) Creative Style Sheets</li>
-                <li onclick="clickInput(this)"><input type="radio" name="q1" value="c"> c) Cascading Style Sheets</li>
-                <li onclick="clickInput(this)"><input type="radio" name="q1" value="d"> d) Colorful Style Sheets</li>
+                <li onclick="clickInput(this)"><input type="radio" name="q1" value="a"> a) Computer Style Sheets</li><!--These are questions answers-->
+                <li onclick="clickInput(this)"><input type="radio" name="q1" value="b"> b) Creative Style Sheets</li><!--These are questions answers-->
+                <li onclick="clickInput(this)"><input type="radio" name="q1" value="c"> c) Cascading Style Sheets</li><!--These are questions answers-->
+                <li onclick="clickInput(this)"><input type="radio" name="q1" value="d"> d) Colorful Style Sheets</li><!--These are questions answers-->
             </ul>
-            <button id="nextBtn" onclick="nextQuestion(2)">Next</button>
+            <button id="nextBtn" onclick="nextQuestion(2)">Next</button><!--This calls the nextQuestion function-->
         </div>
 
         <div class="question" id="question2" style="display: none;">
@@ -35,7 +35,7 @@
                 <li onclick="clickInput(this)"><input type="radio" name="q2" value="d"> d) background</li>
             </ul>
             <button id="nextBtn" onclick="nextQuestion(3)">Next</button>
-            <button id="prevBtn" onclick="prevQuestion(2)">Previous</button>
+            <button id="prevBtn" onclick="prevQuestion(2)">Previous</button><!--This calls the prevQuestion function-->
         </div>
 
         <div class="question" id="question3" style="display: none;">
@@ -130,7 +130,7 @@
                 <li onclick="clickInput(this)"><input type="radio" name="q10" value="c"> c) The opacity of the element</li>
                 <li onclick="clickInput(this)"><input type="radio" name="q10" value="a"> a) The size of the font</li>
             </ul>
-            <button id="nextBtn" onclick="submitQuiz()">Submit</button>
+            <button id="nextBtn" onclick="submitQuiz()">Submit</button><!--This calls the submitQuiz function-->
             <button id="prevBtn" onclick="prevQuestion(10)">Previous</button>
         </div>
     </main>
