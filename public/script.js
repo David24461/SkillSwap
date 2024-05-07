@@ -28,7 +28,7 @@ uploadForm.addEventListener('submit', (event) => {
             let a = document.createElement('a');
             a.href = data.fileUrl;
             a.download = 'file';
-``
+            ``
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);

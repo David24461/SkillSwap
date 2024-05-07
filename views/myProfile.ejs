@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>Skill Swap Users</h1>
+    </header>
+
+    <div id="myProfilePage">
+        <button id="logoutbtn" onclick="window.location.href = '/index'">Back to Home</button>
+        <br>
+        <h1>
+            <%= user.Name %>'s Profile
+        </h1>
+        <% if (user.Email !=null || user.Email !="" ) { %>
+            <p>
+                Email: <%= user.Email %>
+            </p>
+        <% } %>
+        <% if (user.Skills !=null || user.Skills !="" ) { %>
+            <p>
+                Skills: <%= user.Skills %>
+            </p>
+        <% } else {%>
+            <p>
+                No skills listed
+            </p>
+        <% } %>
+        <% if (user.Seeking !=null || user.Seeking !="" ) { %>
+            <p>
+                Seeking Job in: <%= user.Seeking %>
+            </p>
+        <% } else {%>
+            <p>No job preferences listed</p>
+        <% } %>
+        <% if (user.Job !=null || user.Job !="" ) { %>
+            <p>
+                Current Job: <%= user.Job %>
+            </p>
+        <% } else {%>
+            <p>
+                No job listed
+            </p>
+        <% } %>
+        <p>____________</p>
+        <h3>About Me</h3>
+            <p>
+                <%= user.Description %> 
+            </p>
+        <p>____________</p>
+
+        <h2>Upload files</h2>
+        <div id="fileForm">
+            <form id="uploadForm">
+                <input type="file" id="myFiles" accept="image/*" multiple />
+                <button>Submit</button>
+            </form>
+        </div>
+
+        <script>
+            // JavaScript to send files to the server
+            const form = document.getElementById('uploadForm');
+
+            const sendFiles = async () => {
+                const myFiles = document.getElementById('myFiles').files;
+
+                const formData = new FormData();
+
+                Object.keys(myFiles).forEach(key => {
+                    formData.append(myFiles.item(key).name, myFiles.item(key))
+                });
+
+                const response = await fetch('http://localhost:5500/myProfile', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const json = await response.json();
+                const h2 = document.querySelector('h2');
+                h2.textContent = `Status: ${json?.status}`;
+                const h3 = document.querySelector('h3');
+                h3.textContent = json?.message;
+                console.log(json);
+            };
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                sendFiles();
+            });
+        </script>
+    </div>
+</body>
+</html>

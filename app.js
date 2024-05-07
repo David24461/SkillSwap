@@ -1,29 +1,38 @@
 // JUNIORS SHOULD NOT TOUCH THIS FILE UNLESS THEY ARE GIVEN AN ISSUE THAT INVOLVES THIS FILE
 // ***************************************************************************************** \\
-// This file is the main server file for the SkillSwap project
-// It is responsible for handling all requests and responses
-// It also connects to the database and sets up the server
-// ********************************************************* \\ 
+//              This file is the main server file for the SkillSwap project                  \\
+//               It is responsible for handling all requests and responses                   \\
+//                It also connects to the database and sets up the server                    \\
+// ***************************************************************************************** \\  
 
 // Constants
 const express = require('express');
 const app = express();
+const path = require('path');
 const sqlite3 = require("sqlite3");
 const bcrypt = require('bcrypt');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const expressfileupload = require('express-fileupload');
+const fileUpload = require('express-fileupload');
 const { parse } = require('dotenv');
 const port = 5500;
-const saltRounds = 5;
+const saltRounds = 5; // for bcrypt
+
+// Get middleware for file upload
+const filesPayloadExists = require('./middleware/filesPayloadExists');
+const fileExtLimiter = require('./middleware/fileExtLimiter');
+const fileSizeLimiter = require('./middleware/fileSizeLimiter');
 
 // Connect to the database
 const db = new sqlite3.Database('Users.db');
 
 // sets up the app to use ejs and public folder
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
-app.use(expressfileupload());
+app.use(fileUpload());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
     secret: 'skillswap',
@@ -85,8 +94,8 @@ app.post('/signup', (req, res) => {
     const description = req.body.description;
     const classPos = req.body.class;
     const job = req.body.job;
-    bcrypt.hash(password, saltRounds, function(err, hash) {
-        db.run(`INSERT INTO users(Name, Password, Email, Skills, Seeking, Description, Class, Job) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`, [username, hash, email, skills, seeking, description, classPos, job], function(err) {
+    bcrypt.hash(password, saltRounds, function (err, hash) {
+        db.run(`INSERT INTO users(Name, Password, Email, Skills, Seeking, Description, Class, Job) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`, [username, hash, email, skills, seeking, description, classPos, job], function (err) {
             if (err) {
                 console.log(err.message);
                 return res.status(500).send({ error: 'Database error' });
@@ -107,7 +116,7 @@ app.get('/search', (req, res) => {
             return console.error(err.message);
         }
         else {
-        res.render('index', { users: rows }); 
+            res.render('index', { users: rows });
         }
     });
 });
@@ -126,33 +135,62 @@ app.get('/index', (req, res) => {
     }
 });
 
+const users = [];
+
+// link profiles.ejs to app.js
 app.get('/profiles/:id', (req, res) => {
     const userId = parseInt(req.params.id);
-    //const userId = 12;
-    db.all(`SELECT * FROM users WHERE ID = ?`, userId, (err, row) => {
+    db.get(`SELECT * FROM users WHERE ID = ?`, userId, (err, row) => {
         if (err) {
             return console.error(err.message);
         }
-        var user = row.find(user => user.id === userId);
-        console.log(row);
-        res.render('profiles', { users: row[0] });
+        let resume;
+        // search upload for a file with the same name as the profile's username
+
+        //if it exists, set the profile's resume to the file path
+
+    res.render('profiles', { user: row, resume: resume });
     });
 });
 
+// link editProfile.ejs to app.js
+app.get('/myProfile', (req, res) => {
+    if (req.session.user) {
+        const userId = req.session.user.ID;
+        db.get(`SELECT * FROM users WHERE ID = ?`, userId, (err, row) => {
+            if (err) {
+                return console.error(err.message);
+            }
+            res.render('myProfile', { user: row });
+        });
+    } else {
+        res.redirect('/login');
+    }
+});
+
+// link editProfile.ejs to app.js
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/login');
+});
+
+// link certificationTest.ejs to app.js
 app.get('/certificationTest', (req, res) => {
     // Render the certification tests page with the certification tests data
     res.render('certificationTest',);
 });
 
+// link newAlum.ejs to app.js
 app.get('/newAlum', (req, res) => {
     res.render('newAlum.ejs');
 });
 
+// Handle form submission for New Alumni Page
 app.post('/newStudent', (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const legacy = req.body.legacy;
-    db.run(`INSERT INTO alumni(Name, Email, Legacy) VALUES(?, ?, ?)`, [name, email, legacy], function(err) {
+    db.run(`INSERT INTO alumni(Name, Email, Legacy) VALUES(?, ?, ?)`, [name, email, legacy], function (err) {
         if (err) {
             console.log(err.message);
             return res.status(500).send({ error: 'Database error' });
@@ -174,13 +212,27 @@ app.get('/alumni', (req, res) => {
     });
 });
 
+// link upload.ejs to app.js
 app.get('/upload', (req, res) => {
     res.render('upload.ejs');
 });
 
-app.post('/upload', (req, res) => {
-    console.log(req.files); // This will log the uploaded files
-    res.json({ message: 'File uploaded successfully' });
+// Handle file upload
+app.post('/upload', filesPayloadExists, fileExtLimiter, fileSizeLimiter, (req, res) => {
+    const file = req.files.file;
+    const username = req.session.user.Name;
+    const filePath = `uploads/${username}.pdf`;
+    file.mv(filePath, (err) => {
+        if (err) {
+            return res.status(500).send({ error: 'Error uploading file' });
+        }
+        res.redirect('/myProfile');
+    });
+});
+
+// link showcase.ejs to app.js
+app.get('/showcase', (req, res) => {
+    res.render('showcase.ejs');
 });
 
 // listen on port 5500
