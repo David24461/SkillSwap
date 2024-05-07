@@ -75,7 +75,7 @@ app.post('/login', (req, res) => {
         } else {
             // If the user is not found, send an error message
             return res.redirect('/login?error=User not found');
-        }
+        };
     });
 });
 

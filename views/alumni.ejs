@@ -13,13 +13,23 @@
         <h1>Skill Swap Home</h1>
     </header>
     <main>
+        <!--This page is used to show users that have Graduated, and left an impact with their projects-->
+        <!-- Button to go back to home page -->
+
         <button id="logoutbtn" style="margin-top: 2%;" onclick="window.location.href = '/index'">Back to Home</button>
+        <!-- Button to add a new alumni -->
         <button id="logoutbtn" style="margin-top: 2%;" onclick="window.location.href = '/newAlum'">Add Alumni</button>
         <h2 id="alumlbl" style="color: rgb(90, 26, 150); font-size: 200%;">Past Alumni</h2>
+        <p style="text-align: center;">
+            **There is currently a bug that adds an empty entry when you click add alumni and don't add anything. <br> 
+            So, only click it when you are going to add a student.**
+        </p>
+        <br>
         <% alumni.forEach(alum=> { %>
             <div class="class-senior">
                 <div id="user-profile">
                     <h3 style="font-size: 150%; color: rgb(90, 26, 150); text-decoration: underline;">
+                        <!-- Alumni name, email, and legacy -->
                         <%= alum.Name %></a>
                     </h3>
                     <p>Email: <%= alum.Email %>
@@ -28,8 +38,7 @@
                     </p>
                 </div>
             </div>
-            <% }) %>
-    </main>
+        <% }) %>
+</main>
 </body>
-
 </html>
