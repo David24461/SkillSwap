@@ -103,26 +103,28 @@
             <button id="sidebarButton" onclick="window.location.href = '/login'">Logout</button>
         </div>
 
-        <footer>
-            <p>&copy; Skill Swap Network</p>
-        </footer>
-        <script>
-            //DONT TOUCH THIS CODE, THE ERROR IS SUPPOSED TO BE THERE
-            var users = <%- JSON.stringify(users) %>
-            //a function used to filter the users based on their grade
-            function filter(grade) {
-                for (const user of users) {
-                    if (user.Class == grade) {
-                        console.log(document.getElementsByClassName(user.Name));
-                        document.getElementsByClassName(user.Name)[0].style.display = 'flex';
-                    }
-                    else if (grade == 'All') {
-                        document.getElementsByClassName(user.Name)[0].style.display = 'flex';
-                    }
-                    else {
-                        console.log(user.Name);
-                        document.getElementsByClassName(user.Name)[0].style.display = 'none';
-                    };
+    <footer>
+        <p>&copy; Skill Swap Network</p>
+    </footer>
+    <script>
+        //DONT TOUCH THIS CODE, THE ERROR IS SUPPOSED TO BE THERE
+        //CHECK THIS AFTER YOU ALT + SHIFT + F
+        //PUT THE "-" BACK 
+        //            |
+        var users = <%- JSON.stringify(users) %>;
+        //a function used to filter the users based on their grade
+        function filter(grade) {
+            for (const user of users) {
+                if (user.Class == grade) {
+                    console.log(document.getElementsByClassName(user.Name));
+                    document.getElementsByClassName(user.Name)[0].style.display = 'flex';
+                }
+                else if (grade == 'All') {
+                    document.getElementsByClassName(user.Name)[0].style.display = 'flex';
+                }
+                else {
+                    console.log(user.Name);
+                    document.getElementsByClassName(user.Name)[0].style.display = 'none';
                 };
             };
 

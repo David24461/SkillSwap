@@ -21,13 +21,17 @@
         <h1>
             <%= user.Name %>'s Profile
         </h1>
-        <!-- Display user's email if available -->
+
+        <!--checks to see if the users email is there-->
+
         <% if (user.Email !=null || user.Email !="" ) { %>
             <p>
                 Email: <%= user.Email %>
             </p>
         <% } %>
+
         <!-- Display user's skills if available, otherwise display a message -->
+
         <% if (user.Skills !=null || user.Skills !="" ) { %>
             <p>
                 Skills: <%= user.Skills %>
@@ -37,7 +41,9 @@
                 No skills listed
             </p>
         <% } %>
+
         <!-- Display user's job preferences if available, otherwise display a message -->
+
         <% if (user.Seeking !=null || user.Seeking !="" ) { %>
             <p>
                 Seeking Job in: <%= user.Seeking %>
@@ -45,6 +51,7 @@
         <% } else {%>
             <p>No job preferences listed</p>
         <% } %>
+
         <!-- Display user's current job if available, otherwise display a message -->
         <% if (user.Job !=null || user.Job !="" ) { %>
             <p>
