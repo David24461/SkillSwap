@@ -21,17 +21,6 @@ header, footer {
     box-shadow: 0 0 5px 0 #000;
 }
 
-footer {
-    margin-top: auto;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2em;
-}
-
 button {
     padding: 1em;
     border: 1px solid #43135a;
@@ -43,10 +32,23 @@ button {
     margin: 0 auto;
 }
 
+footer {
+    margin-top: auto;
+}
+
+/* MAIN LAYOUT FOR INDEX.EJS */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
 button:hover {
     background-color: #5a3497;
 }
 
+/* CSS FOR FILE UPLOAD ON MYPROFILE.EJS */
 #fileForm {
     padding: 2%;
     border: 1px solid #52318f;
@@ -54,7 +56,7 @@ button:hover {
     background-color: #e9d6ff;
 }
 
-/* LOGIN PAGE / CREATE ACCOUNT PAGE / SIGNUP PAGE / PROFILES PAGE*/
+/* LOGIN PAGE / CREATE ACCOUNT PAGE / SIGNUP PAGE / PROFILES PAGE / MY PROFILE PAGE */
 
 #profilePage, #login, #signup, #myProfilePage {
     display: flex;
@@ -69,6 +71,7 @@ button:hover {
     margin: 0 auto;
 }
 
+/* CSS FOR LOGIN AND SIGNUP BUTTON */
 #loginbtn, #signupbtn {
     width: auto;
     padding: 1em;
@@ -85,6 +88,17 @@ button:hover {
     margin-top: 1%;
 }
 
+/* TEXT BOX FOR SIGNUP AND LOGIN PAGE */
+.t-box {
+    width: 30%;
+    padding: 2%;
+    margin-bottom: 1em;
+    margin-top: 1%;
+    border: 1px solid #43135a;
+    border-radius: 10px;
+}
+
+/* CSS FOR CERTIFICATION TEST PAGE */
 #certificationTest {
     width: auto;
     padding: 1em;
@@ -113,6 +127,7 @@ button:hover {
     left: 35%;
 }
 
+/* HOVER PROPERTIES FOR THE FOLLOWING BUTTONS */
 #loginbtn:hover, #signupbtn:hover, #logoutbtn:hover, #backbtn:hover {
     background-color: #5a3497;
     border: 1px solid #a97fbb;
@@ -122,15 +137,7 @@ button:hover {
     color: #43135a;
 }
 
-.t-box {
-    width: 30%;
-    padding: 2%;
-    margin-bottom: 1em;
-    margin-top: 1%;
-    border: 1px solid #43135a;
-    border-radius: 10px;
-}
-
+/* LABELS FOR SENIORS AND JUNIORS */
 #juniorlbl, #seniorlbl {
     height: 1em;
     font-size: 2em;
@@ -173,6 +180,7 @@ button:hover {
     z-index: 2;
 }
 
+/* USER PROFILES ON INDEX.EJS */
 #user-profile {
     border: 3px solid #52318f;
     border-radius: 20px;
@@ -190,6 +198,7 @@ button:hover {
     background-color: rgb(200, 157, 255);
 }
 
+/* CSS FOR SEARCH BAR */
 .search {
     display: flex;
     align-items: center;
@@ -222,9 +231,14 @@ button:hover {
     background-color: #5a3497;
 }
 
+/* PROFILE PAGE FROM CLICKING ON USER PROFILES AND PERSONAL PROFILE FROM CLICKING ON HEADER (BOTH ON INDEX.EJS) */
 #profilePage, #myProfilePage {
     margin-top: 2%;
     margin-bottom: 2%;
+}
+
+#myProfilePage {
+    width: 40%;
 }
 
 #profileBtn {
@@ -243,6 +257,7 @@ button:hover {
     background-color: rgb(111, 78, 165);;
 }
 
+/* SIDEBAR CSS */
 #Sidebar {
     width: 18%;
     height: 65%;
@@ -273,12 +288,17 @@ button:hover {
     background-color: #5a3497;
 }
 
+/* CSS FOR IMAGES */
 img {
     width: 25%;
     height: 30%;
     object-fit: cover;
     margin: 1em;
 }
+
+/*                                 */
+/* MOBILE OPTIMIZATION STARTS HERE */
+/*                                 */
 
 @media screen and (max-width: 1000px) {
     .search {
@@ -410,12 +430,12 @@ img {
         width: 0;
         /* Hide the sidebar */
         transition: width 0.5s;
-        /* Smooth transition */
+        /* Does a Smooth transition */
     }
 
     #sidebarButton {
-        display: block;
-        /* Show the button */
+        display: none;
+        /* hide the button */
     }
 
     #Sidebar.active {
