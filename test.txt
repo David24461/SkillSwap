@@ -1,8 +1,35 @@
 Used to put removed lines of code that might be needed for later
 
-<!-- <form action="/upload" method="post" enctype="multipart/form-data">
-    <label for="file">File</label>
-    <input id="file" name="file" type="file" />
-    <button>Upload</button>
-    <script src="script.js"></script>
-</form> -->
+app.post('/upload', fileUpload({ createParentPath: true }),
+    filesPayloadExists,
+    fileExtLimiter(['.png', '.jpg', '.jpeg', '.pdf', '.PNG']),
+    fileSizeLimiter,
+    (req, res) => {
+        const files = req.files;
+        console.log(files);
+        Object.keys(files).forEach(key => {
+            const filepath = path.join(__dirname, 'files', files[key].name)
+            files[key].mv(filepath, (err) => {
+                ;
+                if (err) return res.status(500).json({ status: "error", message: err })
+            });
+        });
+    return res.json({ status: 'success', message: Object.keys(files).toString() });
+});
+
+// save login information as a variable to use for making the user's profile
+// const user = req.body.username;
+// res.render('profiles', { user: user });
+
+// fileUpload({ createParentPath: true }), filesPayloadExists,
+//     fileExtLimiter(['.png', '.jpg', '.jpeg', '.pdf', '.PNG']), fileSizeLimiter,
+//     const files = req.files;
+//     console.log(files);
+//     Object.keys(files).forEach(key => {
+//         const filepath = path.join(__dirname, 'files', files[key].name)
+//         files[key].mv(filepath, (err) => {
+//             ;
+//             if (err) return res.status(500).json({ status: "error", message: err })
+//         });
+//     });
+// return res.json({ status: 'success', message: Object.keys(files).toString() });

@@ -1,8 +1,8 @@
 // JUNIORS SHOULD NOT TOUCH THIS FILE UNLESS THEY ARE GIVEN AN ISSUE THAT INVOLVES THIS FILE
-// ***************************************************************************************** \\ 
-//              This file is the main server file for the SkillSwap project                  \\ 
-//               It is responsible for handling all requests and responses                   \\ 
-//                It also connects to the database and sets up the server                    \\ 
+// ***************************************************************************************** \\
+//              This file is the main server file for the SkillSwap project                  \\
+//               It is responsible for handling all requests and responses                   \\
+//                It also connects to the database and sets up the server                    \\
 // ***************************************************************************************** \\  
 
 // Constants
@@ -11,18 +11,26 @@ const app = express();
 const path = require('path');
 const sqlite3 = require("sqlite3");
 const bcrypt = require('bcrypt');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const fileUpload = require('express-fileupload');
 const { parse } = require('dotenv');
 const port = 5500;
-const saltRounds = 5;
+const saltRounds = 5; // for bcrypt
+
+// Get middleware for file upload
+const filesPayloadExists = require('./middleware/filesPayloadExists');
+const fileExtLimiter = require('./middleware/fileExtLimiter');
+const fileSizeLimiter = require('./middleware/fileSizeLimiter');
 
 // Connect to the database
 const db = new sqlite3.Database('Users.db');
 
 // sets up the app to use ejs and public folder
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 app.use(fileUpload());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -67,7 +75,7 @@ app.post('/login', (req, res) => {
         } else {
             // If the user is not found, send an error message
             return res.redirect('/login?error=User not found');
-        }
+        };
     });
 });
 
@@ -127,34 +135,57 @@ app.get('/index', (req, res) => {
     }
 });
 
-// link profiles.ejs to app.js
-
 const users = [];
 
+// link profiles.ejs to app.js
 app.get('/profiles/:id', (req, res) => {
     const userId = parseInt(req.params.id);
-    //const userId = 12;
     db.get(`SELECT * FROM users WHERE ID = ?`, userId, (err, row) => {
         if (err) {
             return console.error(err.message);
         }
         let resume;
         // search upload for a file with the same name as the profile's username
+
         //if it exists, set the profile's resume to the file path
 
         res.render('profiles', { user: row, resume: resume });
     });
 });
 
+// link editProfile.ejs to app.js
+app.get('/myProfile', (req, res) => {
+    if (req.session.user) {
+        const userId = req.session.user.ID;
+        db.get(`SELECT * FROM users WHERE ID = ?`, userId, (err, row) => {
+            if (err) {
+                return console.error(err.message);
+            }
+            res.render('myProfile', { user: row });
+        });
+    } else {
+        res.redirect('/login');
+    }
+});
+
+// link editProfile.ejs to app.js
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/login');
+});
+
+// link certificationTest.ejs to app.js
 app.get('/certificationTest', (req, res) => {
     // Render the certification tests page with the certification tests data
     res.render('certificationTest',);
 });
 
+// link newAlum.ejs to app.js
 app.get('/newAlum', (req, res) => {
     res.render('newAlum.ejs');
 });
 
+// Handle form submission for New Alumni Page
 app.post('/newStudent', (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
@@ -181,27 +212,25 @@ app.get('/alumni', (req, res) => {
     });
 });
 
+// link upload.ejs to app.js
 app.get('/upload', (req, res) => {
     res.render('upload.ejs');
 });
 
-app.post('/upload', (req, res) => {
-    console.log(req.files.file); // This will log the uploaded files
-
-    let resumeFile = req.files.file;
-
-    let uploadPath = __dirname + '/uploads/' + req.body.userName;
-    // find out the file extension of the uploaded file and add it to the end of the upload path
-
-    resumeFile.mv(uploadPath, function (err) {
+// Handle file upload
+app.post('/upload', filesPayloadExists, fileExtLimiter, fileSizeLimiter, (req, res) => {
+    const file = req.files.file;
+    const username = req.session.user.Name;
+    const filePath = `uploads/${username}.pdf`;
+    file.mv(filePath, (err) => {
         if (err) {
-            return res.status(500).send(err);
+            return res.status(500).send({ error: 'Error uploading file' });
         }
-
-        res.send('File uploaded');
+        res.redirect('/myProfile');
     });
 });
 
+// link showcase.ejs to app.js
 app.get('/showcase', (req, res) => {
     res.render('showcase.ejs');
 });
@@ -210,5 +239,3 @@ app.get('/showcase', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}/login`);
 });
-
-

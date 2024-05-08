@@ -1,54 +1,80 @@
+<!-- This is the showcase page where companies can post images of what they do. -->
+<!-- The images are dynamically loaded using JavaScript. -->
+<!-- The images are stored in the img folder. -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skill Swap Gallery</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Makes the text centered */
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
 </head>
-<style>
-    h2 {
-        text-align: center;
-    }
-</style>
 
 <body>
     <header>
         <h1>Skill Swap Company Showcase</h1>
     </header>
     <br>
-    <button id="logoutbtn" onclick="window.location.href = '/index'">Back to Home</button>
-    <h2>Post a picture of what your company does!</h2>
+
+    <!-- Buttons to go back to the home page and upload page. -->
+    <div style="margin-right: 10%; margin-left: 10%; text-align: center;">
+        <button id="backbtn" onclick="window.location.href = '/index'">Go Back Home</button>
+        <button id="backbtn" onclick="window.location.href = '/upload'">Upload Image</button>
+    </div>
+    <h2 style="margin-bottom: 2%; margin-top: -0.5%;">Post a picture of what your company does!</h2>
+    <h2 style="margin-bottom: 2%; margin-top: -0.5%;">
+        -----------------------------------------------------------------------</h2>
+
+    <!-- Container for images -->
+    <div id="imageContainer"></div>
 
     <script>
-        window.onload = function () {
-            let imageArray = [
-                'images/fb1.jpg',
-                'images/fb2.jpg',
-                'images/fb3.jpg',
-                'images/fb4.jpg',
-                'images/fb5.jpg',
-                'images/fb6.jpg',
-            ];
-    
-            let container = document.createElement('div');
-            container.style.display = 'flex';
-            container.style.justifyContent = 'center';
-            container.style.flexWrap = 'wrap';
-    
-            imageArray.forEach(imagePath => {
-                let img = document.createElement('img');
-                img.src = imagePath;
-                container.appendChild(img);
-            });
-    
-            document.body.appendChild(container);
-        }
+        // JavaScript to dynamically load images
+        const imgFolder = 'img/'; // Folder where the images are stored
+        const imgArray = [
+            'formbarone.jpg',
+            'formbartwo.jpg',
+            'formbarthree.jpg',
+            'formbarfour.jpg',
+            'formbarfive.jpg',
+            'formbarsix.jpg',
+            'onlypogsone.png',
+            'onlypogstwo.png',
+            'onlypogsthree.png',
+            'onlypogsfour.png',
+            'onlypogsfive.png',
+            'Pokepucksone.png',
+            'Pokepuckstwo.png',
+            'Pokepucksthree.png',
+            'IRLTechone.png',
+            'IRLTechtwo.png',
+            'IRLTechthree.png',
+        ]; // Array of image file names
+
+        const imageContainer = document.getElementById('imageContainer');
+
+        imgArray.forEach(img => {
+            const imgElement = document.createElement('img'); // Create an <img> element
+            imgElement.src = imgFolder + img; // Set the source of the image
+            imgElement.width = 400; // Set the width of the image
+            imageContainer.appendChild(imgElement); // Append the image to the container
+        });
+
     </script>
 
     <footer>
-        <p class="footerText">&copy; Skill Swap Network</p>
+        <p>&copy; Skill Swap Network</p>
     </footer>
 </body>
 
