@@ -15,6 +15,7 @@
     <main>
         <h2>Multiple Choice Quiz</h2>
 
+        <!-- Question 1 -->
         <div class="question" id="question1">
             <p>Question 1: What does CSS stand for?</p>
             <ul>
@@ -26,6 +27,7 @@
             <button id="nextBtn" onclick="nextQuestion(2)">Next</button>
         </div>
 
+        <!-- Question 2 -->
         <div class="question" id="question2" style="display: none;">
             <p>Question 2: Which CSS property is used to set the background color of an element?</p>
             <ul>
@@ -38,6 +40,7 @@
             <button id="prevBtn" onclick="prevQuestion(2)">Previous</button>
         </div>
 
+        <!-- Question 3 -->
         <div class="question" id="question3" style="display: none;">
             <p>Question 3: In CSS, what is the purpose of the "float" property?</p>
             <ul>
@@ -50,6 +53,7 @@
             <button id="prevBtn" onclick="prevQuestion(3)">Previous</button>
         </div>
 
+        <!-- Question 4 -->
         <div class="question" id="question4" style="display: none;">
             <p>Question 4: What does the "box-sizing" property control in CSS?</p>
             <ul>
@@ -62,6 +66,7 @@
             <button id="prevBtn" onclick="prevQuestion(4)">Previous</button>
         </div>
 
+        <!-- Question 5 -->
         <div class="question" id="question5" style="display: none;">
             <p>Question 5: Which CSS selector targets all anchor (link) elements?</p>
             <ul>
@@ -74,6 +79,7 @@
             <button id="prevBtn" onclick="prevQuestion(5)">Previous</button>
         </div>
 
+        <!-- Question 6 -->
         <div class="question" id="question6" style="display: none;">
             <p>Question 6: What does the "z-index" property determine in CSS? </p>
             <ul>
@@ -86,6 +92,7 @@
             <button id="prevBtn" onclick="prevQuestion(6)">Previous</button>
         </div>
 
+        <!-- Question 7 -->
         <div class="question" id="question7" style="display: none;">
             <p>Question 7: What does the "display" property control in CSS?</p>
             <ul>
@@ -98,6 +105,7 @@
             <button id="prevBtn" onclick="prevQuestion(7)">Previous</button>
         </div>
 
+        <!-- Question 8 -->
         <div class="question" id="question8" style="display: none;">
             <p>Question 8: What does the "position" property control in CSS?</p>
             <ul>
@@ -110,6 +118,7 @@
             <button id="prevBtn" onclick="prevQuestion(8)">Previous</button>
         </div>
 
+        <!-- Question 9 -->
         <div class="question" id="question9" style="display: none;">
             <p>Question 9: What does the "overflow" property control in CSS?</p>
             <ul>
@@ -122,6 +131,7 @@
             <button id="prevBtn" onclick="prevQuestion(9)">Previous</button>
         </div>
 
+        <!-- Question 10 -->
         <div class="question" id="question10" style="display: none;">
             <p>Question 10: What does the "opacity" property control in CSS?</p>
             <ul>
@@ -136,6 +146,7 @@
     </main>
 
     <script>
+        // Function to show the next question
         function nextQuestion(questionNumber) {
             // Hide the current question
             document.getElementById('question' + (questionNumber - 1)).style.display = 'none';
@@ -148,6 +159,7 @@
             }
         }
 
+        // Function to show the previous question
         function prevQuestion(questionNumber) {
             // Hide the current question
             document.getElementById('question' + questionNumber).style.display = 'none';
@@ -157,15 +169,15 @@
                 document.getElementById('question' + (questionNumber - 1)).style.display = '';
                 document.getElementById('nextBtn').style.display = ''; // Show the "Next" button
             }
+        }
             if (questionNumber == 1) {
                 document.getElementById('prevBtn').style.display = 'none'; // Hide the "Previous" button for the first question
             }
-        }
 
         function submitQuiz() {
             // Initialize the count of correct answers
             let correctAnswers = 0;
-
+            
             // Get the selected answers
             const q1Answer = document.querySelector('input[name="q1"]:checked').value;
             const q2Answer = document.querySelector('input[name="q2"]:checked').value;
@@ -223,10 +235,6 @@
 </body>
 
 </html>
-
-
-
-
 
 <button id="backbtn" onclick="window.location.href = '/index'">Go Back Home</button>
 <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
