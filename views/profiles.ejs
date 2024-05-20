@@ -8,11 +8,14 @@
 </head>
 
 <body>
+    <!-- Header section -->
     <header>
         <h1>Skill Swap Users</h1>
     </header>
 
+    <!-- Profile section -->
     <div id="profilePage">
+        <!-- Back to Home button -->
         <button id="logoutbtn" onclick="window.location.href = '/index'">Back to Home</button>
         <br>
         <h1>
@@ -20,30 +23,41 @@
         </h1>
         <!-- Check if user has skills -->
         <% if (user.Skills !=null || user.Skills !="" ) { %>
-            <p>
-                Skills: <%= user.Skills %>
+            <!-- Display user's skills -->
+            <p>Skills: <%= user.Skills %>
             </p>
-            <% } else {%>
-                <p>
-                    No skills listed
-                </p>
-                <% } %>
-                    <!-- Check if user is seeking a job -->
-                    <% if (user.Seeking !=null || user.Seeking !="" ) { %>
-                        <p>
-                            Seeking Job in: <%= user.Seeking %>
-                        </p>
-                        <% } else {%>
-                            <p>No job preferences listed</p>
-                            <% } %>
-                                <p>
-                                    About Me: <%= user.Description %>
-                                </p>
+        <% } else { %>
+            <!-- Display message if no skills listed -->
+            <p>No skills listed</p>
+        <% } %>
+        <% if (user.Seeking !=null || user.Seeking !="" ) { %>
+            <!-- Display user's job preferences -->
+            <p>Seeking Job in: <%= user.Seeking %>
+            </p>
+        <% } else { %>
+            <!-- Display message if no job preferences listed -->
+            <p>No job preferences listed</p>
+        <% } %>
+
+        <!-- Display user's description -->
+        <p>About Me: <%= user.Description %>
+        </p>
+
+        <!-- File upload form -->
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="userName" value="<%= user.Name %>" />
+            <label for="file">File</label>
+            <input id="file" name="file" type="file" />
+            <button>Upload</button>
+        </form>
     </div>
+
+    <!-- Logout button -->
     <button id="logoutbtn" onclick="window.location.href = '/login'">Logout</button>
-</body>
-<footer>
-    <p>&copy; Skill Swap Network</p>
-</footer>
+
+    <!-- Footer section -->
+    <footer>
+        <p>&copy; Skill Swap Network</p>
+    </footer>
 
 </html>

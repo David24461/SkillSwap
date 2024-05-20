@@ -53,36 +53,36 @@
                         </div>
                     </div>
 
-                <% } else if (user.Class=='Junior' ) { %> <!-- checks if the user is a junior -->
-                    <div id="class-junior" class="<%= user.Name %>">
-                        <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'">
-                            <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;">
-                                <%= user.Name %>
-                            </h3>
-                            <p>Email: <br>
-                                <%= user.Email %>
-                            </p>
-                            <p>Skills: <br>
-                                <%= user.Skills %>
-                            </p>
-                            <p>Seeking Job in: <br>
-                                <%= user.Seeking %>
-                            </p>
-                            <p>Current Job: <br>
-                                <%= user.Job %>
-                            </p>
-                            <p>...............</p>
-                            <h3 style="color: #52318f; text-decoration: underline; font-size: 120%;">About Me</h3>
-                            <p style="font-weight: 900; font-size: 110%;">
-                                <%= user.Class %>
-                            </p>
-                            <p>
-                                <%= user.Description %>
-                            </p>
+                    <% } else if (user.Class=='Junior' ) { %> <!-- checks if the user is a junior -->
+                        <div id="class-junior" class="<%= user.Name %>">
+                            <div id="user-profile" onclick="window.location.href = '/profiles/<%- user.ID %>'">
+                                <h3 style="font-size: 130%; color: #52318f; text-decoration: underline;">
+                                    <%= user.Name %>
+                                </h3>
+                                <p>Email: <br>
+                                    <%= user.Email %>
+                                </p>
+                                <p>Skills: <br>
+                                    <%= user.Skills %>
+                                </p>
+                                <p>Seeking Job in: <br>
+                                    <%= user.Seeking %>
+                                </p>
+                                <p>Current Job: <br>
+                                    <%= user.Job %>
+                                </p>
+                                <p>...............</p>
+                                <h3 style="color: #52318f; text-decoration: underline; font-size: 120%;">About Me</h3>
+                                <p style="font-weight: 900; font-size: 110%;">
+                                    <%= user.Class %>
+                                </p>
+                                <p>
+                                    <%= user.Description %>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                <% } %>
-            <% }); %> <!-- end of loop -->
+                        <% } %>
+                            <% }); %> <!-- end of loop -->
         </main>
 
         <!--displays sidebars and content in the sidebars-->
@@ -103,39 +103,40 @@
             <button id="sidebarButton" onclick="window.location.href = '/login'">Logout</button>
         </div>
 
-    <footer>
-        <p>&copy; Skill Swap Network</p>
-    </footer>
-    <script>
-        //DONT TOUCH THIS CODE, THE ERROR IS SUPPOSED TO BE THERE
-        //CHECK THIS AFTER YOU ALT + SHIFT + F
-        //PUT THE "-" BACK 
-        //            |
-        var users = <%- JSON.stringify(users) %>;
-        //a function used to filter the users based on their grade
-        function filter(grade) {
-            for (const user of users) {
-                if (user.Class == grade) {
-                    console.log(document.getElementsByClassName(user.Name));
-                    document.getElementsByClassName(user.Name)[0].style.display = 'flex';
-                }
-                else if (grade == 'All') {
-                    document.getElementsByClassName(user.Name)[0].style.display = 'flex';
-                }
-                else {
-                    console.log(user.Name);
-                    document.getElementsByClassName(user.Name)[0].style.display = 'none';
-                };
-            };
-
-            function searchUsers() {
-                var searchTerm = document.getElementById('search').value.toLowerCase();
+        <footer>
+            <p>&copy; Skill Swap Network</p>
+        </footer>
+        <script>
+            //DONT TOUCH THIS CODE, THE ERROR IS SUPPOSED TO BE THERE
+            //CHECK THIS AFTER YOU ALT + SHIFT + F
+            //PUT THE "-" BACK  
+            //            |
+            var users = <%- JSON.stringify(users) %>;
+            //a function used to filter the users based on their grade
+            function filter(grade) {
                 for (const user of users) {
-                    var skills = user.Skills.toLowerCase();
-                    if (skills.includes(searchTerm)) {
+                    if (user.Class == grade) {
+                        console.log(document.getElementsByClassName(user.Name));
                         document.getElementsByClassName(user.Name)[0].style.display = 'flex';
-                    } else {
+                    }
+                    else if (grade == 'All') {
+                        document.getElementsByClassName(user.Name)[0].style.display = 'flex';
+                    }
+                    else {
+                        console.log(users.Name);
                         document.getElementsByClassName(user.Name)[0].style.display = 'none';
+                    };
+                };
+
+                function searchUsers() {
+                    var searchTerm = document.getElementById('search').value.toLowerCase();
+                    for (const user of users) {
+                        var skills = user.Skills.toLowerCase();
+                        if (skills.includes(searchTerm)) {
+                            document.getElementsByClassName(user.Name)[0].style.display = 'flex';
+                        } else {
+                            document.getElementsByClassName(user.Name)[0].style.display = 'none';
+                        };
                     };
                 };
             };
